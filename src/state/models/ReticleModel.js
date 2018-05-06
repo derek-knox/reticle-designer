@@ -1,7 +1,7 @@
 import { observable } from 'mobx';
 import { uniqueId } from 'lodash';
 
-export class ExampleModel {
+export class ReticleModel {
   
   @observable id;
   @observable name;

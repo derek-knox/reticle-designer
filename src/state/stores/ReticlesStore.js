@@ -1,9 +1,10 @@
 import { action, computed, observable} from 'mobx';
-import { ExampleModel } from '../models/ExampleModel';
+import { ReticleModel } from '../models/ReticleModel';
 
-export class ExampleStore {
+export class ReticlesStore {
 
-  @observable items = []
+  @observable isDrawing = false;
+  @observable items = [];
 
   constructor(stores) {
     this.stores = stores;
@@ -11,10 +12,10 @@ export class ExampleStore {
   }
 
   @action add(payload) {
-    this.items.push(new ExampleModel({ name: payload.name }));
+    this.items.push(new ReticleModel({ name: payload.name }));
   }
 
-  getExampleById(id) {
+  getReticleById(id) {
     return computed(() => {
       return this.items.find(el => el.id === id);
     }).get();

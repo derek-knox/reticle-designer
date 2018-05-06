@@ -1,11 +1,7 @@
 export const routes = [
     {
-        name: 'home',
+        name: 'reticleDesignerPage',
         pattern: '/'
-    },
-    {
-        name: 'other',
-        pattern: '/other'
     },
     {
         name: 'notFound',
