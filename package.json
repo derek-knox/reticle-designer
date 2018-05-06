@@ -6,6 +6,7 @@
     "custom-react-scripts": "0.2.1",
     "history": "^4.7.2",
     "lodash": "^4.17.4",
+    "material-ui": "^1.0.0-beta.44",
     "mobx": "^3.4.1",
     "mobx-react": "^4.3.5",
     "mobx-state-router": "^1.0.0",

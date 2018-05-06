@@ -3,13 +3,14 @@ import { inject, observer } from 'mobx-react';
 import { RouterView } from 'mobx-state-router';
 import DevTools from 'mobx-react-devtools';
 
-import HeaderNavigation from './components/features/navigation/HeaderNavigation';
-
 import HomePage from './components/pages/HomePage';
 import OtherPage from './components/pages/OtherPage';
 import NotFoundPage from './components/pages/NotFoundPage';
 
 import lessStyles from './App.less';
+
+import Button from 'material-ui/Button';
+
 
 // UI
 
@@ -27,7 +28,7 @@ export default class App extends Component {
 
     return (
       <div>
-        <HeaderNavigation />
+        <Button variant="raised" color="primary">Hello World</Button>
         <RouterView routerStore={this.props.stores.routerStore} viewMap={viewMap} />
         <DevTools />
       </div>
