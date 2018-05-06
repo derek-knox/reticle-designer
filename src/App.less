@@ -13,6 +13,7 @@ body {
 }
 
 .reticles-container {
+  position: relative;
   height: 90vh;
   background-color: #ccc;
   display: flex;
@@ -30,5 +31,9 @@ body {
     height: 100%;
     z-index: 1;
     cursor: pointer;
+  }
+
+  .reticle {
+    position: absolute;
   }
 }

@@ -4,15 +4,16 @@ import { ReticleModel } from '../models/ReticleModel';
 export class ReticlesStore {
 
   @observable isDrawing = false;
+  @observable reticleInFocus = null;
   @observable items = [];
 
   constructor(stores) {
     this.stores = stores;
-    this.add({ name: 'test' });
   }
 
   @action add(payload) {
-    this.items.push(new ReticleModel({ name: payload.name }));
+    this.reticleInFocus = new ReticleModel(payload); 
+    this.items.push(this.reticleInFocus);
   }
 
   getReticleById(id) {

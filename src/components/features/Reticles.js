@@ -2,40 +2,57 @@ import React, {Component} from 'react';
 import { action, observable } from 'mobx';
 import {inject, observer} from 'mobx-react';
 
+import Reticle from './Reticle';
+import { getRadiusFromMouseAndClientRect } from '../../utils/reticleUtils';
+
 @inject('stores')
 @observer
 export default class Reticles extends Component {
 
     @action.bound onMouseDown(e) {
-        console.log('hit');
         this.props.stores.reticlesStore.isDrawing = true;
+        this.props.stores.reticlesStore.add({ radius: getRadiusFromMouseAndClientRect({
+                event: e.nativeEvent,
+                ref: this.refs.reticles })
+            });
     }
     
     @action.bound onMouseMove(e) {
-        if(this.props.stores.reticlesStore.isDrawing)
-            console.log('hit move');
+        if (this.props.stores.reticlesStore.isDrawing && this.props.stores.reticlesStore.reticleInFocus) {
+            this.props.stores.reticlesStore.reticleInFocus.radius = getRadiusFromMouseAndClientRect({
+                event: e.nativeEvent,
+                ref: this.refs.reticles
+            });
+        }
     }
     
     @action.bound onMouseUp(e) {
-        console.log('hit up');
         this.props.stores.reticlesStore.isDrawing = false;
+        this.props.stores.reticlesStore.reticleInFocus = null;
     }
 
     render() {
         return (
-            <div className='reticles-container'>
+            <div ref='reticles' className='reticles-container'>
+
                 <div className='reticles-drag-target'
                      onMouseDown={(e) => this.onMouseDown(e)}
                      onMouseMove={(e) => this.onMouseMove(e)}
                      onMouseUp={(e) => this.onMouseUp(e)}>
-
                 </div>
+
+                { this.props.stores.reticlesStore.items.map(item =>
+                        <Reticle key={item.id} item={item}></Reticle>
+                    )
+                }
+
                 <div className='reticles-directions'>
                     { this.props.stores.reticlesStore.isDrawing
                         ? <span>Let Go Whenever</span>
                         : <span>Click & Drag</span>
                     }
                 </div>
+
             </div>
         );
     }
