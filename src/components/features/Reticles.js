@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import ReactDOM from 'react-dom';
 import { action, observable } from 'mobx';
 import {inject, observer} from 'mobx-react';
 
@@ -9,19 +10,22 @@ import { getRadiusFromMouseAndClientRect } from '../../utils/reticleUtils';
 @observer
 export default class Reticles extends Component {
 
+    ref = null;
+
     @action.bound onMouseDown(e) {
         this.props.stores.reticlesStore.isDrawing = true;
+        this.ref = ReactDOM.findDOMNode(this.refs.reticles);
         this.props.stores.reticlesStore.add({ radius: getRadiusFromMouseAndClientRect({
-                event: e.nativeEvent,
-                ref: this.refs.reticles })
-            });
+            event: e.nativeEvent,
+            ref: this.ref })
+        });
     }
     
     @action.bound onMouseMove(e) {
         if (this.props.stores.reticlesStore.isDrawing && this.props.stores.reticlesStore.reticleInFocus) {
             this.props.stores.reticlesStore.reticleInFocus.radius = getRadiusFromMouseAndClientRect({
                 event: e.nativeEvent,
-                ref: this.refs.reticles
+                ref: this.ref
             });
         }
     }

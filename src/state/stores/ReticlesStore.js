@@ -12,7 +12,7 @@ export class ReticlesStore {
   }
 
   @action add(payload) {
-    this.reticleInFocus = new ReticleModel(payload); 
+    this.reticleInFocus = new ReticleModel(payload);
     this.items.push(this.reticleInFocus);
   }
 
