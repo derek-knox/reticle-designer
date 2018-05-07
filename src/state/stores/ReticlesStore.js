@@ -5,6 +5,8 @@ export class ReticlesStore {
 
   @observable isDrawing = false;
   @observable reticleInFocus = null;
+  @observable lastReticleInFocus = null;
+  @observable stageCenterPoint = null;
   @observable items = [];
 
   constructor(stores) {
@@ -13,6 +15,7 @@ export class ReticlesStore {
 
   @action add(payload) {
     this.reticleInFocus = new ReticleModel(payload);
+    this.lastReticleInFocus = this.reticleInFocus;
     this.items.push(this.reticleInFocus);
   }
 

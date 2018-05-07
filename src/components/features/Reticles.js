@@ -4,20 +4,21 @@ import { action, observable } from 'mobx';
 import {inject, observer} from 'mobx-react';
 
 import Reticle from './Reticle';
-import { getRadiusFromMouseAndClientRect } from '../../utils/reticleUtils';
+import { getCenterPoint, getRadiusFromMouseAndClientRect } from '../../utils/reticleUtils';
 
 @inject('stores')
 @observer
 export default class Reticles extends Component {
 
-    ref = null;
+    refReticles = null;
 
     @action.bound onMouseDown(e) {
         this.props.stores.reticlesStore.isDrawing = true;
-        this.ref = ReactDOM.findDOMNode(this.refs.reticles);
+        this.refReticles = ReactDOM.findDOMNode(this.refs.reticles);
+        this.props.stores.reticlesStore.stageCenterPoint = getCenterPoint({ ref: this.refReticles });
         this.props.stores.reticlesStore.add({ radius: getRadiusFromMouseAndClientRect({
             event: e.nativeEvent,
-            ref: this.ref })
+            ref: this.refReticles })
         });
     }
     
@@ -25,7 +26,7 @@ export default class Reticles extends Component {
         if (this.props.stores.reticlesStore.isDrawing && this.props.stores.reticlesStore.reticleInFocus) {
             this.props.stores.reticlesStore.reticleInFocus.radius = getRadiusFromMouseAndClientRect({
                 event: e.nativeEvent,
-                ref: this.ref
+                ref: this.refReticles
             });
         }
     }
@@ -53,7 +54,9 @@ export default class Reticles extends Component {
                 <div className='reticles-directions'>
                     { this.props.stores.reticlesStore.isDrawing
                         ? <span>Let Go Whenever</span>
-                        : <span>Click & Drag</span>
+                        : this.props.stores.reticlesStore.items.length > 1
+                            ? <span>Click & Drag to Add Reticle<hr/>Shift Click & Drag to Select Reticle</span>
+                            : <span>Click & Drag</span>
                     }
                 </div>
 

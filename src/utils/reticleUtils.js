@@ -4,3 +4,11 @@ export function getRadiusFromMouseAndClientRect(payload) {
     const b = payload.event.offsetY - (rect.height / 2);
     return Math.sqrt(a * a + b * b);
 }
+
+export function getCenterPoint(payload) {
+    const rect = payload.ref.getBoundingClientRect();
+    return {
+        x: (rect.width / 2),
+        y: (rect.height / 2)
+    }
+}
