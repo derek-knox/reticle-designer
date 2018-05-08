@@ -4,7 +4,7 @@ import { action, observable } from 'mobx';
 import {inject, observer} from 'mobx-react';
 
 import Reticle from './Reticle';
-import { getCenterPoint, getRadiusFromMouseAndClientRect } from '../../utils/reticleUtils';
+import { getRadiusFromMouseAndClientRect } from '../../utils/reticleUtils';
 
 @inject('stores')
 @observer
@@ -15,7 +15,7 @@ export default class Reticles extends Component {
     @action.bound onMouseDown(e) {
         this.props.stores.reticlesStore.isDrawing = true;
         this.refReticles = ReactDOM.findDOMNode(this.refs.reticles);
-        this.props.stores.reticlesStore.stageCenterPoint = getCenterPoint({ ref: this.refReticles });
+        this.props.stores.reticlesStore.updateEditArea({ ref: this.refReticles });
         this.props.stores.reticlesStore.add({ radius: getRadiusFromMouseAndClientRect({
             event: e.nativeEvent,
             ref: this.refReticles })

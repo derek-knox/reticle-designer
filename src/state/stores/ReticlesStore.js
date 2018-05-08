@@ -1,13 +1,15 @@
 import { action, computed, observable} from 'mobx';
 import { ReticleModel } from '../models/ReticleModel';
 
+import { getEditAreaInfo } from '../../utils/reticleUtils';
+
 export class ReticlesStore {
 
+  @observable items = [];
   @observable isDrawing = false;
   @observable reticleInFocus = null;
   @observable lastReticleInFocus = null;
-  @observable stageCenterPoint = null;
-  @observable items = [];
+  @observable editAreaInfo = null;
 
   constructor(stores) {
     this.stores = stores;
@@ -17,6 +19,10 @@ export class ReticlesStore {
     this.reticleInFocus = new ReticleModel(payload);
     this.lastReticleInFocus = this.reticleInFocus;
     this.items.push(this.reticleInFocus);
+  }
+
+  @action updateEditArea(payload) {
+    this.editAreaInfo = getEditAreaInfo(payload);
   }
 
   getReticleById(id) {

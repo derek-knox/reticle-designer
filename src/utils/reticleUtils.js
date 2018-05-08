@@ -5,10 +5,13 @@ export function getRadiusFromMouseAndClientRect(payload) {
     return Math.sqrt(a * a + b * b);
 }
 
-export function getCenterPoint(payload) {
+export function getEditAreaInfo(payload) {
     const rect = payload.ref.getBoundingClientRect();
     return {
-        x: (rect.width / 2),
-        y: (rect.height / 2)
+        rect: rect,
+        point: {
+            x: (rect.width / 2),
+            y: (rect.height / 2)
+        }
     }
 }
