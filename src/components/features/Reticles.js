@@ -33,7 +33,6 @@ export default class Reticles extends Component {
     
     @action.bound onMouseUp(e) {
         this.props.stores.reticlesStore.isDrawing = false;
-        this.props.stores.reticlesStore.reticleInFocus = null;
     }
 
     render() {
@@ -41,9 +40,9 @@ export default class Reticles extends Component {
             <div ref='reticles' className='reticles-container'>
 
                 <div className='reticles-drag-target'
-                     onMouseDown={(e) => this.onMouseDown(e)}
-                     onMouseMove={(e) => this.onMouseMove(e)}
-                     onMouseUp={(e) => this.onMouseUp(e)}>
+                     onMouseDown={this.onMouseDown}
+                     onMouseMove={this.onMouseMove}
+                     onMouseUp={this.onMouseUp}>
                 </div>
 
                 { this.props.stores.reticlesStore.items.map(item =>

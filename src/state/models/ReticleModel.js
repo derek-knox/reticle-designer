@@ -16,13 +16,14 @@ export class ReticleModel {
 
   constructor(payload) {
     this.id = uniqueId();
-    this.name = 'Layer ' + this.layerId++;
+    this.name = 'Layer ' + ++ReticleModel.layerId;
     this.radius = payload.radius || this.radius;
     this.thickness = payload.thickness || this.thickness;
     this.divisions = payload.divisions || this.divisions;
     this.spacing = payload.spacing || this.spacing;
     this.rotation = payload.rotation || this.rotation;
     this.hasGraphics = payload.hasGraphics || this.hasGraphics;
+    console.log(this.name);
   }
   
 }

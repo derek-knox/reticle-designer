@@ -21,6 +21,10 @@ export class ReticlesStore {
     this.items.push(this.reticleInFocus);
   }
 
+  @action.bound updateReticleInFocus(payload) {
+    this.reticleInFocus = this.items.find(item => item.id === payload.id);
+  }
+
   @action updateEditArea(payload) {
     this.editAreaInfo = getEditAreaInfo(payload);
   }

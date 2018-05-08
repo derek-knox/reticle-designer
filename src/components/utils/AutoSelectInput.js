@@ -12,7 +12,7 @@ export default class AutoSelectInput extends Component {
     return (
       <input
         {...this.props}
-        onFocus={(e) => this.select(e)}
+        onFocus={this.select}
       />
       
     )

@@ -109,7 +109,47 @@ body {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 300px;
+  width: 360px;
   height: 400px;
-  padding: 15px;
+  text-align: left;
+  display: flex;
+  overflow: hidden;
+
+  &.is-edit-ready {
+    z-index: 1;
+  }
+  
+  .reticle-editor-layers {
+    width: 40%;
+    border-right: 1px solid #333;
+    overflow-y: scroll;
+  }
+  
+  .reticle-editor-edit-area {
+    width: 60%;
+    background-color: #555;
+  }
+  
+  .reticle-editor-heading {
+    padding: 15px 15px 25px;
+
+    .no-select
+  }
+
+  .reticle-editor-layer-list-item {
+    padding: 5px 15px 5px;
+    cursor: pointer;
+
+    &.is-layer-selected {
+      background-color: #999;
+    }
+    
+    .no-select;
+  }
+}
+
+/* Utils */
+
+.no-select {
+  user-select: none;
 }

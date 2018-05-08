@@ -3,12 +3,14 @@ import ReactDOM from 'react-dom';
 import {inject, observer} from 'mobx-react';
 import { clamp } from 'lodash';
 
+import LayerListItem from './LayerListItem';
+
 @inject('stores')
 @observer
 export default class ReticleEditor extends Component {
 
     refEditor = null;
-    offsetH = 15;
+    offsetH = 20;
 
     constructor(props) {
         super(props);
@@ -29,10 +31,23 @@ export default class ReticleEditor extends Component {
         const point = this.getClampedPoint({ x, y })
 
         return (
-            <div className='reticle-editor-container'
+            <div className={'reticle-editor-container ' + (this.props.stores.reticlesStore.isDrawing ? '' : 'is-edit-ready')}
                  ref={this.refEditor}
                  style={{ transform: 'translate(' + point.x + 'px, ' + point.y + 'px)'} } >
-                <span>Editor...</span>
+                <div className="reticle-editor-layers">
+                    <div className='reticle-editor-heading'>Layers</div>
+                    <div>
+                        {this.props.stores.reticlesStore.items.map(item => {
+                            return <LayerListItem key={item.id} item={item} />
+                        })}
+                    </div>
+                </div>
+                <div className="reticle-editor-edit-area">
+                    <div className='reticle-editor-heading'>{this.props.stores.reticlesStore.reticleInFocus.name }</div>
+                    <div>
+                        ...
+                    </div>
+                </div>
             </div>
         );
     }
