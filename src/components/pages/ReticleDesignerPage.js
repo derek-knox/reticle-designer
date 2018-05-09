@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react';
 
-import Reticles from '../features/Reticles';
-import ReticleEditor from '../features/ReticleEditor';
+import Reticles from '../features/reticle/Reticles';
+import ReticleEditor from '../features/reticle/editor/ReticleEditor';
 
 @inject('stores')
 @observer

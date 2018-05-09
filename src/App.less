@@ -119,10 +119,10 @@ body {
     z-index: 1;
   }
   
-  .reticle-editor-layers {
+  .reticle-editor-layers-panel {
     width: 40%;
     border-right: 1px solid #333;
-    overflow-y: scroll;
+    position: relative;
   }
   
   .reticle-editor-edit-area {
@@ -136,12 +136,29 @@ body {
     .no-select
   }
 
+  .reticle-editor-layers-content {
+    
+
+    .reticle-editor-layers-content-items {
+      
+    }
+    
+    .reticle-editor-layers-content-clone-button {
+      position: absolute;
+      bottom: 0;
+      background-color: #555;
+      color: #fefefe;
+      border-top: 1px solid #333;
+    }
+  }
+
   .reticle-editor-layer-list-item {
     padding: 5px 15px 5px;
     cursor: pointer;
 
     &.is-layer-selected {
-      background-color: #999;
+      background-color: #555;
+      border-right: 2px solid #fefefe;
     }
     
     .no-select;

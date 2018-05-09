@@ -2,8 +2,6 @@ import React, {Component} from 'react';
 import {action} from 'mobx';
 import {inject, observer} from 'mobx-react';
 
-import AutoSelectInput from '../utils/AutoSelectInput';
-
 @inject('stores')
 @observer
 export default class LayerListItem extends Component {

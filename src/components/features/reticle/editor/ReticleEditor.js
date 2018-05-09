@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import {inject, observer} from 'mobx-react';
 import { clamp } from 'lodash';
 
-import LayerListItem from './LayerListItem';
+import LayersPanel from './LayersPanel';
 
 @inject('stores')
 @observer
@@ -34,16 +34,11 @@ export default class ReticleEditor extends Component {
             <div className={'reticle-editor-container ' + (this.props.stores.reticlesStore.isDrawing ? '' : 'is-edit-ready')}
                  ref={this.refEditor}
                  style={{ transform: 'translate(' + point.x + 'px, ' + point.y + 'px)'} } >
-                <div className="reticle-editor-layers">
-                    <div className='reticle-editor-heading'>Layers</div>
-                    <div>
-                        {this.props.stores.reticlesStore.items.map(item => {
-                            return <LayerListItem key={item.id} item={item} />
-                        })}
-                    </div>
-                </div>
+                 
+                 <LayersPanel></LayersPanel>
+
                 <div className="reticle-editor-edit-area">
-                    <div className='reticle-editor-heading'>{this.props.stores.reticlesStore.reticleInFocus.name }</div>
+                    <div className='reticle-editor-heading'>{this.props.stores.reticlesStore.reticleInFocus.name}</div>
                     <div>
                         ...
                     </div>

@@ -4,7 +4,7 @@ import { action, observable } from 'mobx';
 import {inject, observer} from 'mobx-react';
 
 import Reticle from './Reticle';
-import { getRadiusFromMouseAndClientRect } from '../../utils/reticleUtils';
+import { getRadiusFromMouseAndClientRect } from '../../../utils/reticleUtils';
 
 @inject('stores')
 @observer
@@ -47,8 +47,7 @@ export default class Reticles extends Component {
 
                 { this.props.stores.reticlesStore.items.map(item =>
                         <Reticle key={item.id} item={item}></Reticle>
-                    )
-                }
+                )}
 
                 <div className='reticles-directions'>
                     { this.props.stores.reticlesStore.isDrawing

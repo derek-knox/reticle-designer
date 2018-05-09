@@ -23,7 +23,6 @@ export class ReticleModel {
     this.spacing = payload.spacing || this.spacing;
     this.rotation = payload.rotation || this.rotation;
     this.hasGraphics = payload.hasGraphics || this.hasGraphics;
-    console.log(this.name);
   }
   
 }

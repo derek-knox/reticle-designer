@@ -2,6 +2,7 @@ import { action, computed, observable} from 'mobx';
 import { ReticleModel } from '../models/ReticleModel';
 
 import { getEditAreaInfo } from '../../utils/reticleUtils';
+import { cloneElement } from 'react';
 
 export class ReticlesStore {
 
@@ -19,6 +20,10 @@ export class ReticlesStore {
     this.reticleInFocus = new ReticleModel(payload);
     this.lastReticleInFocus = this.reticleInFocus;
     this.items.push(this.reticleInFocus);
+  }
+
+  @action.bound clone() {
+    this.add(this.reticleInFocus);
   }
 
   @action.bound updateReticleInFocus(payload) {
