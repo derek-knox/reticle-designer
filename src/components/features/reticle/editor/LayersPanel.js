@@ -16,20 +16,24 @@ export default class LayersPanel extends Component {
 
     render() {
         return (
-            <div className="reticle-editor-layers-panel">
-               
-                <div className='reticle-editor-heading'>Layers</div>
+            <div className="container reticle-editor-layers-container">
+                <div className="wrapper">
+                    <div className="content-v">
                 
-                <div className="reticle-editor-layers-content">
-                    <div className="reticle-editor-layers-content-items">
-                        {this.props.stores.reticlesStore.items.map(item => {
-                            return <LayerListItem key={item.id} item={item} />
-                        })}
+                    <div className='reticle-editor-heading'>Layers</div>
+                    
+                    <div className="reticle-editor-layers">
+                        <div className="reticle-editor-layers-items">
+                            {this.props.stores.reticlesStore.items.map(item => {
+                                return <LayerListItem key={item.id} item={item} />
+                            })}
+                        </div>
+                        <Button className="reticle-editor-layers-clone-button"
+                                onClick={this.onClickClone}>Clone {this.props.stores.reticlesStore.reticleInFocus.name}</Button>
                     </div>
-                    <Button className="reticle-editor-layers-content-clone-button"
-                            onClick={this.onClickClone}>Clone {this.props.stores.reticlesStore.reticleInFocus.name}</Button>
+                    
+                    </div>
                 </div>
-                
             </div>
         );
     }

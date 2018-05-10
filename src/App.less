@@ -125,7 +125,7 @@ body {
     z-index: 1;
   }
   
-  .reticle-editor-layers-panel {
+  .reticle-editor-layers-container {
     width: 40%;
     border-right: 1px solid #333;
     position: relative;
@@ -148,15 +148,20 @@ body {
     .no-select
   }
 
-  .reticle-editor-layers-content {
-    
+  .reticle-editor-layers {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
 
-    .reticle-editor-layers-content-items {
-      
+    .reticle-editor-layers-items {
+      flex-grow: 1;
+      overflow-y: scroll;
     }
     
-    .reticle-editor-layers-content-clone-button {
+    .reticle-editor-layers-clone-button {
       color: #fefefe;
+      height: 60px;
+      min-height: 60px;
     }
   }
 
@@ -171,6 +176,29 @@ body {
     
     .no-select;
   }
+}
+
+/* Layout */
+
+.container {
+  display: flex;
+}
+
+.wrapper {
+  display: flex;
+  flex-grow: 1;
+}
+
+.content-h {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: row;
+}
+
+.content-v {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
 }
 
 /* Utils */
