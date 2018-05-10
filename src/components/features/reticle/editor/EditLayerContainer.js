@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {action} from 'mobx';
 import {inject, observer} from 'mobx-react';
 
 import EditControl from './EditControl';
@@ -7,10 +6,6 @@ import EditControl from './EditControl';
 @inject('stores')
 @observer
 export default class EditLayerContainer extends Component {
-
-    @action.bound onClickX(e) {
-        
-    }
 
     render() {
         return (
