@@ -4,6 +4,7 @@ import {inject, observer} from 'mobx-react';
 import { clamp } from 'lodash';
 
 import LayersPanel from './LayersPanel';
+import EditLayerPanel from './EditLayerPanel';
 
 @inject('stores')
 @observer
@@ -18,7 +19,7 @@ export default class ReticleEditor extends Component {
     }
 
     getClampedPoint(payload) {
-        const editAreaInfo = this.props.stores.reticlesStore.editAreaInfo;
+        const editAreaInfo = this.props.stores.editReticleStore.editAreaInfo;
         const x = this.refEditor.current ? clamp(payload.x + this.offsetH, 0, (editAreaInfo.rect.width / 2) - this.refEditor.current.clientWidth - this.offsetH) : 0;
         const y = payload.y;
         return { x, y }
@@ -31,18 +32,13 @@ export default class ReticleEditor extends Component {
         const point = this.getClampedPoint({ x, y })
 
         return (
-            <div className={'reticle-editor-container ' + (this.props.stores.reticlesStore.isDrawing ? '' : 'is-edit-ready')}
+            <div className={'reticle-editor-container ' + (this.props.stores.editReticleStore.isDrawing ? '' : 'is-edit-ready')}
                  ref={this.refEditor}
                  style={{ transform: 'translate(' + point.x + 'px, ' + point.y + 'px)'} } >
                  
-                 <LayersPanel></LayersPanel>
-
-                <div className="reticle-editor-edit-area">
-                    <div className='reticle-editor-heading'>{this.props.stores.reticlesStore.reticleInFocus.name}</div>
-                    <div>
-                        ...
-                    </div>
-                </div>
+                <LayersPanel></LayersPanel>
+                <EditLayerPanel></EditLayerPanel>
+               
             </div>
         );
     }

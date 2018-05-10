@@ -90,6 +90,8 @@ body {
   .reticles-directions {
     position: absolute;
     z-index: 0;
+
+    .no-select;
   }
   
   .reticles-drag-target {
@@ -115,6 +117,10 @@ body {
   display: flex;
   overflow: hidden;
 
+  .reticle-editor-wrapper {
+    display: flex;
+  }
+
   &.is-edit-ready {
     z-index: 1;
   }
@@ -128,6 +134,12 @@ body {
   .reticle-editor-edit-area {
     width: 60%;
     background-color: #555;
+
+    .reticle-editor-edit-control {
+      background-color: red;
+      min-height: 20px;
+      border: 2px solid;
+    }
   }
   
   .reticle-editor-heading {
@@ -144,11 +156,7 @@ body {
     }
     
     .reticle-editor-layers-content-clone-button {
-      position: absolute;
-      bottom: 0;
-      background-color: #555;
       color: #fefefe;
-      border-top: 1px solid #333;
     }
   }
 

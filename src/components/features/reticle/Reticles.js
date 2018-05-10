@@ -13,9 +13,9 @@ export default class Reticles extends Component {
     refReticles = null;
 
     @action.bound onMouseDown(e) {
-        this.props.stores.reticlesStore.isDrawing = true;
+        this.props.stores.editReticleStore.isDrawing = true;
         this.refReticles = ReactDOM.findDOMNode(this.refs.reticles);
-        this.props.stores.reticlesStore.updateEditArea({ ref: this.refReticles });
+        this.props.stores.editReticleStore.updateEditArea({ ref: this.refReticles });
         this.props.stores.reticlesStore.add({ radius: getRadiusFromMouseAndClientRect({
             event: e.nativeEvent,
             ref: this.refReticles })
@@ -23,7 +23,7 @@ export default class Reticles extends Component {
     }
     
     @action.bound onMouseMove(e) {
-        if (this.props.stores.reticlesStore.isDrawing && this.props.stores.reticlesStore.reticleInFocus) {
+        if (this.props.stores.editReticleStore.isDrawing && this.props.stores.reticlesStore.reticleInFocus) {
             this.props.stores.reticlesStore.reticleInFocus.radius = getRadiusFromMouseAndClientRect({
                 event: e.nativeEvent,
                 ref: this.refReticles
@@ -32,7 +32,7 @@ export default class Reticles extends Component {
     }
     
     @action.bound onMouseUp(e) {
-        this.props.stores.reticlesStore.isDrawing = false;
+        this.props.stores.editReticleStore.isDrawing = false;
     }
 
     render() {
@@ -50,7 +50,7 @@ export default class Reticles extends Component {
                 )}
 
                 <div className='reticles-directions'>
-                    { this.props.stores.reticlesStore.isDrawing
+                    { this.props.stores.editReticleStore.isDrawing
                         ? <span>Let Go Whenever</span>
                         : this.props.stores.reticlesStore.items.length > 1
                             ? <span>Click & Drag to Add Reticle<hr/>Shift Click & Drag to Select Reticle</span>

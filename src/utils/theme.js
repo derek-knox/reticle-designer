@@ -6,5 +6,10 @@ export default function Theme() {
             // Use the system font over Roboto.
             fontFamily: 'Orbitron,"Helvetica Neue",Arial,sans-serif',
         },
+        props: {
+            MuiButtonBase: {
+                disableRipple: true
+            },
+        }
     });
 }

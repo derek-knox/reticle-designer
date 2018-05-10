@@ -1,16 +1,11 @@
 import { action, computed, observable} from 'mobx';
 import { ReticleModel } from '../models/ReticleModel';
 
-import { getEditAreaInfo } from '../../utils/reticleUtils';
-import { cloneElement } from 'react';
-
 export class ReticlesStore {
 
   @observable items = [];
-  @observable isDrawing = false;
   @observable reticleInFocus = null;
   @observable lastReticleInFocus = null;
-  @observable editAreaInfo = null;
 
   constructor(stores) {
     this.stores = stores;
@@ -28,10 +23,6 @@ export class ReticlesStore {
 
   @action.bound updateReticleInFocus(payload) {
     this.reticleInFocus = this.items.find(item => item.id === payload.id);
-  }
-
-  @action updateEditArea(payload) {
-    this.editAreaInfo = getEditAreaInfo(payload);
   }
 
   getReticleById(id) {

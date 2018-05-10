@@ -17,7 +17,9 @@ export default class LayersPanel extends Component {
     render() {
         return (
             <div className="reticle-editor-layers-panel">
+               
                 <div className='reticle-editor-heading'>Layers</div>
+                
                 <div className="reticle-editor-layers-content">
                     <div className="reticle-editor-layers-content-items">
                         {this.props.stores.reticlesStore.items.map(item => {
@@ -27,6 +29,7 @@ export default class LayersPanel extends Component {
                     <Button className="reticle-editor-layers-content-clone-button"
                             onClick={this.onClickClone}>Clone {this.props.stores.reticlesStore.reticleInFocus.name}</Button>
                 </div>
+                
             </div>
         );
     }

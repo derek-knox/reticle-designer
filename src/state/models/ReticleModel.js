@@ -13,6 +13,8 @@ export class ReticleModel {
   @observable spacing = 0;
   @observable rotation = 0;
   @observable hasGraphics = false;
+  @observable direction = 0;
+  @observable scale = 0;
 
   constructor(payload) {
     this.id = uniqueId();
@@ -23,6 +25,8 @@ export class ReticleModel {
     this.spacing = payload.spacing || this.spacing;
     this.rotation = payload.rotation || this.rotation;
     this.hasGraphics = payload.hasGraphics || this.hasGraphics;
+    this.direction = payload.direction || this.direction;
+    this.scale = payload.scale || this.scale;
   }
   
 }

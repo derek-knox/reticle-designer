@@ -2,6 +2,7 @@ import { RouterState, RouterStore } from 'mobx-state-router';
 
 import { routes } from '../utils/Routes';
 import { ReticlesStore } from './ReticlesStore';
+import { EditReticleStore } from './EditReticleStore';
 
 export default class {
   
@@ -10,6 +11,7 @@ export default class {
     const notFound = new RouterState('notFound');
     this.routerStore = new RouterStore(this, routes, notFound);
     this.reticlesStore = new ReticlesStore(this);
+    this.editReticleStore = new EditReticleStore(this);
 
   }
 
