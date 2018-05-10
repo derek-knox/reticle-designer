@@ -5,7 +5,7 @@ import { getEditAreaInfo } from '../../utils/reticleUtils';
 
 export class EditReticleStore {
 
-    @observable items = [1, 2, 3];
+    @observable items = [1, 2, 3, 4, 5, 6, 7, 8, 9];
     @observable isDrawing = false;
     @observable editAreaInfo = null;
 

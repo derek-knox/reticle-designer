@@ -131,14 +131,21 @@ body {
     position: relative;
   }
   
-  .reticle-editor-edit-area {
+  .reticle-editor-edit-container {
     width: 60%;
     background-color: #555;
-
-    .reticle-editor-edit-control {
-      background-color: red;
-      min-height: 20px;
-      border: 2px solid;
+      
+    .reticle-editor-layer-controls {
+      display: flex;
+      flex-grow: 1;
+      flex-direction: column;
+      overflow-y: scroll;
+      
+      .reticle-editor-edit-control {
+        height: 50px;
+        min-height: 50px;
+        border-top: 1px solid #333;
+      }
     }
   }
   
@@ -199,6 +206,24 @@ body {
   display: flex;
   flex-grow: 1;
   flex-direction: column;
+}
+
+/* Scrollbars */
+
+::-webkit-scrollbar {
+    width: 0px;
+}
+
+::-webkit-scrollbar-track {
+    background: #555; 
+}
+ 
+::-webkit-scrollbar-thumb {
+    background: #fefefe; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #ccc; 
 }
 
 /* Utils */

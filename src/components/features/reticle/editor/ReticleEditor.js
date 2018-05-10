@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import {inject, observer} from 'mobx-react';
 import { clamp } from 'lodash';
 
-import LayersPanel from './LayersPanel';
-import EditLayerPanel from './EditLayerPanel';
+import LayersContainer from './LayersContainer';
+import EditLayerContainer from './EditLayerContainer';
 
 @inject('stores')
 @observer
@@ -36,8 +36,8 @@ export default class ReticleEditor extends Component {
                  ref={this.refEditor}
                  style={{ transform: 'translate(' + point.x + 'px, ' + point.y + 'px)'} } >
                  
-                <LayersPanel></LayersPanel>
-                <EditLayerPanel></EditLayerPanel>
+                <LayersContainer></LayersContainer>
+                <EditLayerContainer></EditLayerContainer>
                
             </div>
         );

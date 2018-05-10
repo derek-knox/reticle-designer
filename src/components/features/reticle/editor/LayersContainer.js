@@ -8,7 +8,7 @@ import LayerListItem from './LayerListItem';
 
 @inject('stores')
 @observer
-export default class LayersPanel extends Component {
+export default class LayersContainer extends Component {
 
     @action.bound onClickClone(e) {
         this.props.stores.reticlesStore.clone();
