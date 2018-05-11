@@ -11,7 +11,7 @@ export class EditControlModel {
     @observable id;
     @observable name;
     @observable type;
-    @observable settings = { min: 0, max: 100 };
+    @observable settings = { reticleProp: null, min: 0, max: 100 };
 
     constructor(payload) {
         this.id = uniqueId();
