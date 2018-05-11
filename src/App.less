@@ -131,25 +131,6 @@ body {
     position: relative;
   }
   
-  .reticle-editor-edit-container {
-    width: 70%;
-    background-color: #555;
-      
-    .reticle-editor-layer-controls {
-      
-      .content-v;
-      .no-select;
-
-      .reticle-editor-edit-control {
-        
-        .content-h;
-
-        padding: 5px 15px 5px;
-        border-top: 1px solid #333;
-      }
-    }
-  }
-  
   .reticle-editor-heading {
     padding: 15px 15px 25px;
 
@@ -163,6 +144,18 @@ body {
     .reticle-editor-layers-items {
       flex-grow: 1;
       overflow-y: scroll;
+
+      .reticle-editor-layer-list-item {
+        padding: 5px 15px 5px;
+        cursor: pointer;
+
+        &.is-layer-selected {
+          background-color: #555;
+          border-right: 2px solid #fefefe;
+        }
+        
+        .no-select;
+      }
     }
     
     .reticle-editor-layers-clone-button {
@@ -172,16 +165,32 @@ body {
     }
   }
 
-  .reticle-editor-layer-list-item {
-    padding: 5px 15px 5px;
-    cursor: pointer;
+  .reticle-editor-edit-container {
+    width: 70%;
+    background-color: #555;
+      
+    .reticle-editor-layer-controls {
+      
+      .content-v;
+      .no-select;
 
-    &.is-layer-selected {
-      background-color: #555;
-      border-right: 2px solid #fefefe;
+      .reticle-editor-control-row {
+        
+        .content-h;
+        align-items: center;
+        
+        padding: 5px 15px 5px;
+        border-top: 1px solid #333;
+
+        .reticle-editor-control-label {
+          width: 50%;
+        }
+        
+        .reticle-editor-control-widget {
+          width: 50%;
+        }
+      }
     }
-    
-    .no-select;
   }
 }
 

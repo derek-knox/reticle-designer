@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {inject, observer} from 'mobx-react';
 
+import EditControlWidget from './EditControlWidget';
+
 @inject('stores')
 @observer
 export default class EditControl extends Component {
@@ -10,8 +12,14 @@ export default class EditControl extends Component {
         const item = this.props.item;
 
         return (
-            <div className='reticle-editor-edit-control'>
-                {item.name}
+            <div className='reticle-editor-control-row'>
+                
+                <div className='reticle-editor-control-label'>
+                    {item.name}
+                </div>
+
+                <EditControlWidget item={item}></EditControlWidget>
+                
             </div>
         );
     }
