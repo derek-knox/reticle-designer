@@ -6,9 +6,12 @@ import {inject, observer} from 'mobx-react';
 export default class EditControl extends Component {
 
     render() {
+
+        const item = this.props.item;
+
         return (
             <div className='reticle-editor-edit-control'>
-                {this.props.name}
+                {item.name}
             </div>
         );
     }

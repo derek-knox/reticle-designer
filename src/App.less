@@ -111,8 +111,8 @@ body {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 360px;
-  height: 400px;
+  width: 400px;
+  height: 360px;
   text-align: left;
   display: flex;
   overflow: hidden;
@@ -126,22 +126,24 @@ body {
   }
   
   .reticle-editor-layers-container {
-    width: 40%;
+    width: 30%;
     border-right: 1px solid #333;
     position: relative;
   }
   
   .reticle-editor-edit-container {
-    width: 60%;
+    width: 70%;
     background-color: #555;
       
     .reticle-editor-layer-controls {
       
       .content-v;
+      .no-select;
 
-      overflow-y: scroll;
-      
       .reticle-editor-edit-control {
+        
+        .content-h;
+
         padding: 5px 15px 5px;
         border-top: 1px solid #333;
       }
@@ -151,7 +153,7 @@ body {
   .reticle-editor-heading {
     padding: 15px 15px 25px;
 
-    .no-select
+    .no-select;
   }
 
   .reticle-editor-layers {

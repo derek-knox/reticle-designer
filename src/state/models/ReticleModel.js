@@ -12,7 +12,7 @@ export class ReticleModel {
   @observable divisions = 0;
   @observable spacing = 0;
   @observable rotation = 0;
-  @observable hasGraphics = false;
+  @observable graphicId = null;
   @observable direction = 0;
   @observable scale = 0;
 
@@ -24,7 +24,7 @@ export class ReticleModel {
     this.divisions = payload.divisions || this.divisions;
     this.spacing = payload.spacing || this.spacing;
     this.rotation = payload.rotation || this.rotation;
-    this.hasGraphics = payload.hasGraphics || this.hasGraphics;
+    this.graphicId = payload.graphicId || this.graphicId;
     this.direction = payload.direction || this.direction;
     this.scale = payload.scale || this.scale;
   }
