@@ -9,13 +9,13 @@ export class EditControlModel {
     }
 
     @observable id;
-    @observable name;
+    @observable label;
     @observable type;
     @observable settings = { reticleProp: null, min: 0, max: 100 };
 
     constructor(payload) {
         this.id = uniqueId();
-        this.name = payload.name;
+        this.label = payload.label;
         this.type = payload.type;
         this.settings = payload.settings || this.settings;
     }

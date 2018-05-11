@@ -3,10 +3,21 @@ import { uniqueId } from 'lodash';
 
 export class ReticleModel {
   
+  static SettingType = {
+    Radius: 'radius',
+    Thickness: 'thickness',
+    Divisions: 'divisions',
+    Spacing: 'spacing',
+    Rotation: 'rotation',
+    Graphic: 'graphic',
+    Direction: 'direction',
+    Scale: 'scale'
+  }
+
   static layerId = 0;
 
   @observable id;
-  @observable name;
+  @observable label;
   @observable radius = 10;
   @observable thickness = 4;
   @observable divisions = 0;
@@ -18,7 +29,7 @@ export class ReticleModel {
 
   constructor(payload) {
     this.id = uniqueId();
-    this.name = 'Layer ' + ++ReticleModel.layerId;
+    this.label = 'Layer ' + ++ReticleModel.layerId;
     this.radius = payload.radius || this.radius;
     this.thickness = payload.thickness || this.thickness;
     this.divisions = payload.divisions || this.divisions;

@@ -29,7 +29,7 @@ export default class LayersContainer extends Component {
                             })}
                         </div>
                         <Button className="reticle-editor-layers-clone-button"
-                                onClick={this.onClickClone}>Clone {this.props.stores.reticlesStore.reticleInFocus.name}</Button>
+                                onClick={this.onClickClone}>Clone {this.props.stores.reticlesStore.reticleInFocus.label}</Button>
                     </div>
                     
                     </div>

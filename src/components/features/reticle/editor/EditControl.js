@@ -15,7 +15,7 @@ export default class EditControl extends Component {
             <div className='reticle-editor-control-row'>
                 
                 <div className='reticle-editor-control-label'>
-                    {item.name}
+                    {item.label}
                 </div>
 
                 <EditControlWidget item={item}></EditControlWidget>
