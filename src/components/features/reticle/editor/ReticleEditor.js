@@ -25,16 +25,26 @@ export default class ReticleEditor extends Component {
         return { x, y }
     }
 
+    getTransformStyle(payload) {
+        const ignoreTransform = this.props.stores.reticlesStore.lastReticleInFocus === this.props.stores.reticlesStore.reticleInFocus && this.props.stores.editReticleStore.isDrawing;
+        const previousTransform = this.refEditor.current ? this.refEditor.current.style.transform : null;
+        if (this.refEditor.current)
+            console.log(this.refEditor.current.style.transform);
+        // TODO use prev transform condition so dragging radius in control doesn't update the Editor pos (only when dragging on stage do we want this)
+        // return ignoreTransform ? previousTransform : { transform: 'translate(' + payload.point.x + 'px, ' + payload.point.y + 'px)' };
+        return { transform: 'translate(' + payload.point.x + 'px, ' + payload.point.y + 'px)' };
+    }
+
     render() {
 
         const x = this.props.stores.reticlesStore.lastReticleInFocus ? this.props.stores.reticlesStore.lastReticleInFocus.radius : 0;
         const y = this.refEditor.current ? -this.refEditor.current.clientHeight/2 : 0;
-        const point = this.getClampedPoint({ x, y })
+        const point = this.getClampedPoint({ x, y });
 
         return (
             <div className={'reticle-editor-container ' + (this.props.stores.editReticleStore.isDrawing ? '' : 'is-edit-ready')}
                  ref={this.refEditor}
-                 style={{ transform: 'translate(' + point.x + 'px, ' + point.y + 'px)'} } >
+                 style={this.getTransformStyle({ point })} >
                  
                 <LayersContainer></LayersContainer>
                 <EditLayerContainer></EditLayerContainer>
