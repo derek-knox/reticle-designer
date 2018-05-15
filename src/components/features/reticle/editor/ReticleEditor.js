@@ -26,13 +26,9 @@ export default class ReticleEditor extends Component {
     }
 
     getTransformStyle(payload) {
-        const ignoreTransform = this.props.stores.reticlesStore.lastReticleInFocus === this.props.stores.reticlesStore.reticleInFocus && this.props.stores.editReticleStore.isDrawing;
+        const applyTransform = this.props.stores.reticlesStore.lastReticleInFocus === this.props.stores.reticlesStore.reticleInFocus && this.props.stores.editReticleStore.isDrawing;
         const previousTransform = this.refEditor.current ? this.refEditor.current.style.transform : null;
-        if (this.refEditor.current)
-            console.log(this.refEditor.current.style.transform);
-        // TODO use prev transform condition so dragging radius in control doesn't update the Editor pos (only when dragging on stage do we want this)
-        // return ignoreTransform ? previousTransform : { transform: 'translate(' + payload.point.x + 'px, ' + payload.point.y + 'px)' };
-        return { transform: 'translate(' + payload.point.x + 'px, ' + payload.point.y + 'px)' };
+        return { transform: applyTransform ? 'translate(' + payload.point.x + 'px, ' + payload.point.y + 'px)' : previousTransform };
     }
 
     render() {
