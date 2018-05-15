@@ -15,3 +15,24 @@ export function getEditAreaInfo(payload) {
         }
     }
 }
+
+export function getArcDataFromDivisionCount(payload) {
+    const arcDist = 360 / payload.divisions; // 120
+    const arcCount = 360 / arcDist; // 3
+    var arcs = [];
+
+    // Iterate through count to provide start and end degrees
+    for (let i = 0; i < arcCount; i++) { arcs.push(i * arcDist); }
+    arcs.push(360);
+
+    // Map the arcs into more usable data
+    arcs = arcs.map((curr, idx, arr) => {
+        if (idx === arr.length - 1) return null;
+        return { id: idx, start: curr, end: arr[idx + 1] }
+    });
+
+    // Clean the last item as we want one less to close the gap at 360
+    arcs.pop();
+
+    return arcs;
+}
