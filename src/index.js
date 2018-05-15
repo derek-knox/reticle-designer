@@ -9,7 +9,7 @@ import { HistoryAdapter } from 'mobx-state-router';
 import { history } from './state/utils/History';
 import App from './App';
 
-import Theme from './utils/theme';
+import Theme from './utils/Theme';
 import Stores from './state/stores/Stores';
 
 // State

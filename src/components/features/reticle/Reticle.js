@@ -17,7 +17,10 @@ export default class Reticle extends Component {
             <svg className='reticle' width='100%' height='100%'>
                 {item.divisions === 0
                     ? <circle stroke={'red'} cx="50%" cy="50%" r={item.radius} strokeWidth={item.thickness} fill="none" />
-                    : arcs.map((arcData) => { return <Arc key={arcData.id} start={arcData.start} end={arcData.end}></Arc> })
+                    : arcs.map((arcData) => { return <Arc key={arcData.id}
+                                                          radius={item.radius}
+                                                          start={arcData.start}
+                                                          end={arcData.end}></Arc> })
                 }
             </svg>
         );
