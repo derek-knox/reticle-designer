@@ -21,7 +21,7 @@ export class ReticleModel {
   @observable radius = 10;
   @observable thickness = 4;
   @observable divisions = 0;
-  @observable spacing = 0;
+  @observable spacing = 10;
   @observable rotation = 0;
   @observable graphic = null;
   @observable direction = 0;
