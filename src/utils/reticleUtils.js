@@ -17,8 +17,8 @@ export function getEditAreaInfo(payload) {
 }
 
 export function getArcDataFromDivisionCount(payload) {
-    const arcDist = 360 / payload.divisions; // 120
-    const arcCount = 360 / arcDist; // 3
+    const arcDist = 360 / payload.divisions;
+    const arcCount = 360 / arcDist;
     var arcs = [];
 
     // Iterate through count to provide start and end degrees
@@ -35,4 +35,28 @@ export function getArcDataFromDivisionCount(payload) {
     arcs.pop();
 
     return arcs;
+}
+
+export function describeSvgArc(payload) {
+
+    var start = polarToCartesian(payload.x, payload.y, payload.radius, payload.endAngle);
+    var end = polarToCartesian(payload.x, payload.y, payload.radius, payload.startAngle);
+
+    var largeArcFlag = payload.endAngle - payload.startAngle <= 180 ? "0" : "1";
+
+    var d = [
+        "M", start.x, start.y,
+        "A", payload.radius, payload.radius, 0, largeArcFlag, 0, end.x, end.y
+    ].join(" ");
+
+    return d;
+}
+
+function polarToCartesian(centerX, centerY, radius, angleInDegrees) {
+    var angleInRadians = (angleInDegrees - 90) * Math.PI / 180.0;
+
+    return {
+        x: centerX + (radius * Math.cos(angleInRadians)),
+        y: centerY + (radius * Math.sin(angleInRadians))
+    };
 }

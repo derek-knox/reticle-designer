@@ -1,16 +1,22 @@
 import React, {Component} from 'react';
 import {inject, observer} from 'mobx-react';
 
+import { describeSvgArc } from '../../../utils/reticleUtils';
+
 @inject('stores')
 @observer
 export default class Arc extends Component {
 
     render() {
-
-        console.log(this.props.start, this.props.end);
-
         return (
-            <path d="M150 0 L75 200 L225 200 Z" />
+            <path fill="none"
+                  stroke="red"
+                  strokeWidth={this.props.thickness}
+                  d={describeSvgArc({ x: this.props.center.x,
+                                      y: this.props.center.y,
+                                      radius: this.props.radius,
+                                      startAngle: this.props.start,
+                                      endAngle: this.props.end })} />
         );
     }
 

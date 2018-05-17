@@ -11,6 +11,7 @@ export default class Reticle extends Component {
     render() {
 
         const item = this.props.item;
+        const editAreaInfo = this.props.stores.editReticleStore.editAreaInfo;
         const arcs = getArcDataFromDivisionCount({ divisions: item.divisions });
 
         return (
@@ -18,9 +19,11 @@ export default class Reticle extends Component {
                 {item.divisions === 0
                     ? <circle stroke={'red'} cx="50%" cy="50%" r={item.radius} strokeWidth={item.thickness} fill="none" />
                     : arcs.map((arcData) => { return <Arc key={arcData.id}
+                                                          thickness={item.thickness}
                                                           radius={item.radius}
+                                                          center={{ x: editAreaInfo.point.x, y: editAreaInfo.point.y} }
                                                           start={arcData.start}
-                                                          end={arcData.end}></Arc> })
+                                                          end={arcData.end - item.spacing}></Arc> })
                 }
             </svg>
         );
