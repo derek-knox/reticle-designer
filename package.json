@@ -12,7 +12,8 @@
     "mobx-state-router": "^1.0.0",
     "rc-slider": "^8.6.1",
     "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "react-dom": "^16.2.0",
+    "react-keydown": "^1.9.7"
   },
   "scripts": {
     "start": "react-scripts start",
