@@ -15,7 +15,7 @@ export default class LayerListItem extends Component {
         const item = this.props.item;
 
         return (
-            <div className={'reticle-editor-layer-list-item ' + (this.props.stores.reticlesStore.reticleInFocus.id === item.id ? 'is-layer-selected' : '')}
+            <div className={'reticle-editor-layer-list-item ' + (this.props.stores.reticlesStore.reticleInFocus.id === item.id ? 'is-selected' : '')}
                  onClick={(e) => this.onClickLayer(e, item)}>
                 {item.label}
             </div>
