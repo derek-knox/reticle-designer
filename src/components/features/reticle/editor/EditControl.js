@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import { action } from 'mobx';
 import {inject, observer} from 'mobx-react';
 import keydown from 'react-keydown';
 
@@ -15,7 +14,7 @@ export default class EditControl extends Component {
         const item = this.props.item;
 
         return (
-            <div className='reticle-editor-control-row'>
+            <div className={'reticle-editor-control-row ' + (true ? 'is-selected' : '')}>
                 
                 <div className='reticle-editor-control-label'>
                     {item.label}

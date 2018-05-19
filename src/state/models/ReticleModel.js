@@ -1,4 +1,4 @@
-import { observable } from 'mobx';
+import { action, computed, observable } from 'mobx';
 import { uniqueId } from 'lodash';
 
 import { EditControlModel } from './EditControlModel';
@@ -54,7 +54,6 @@ export class ReticleModel {
       this.graphic,
       this.direction,
       this.scale
-    ]
-  }
-  
+    ];
+  }  
 }
