@@ -14,7 +14,7 @@ export default class EditControl extends Component {
         const item = this.props.item;
 
         return (
-            <div className={'reticle-editor-control-row ' + (true ? 'is-selected' : '')}>
+            <div className={'reticle-editor-control-row ' + (this.props.controlInFocus.id === item.id ? 'is-selected' : '')}>
                 
                 <div className='reticle-editor-control-label'>
                     {item.label}

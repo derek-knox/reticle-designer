@@ -30,6 +30,7 @@ export class ReticleModel {
   @observable scale;
   
   @observable controls;
+  @observable controlInFocus;
 
   constructor(payload) {
     this.id = uniqueId();
@@ -45,6 +46,7 @@ export class ReticleModel {
     this.direction = new EditControlModel({ label: 'Direction', type: EditControlModel.Type.Range, settings: { reticleProp: ReticleModel.SettingType.Direction, val: isClone ? payload.direction.settings.val : 1, min: 1, max: 360 } }),
     this.scale = new EditControlModel({ label: 'Scale', type: EditControlModel.Type.Range, settings: { reticleProp: ReticleModel.SettingType.Scale, val: isClone ? payload.scale.settings.val : 1, min: 1, max: 5 } })
 
+    this.controlInFocus = this.radius;
     this.controls = [
       this.radius,
       this.thickness,

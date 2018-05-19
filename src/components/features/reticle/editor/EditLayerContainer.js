@@ -17,7 +17,9 @@ export default class EditLayerContainer extends Component {
 
                         <div className="reticle-editor-layer-controls">
                             {this.props.stores.reticlesStore.reticleInFocus.controls.map(item =>
-                                <EditControl key={item.id} item={item}></EditControl>
+                                <EditControl key={item.id}
+                                             item={item}
+                                             controlInFocus={this.props.stores.reticlesStore.reticleInFocus.controlInFocus}></EditControl>
                             )}
                         </div>
 
