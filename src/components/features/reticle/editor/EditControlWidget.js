@@ -17,19 +17,19 @@ export default class EditControlWidget extends Component {
 
     updateSlider(payload) {
         let settings = this.item.settings;
-        let newVal = clamp(this.props.stores.reticlesStore.reticleInFocus[settings.reticleProp] + payload.val, settings.min, settings.max);
+        let newVal = clamp(this.props.stores.reticlesStore.reticleInFocus[settings.reticleProp].settings.val + payload.val, settings.min, settings.max);
         this.onSliderChange({ val: newVal, reticleProp: settings.reticleProp });
     }
 
     getControlByType = (payload) => {
         if (payload.type === EditControlModel.Type.Range)
-            return <Slider value={this.props.stores.reticlesStore.reticleInFocus[payload.settings.reticleProp]}
-                min={payload.settings.min}
-                max={payload.settings.max}
-                onChange={(val) => this.onSliderChange({ val, reticleProp: payload.settings.reticleProp })}
-                trackStyle={{ backgroundColor: '#99cc33' }}
-                railStyle={{ backgroundColor: '#333333' }}
-                handleStyle={{ borderColor: '#99cc33', backgroundColor: '#99cc33' }} />;
+            return <Slider value={this.props.stores.reticlesStore.reticleInFocus[payload.settings.reticleProp].settings.val}
+                           min={payload.settings.min}
+                           max={payload.settings.max}
+                           onChange={(val) => this.onSliderChange({ val, reticleProp: payload.settings.reticleProp })}
+                           trackStyle={{ backgroundColor: '#99cc33' }}
+                           railStyle={{ backgroundColor: '#333333' }}
+                           handleStyle={{ borderColor: '#99cc33', backgroundColor: '#99cc33' }} />;
         else if (payload.type === EditControlModel.Type.List)
             return '...';
     }
@@ -40,7 +40,7 @@ export default class EditControlWidget extends Component {
     @keydownScoped('shift+down', 'shift+left') onKeyShiftAndDownOrLeft(e) { this.updateSlider({ val: -10 }) }
 
     @action.bound onSliderChange(payload) {
-        this.props.stores.reticlesStore.reticleInFocus[payload.reticleProp] = payload.val;
+        this.props.stores.reticlesStore.reticleInFocus[payload.reticleProp].settings.val = payload.val;
     }
 
     render() {

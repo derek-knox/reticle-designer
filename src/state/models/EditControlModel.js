@@ -8,16 +8,18 @@ export class EditControlModel {
         List: 'list',
     }
 
+    static defaultSettings = { reticleProp: null, val: 0, min: 0, max: 100 };
+
     @observable id;
     @observable label;
     @observable type;
-    @observable settings = { reticleProp: null, min: 0, max: 100 };
+    @observable settings;
 
     constructor(payload) {
         this.id = uniqueId();
         this.label = payload.label;
         this.type = payload.type;
-        this.settings = payload.settings || this.settings;
+        this.settings = Object.assign({}, EditControlModel.defaultSettings, payload.settings);
     }
 
 }

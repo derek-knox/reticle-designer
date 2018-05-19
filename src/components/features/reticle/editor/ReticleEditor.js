@@ -33,7 +33,7 @@ export default class ReticleEditor extends Component {
 
     render() {
 
-        const x = this.props.stores.reticlesStore.lastReticleInFocus ? this.props.stores.reticlesStore.lastReticleInFocus.radius : 0;
+        const x = this.props.stores.reticlesStore.lastReticleInFocus ? this.props.stores.reticlesStore.lastReticleInFocus.radius.settings.val : 0;
         const y = this.refEditor.current ? -this.refEditor.current.clientHeight/2 : 0;
         const point = this.getClampedPoint({ x, y });
 

@@ -1,6 +1,8 @@
 import { observable } from 'mobx';
 import { uniqueId } from 'lodash';
 
+import { EditControlModel } from './EditControlModel';
+
 export class ReticleModel {
   
   static SettingType = {
@@ -18,26 +20,29 @@ export class ReticleModel {
 
   @observable id;
   @observable label;
-  @observable radius = 10;
-  @observable thickness = 4;
-  @observable divisions = 0;
-  @observable spacing = 10;
-  @observable rotation = 0;
-  @observable graphic = null;
-  @observable direction = 0;
-  @observable scale = 0;
+  @observable radius;
+  @observable thickness;
+  @observable divisions;
+  @observable spacing;
+  @observable rotation;
+  @observable graphic;
+  @observable direction;
+  @observable scale;
 
   constructor(payload) {
     this.id = uniqueId();
     this.label = 'Layer ' + ++ReticleModel.layerId;
-    this.radius = payload.radius || this.radius;
-    this.thickness = payload.thickness || this.thickness;
-    this.divisions = payload.divisions || this.divisions;
-    this.spacing = payload.spacing || this.spacing;
-    this.rotation = payload.rotation || this.rotation;
-    this.graphic = payload.graphic || this.graphic;
-    this.direction = payload.direction || this.direction;
-    this.scale = payload.scale || this.scale;
+
+    let isClone = typeof payload.radius === "object";
+    // TODO duplicate values into settings for a clone vs referencing the same object
+    this.radius = new EditControlModel({ label: 'Radius', type: EditControlModel.Type.Range, settings: { reticleProp: ReticleModel.SettingType.Radius, val: payload.radius || 10, min: 1, max: 1000 } }),
+    this.thickness = new EditControlModel({ label: 'Thickness', type: EditControlModel.Type.Range, settings: { reticleProp: ReticleModel.SettingType.Thickness, val: 4, min: 1, max: 150 } }),
+    this.divisions = new EditControlModel({ label: 'Divisions', type: EditControlModel.Type.Range, settings: { reticleProp: ReticleModel.SettingType.Divisions, val: 0, min: 0, max: 180 } }),
+    this.spacing = new EditControlModel({ label: 'Spacing', type: EditControlModel.Type.Range, settings: { reticleProp: ReticleModel.SettingType.Spacing, val: 10, min: 1, max: 359 } }),
+    this.rotation = new EditControlModel({ label: 'Rotation', type: EditControlModel.Type.Range, settings: { reticleProp: ReticleModel.SettingType.Rotation, val: 1, min: 1, max: 360 } }),
+    this.graphic = new EditControlModel({ label: 'Graphic', type: EditControlModel.Type.List, settings: { reticleProp: ReticleModel.SettingType.Graphic, val: null, items: [] } }),
+    this.direction = new EditControlModel({ label: 'Direction', type: EditControlModel.Type.Range, settings: { reticleProp: ReticleModel.SettingType.Direction, val: 1, min: 1, max: 360 } }),
+    this.scale = new EditControlModel({ label: 'Scale', type: EditControlModel.Type.Range, settings: { reticleProp: ReticleModel.SettingType.Scale, val: 1, min: 1, max: 5 } })
   }
   
 }

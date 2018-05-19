@@ -24,7 +24,7 @@ export default class Reticles extends Component {
     
     @action.bound onMouseMove(e) {
         if (this.props.stores.editReticleStore.isDrawing && this.props.stores.reticlesStore.reticleInFocus) {
-            this.props.stores.reticlesStore.reticleInFocus.radius = getRadiusFromMouseAndClientRect({
+            this.props.stores.reticlesStore.reticleInFocus.radius.settings.val = getRadiusFromMouseAndClientRect({
                 event: e.nativeEvent,
                 ref: this.refReticles
             });
