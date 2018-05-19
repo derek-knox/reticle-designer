@@ -28,6 +28,8 @@ export class ReticleModel {
   @observable graphic;
   @observable direction;
   @observable scale;
+  
+  @observable controls;
 
   constructor(payload) {
     this.id = uniqueId();
@@ -42,6 +44,17 @@ export class ReticleModel {
     this.graphic = new EditControlModel({ label: 'Graphic', type: EditControlModel.Type.List, settings: { reticleProp: ReticleModel.SettingType.Graphic, val: isClone ? payload.graphic.settings.val : null, items: [] } }),
     this.direction = new EditControlModel({ label: 'Direction', type: EditControlModel.Type.Range, settings: { reticleProp: ReticleModel.SettingType.Direction, val: isClone ? payload.direction.settings.val : 1, min: 1, max: 360 } }),
     this.scale = new EditControlModel({ label: 'Scale', type: EditControlModel.Type.Range, settings: { reticleProp: ReticleModel.SettingType.Scale, val: isClone ? payload.scale.settings.val : 1, min: 1, max: 5 } })
+
+    this.controls = [
+      this.radius,
+      this.thickness,
+      this.divisions,
+      this.spacing,
+      this.rotation,
+      this.graphic,
+      this.direction,
+      this.scale
+    ]
   }
   
 }
