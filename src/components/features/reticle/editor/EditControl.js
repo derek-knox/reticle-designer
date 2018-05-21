@@ -11,7 +11,7 @@ import EditControlWidget from './EditControlWidget';
 export default class EditControl extends Component {
 
     @action.bound onMouseDownControl(e, payload) {
-        this.props.stores.reticlesStore.reticleInFocus.controlInFocus = payload;
+        this.props.stores.reticlesStore.reticleInFocus.updateControlInFocus(payload);
     }
 
     render() {

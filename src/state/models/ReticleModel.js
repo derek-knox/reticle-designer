@@ -55,10 +55,14 @@ export class ReticleModel {
   initControls() {
     this.controlInFocus = this.radius;
     this.controls = [this.radius, this.thickness, this.divisions, this.spacing, this.rotation, this.graphic, this.direction, this.scale];
-    this.controls.forEach((control) => { observe(control.settings, (change) => this.onSettingsChange(control, change)); });
+    this.controls.forEach((control) => { observe(control.settings, (change) => this.onSettingsChange({ control, change })); });
   }
 
-  @action.bound onSettingsChange(control, change) {
-    this.controlInFocus = control;
+  @action.bound updateControlInFocus(payload) {
+    this.controlInFocus = payload;
+  }
+
+  @action.bound onSettingsChange(payload) {
+    this.controlInFocus = payload.control;
   }
 }
