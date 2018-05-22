@@ -12,22 +12,23 @@ export default class Reticles extends Component {
 
     refReticles = null;
 
+    getTargetValue(e){
+        return getRadiusFromMouseAndClientRect({
+            event: e.nativeEvent,
+            ref: this.refReticles
+        });
+    }
+
     @action.bound onMouseDown(e) {
         this.props.stores.editReticleStore.isDrawing = true;
         this.refReticles = ReactDOM.findDOMNode(this.refs.reticles);
         this.props.stores.editReticleStore.updateEditArea({ ref: this.refReticles });
-        this.props.stores.reticlesStore.add({ radius: getRadiusFromMouseAndClientRect({
-            event: e.nativeEvent,
-            ref: this.refReticles })
-        });
+        this.props.stores.reticlesStore.add({ radius: this.getTargetValue(e) });
     }
     
     @action.bound onMouseMove(e) {
         if (this.props.stores.editReticleStore.isDrawing && this.props.stores.reticlesStore.reticleInFocus) {
-            this.props.stores.reticlesStore.reticleInFocus.radius.settings.val = getRadiusFromMouseAndClientRect({
-                event: e.nativeEvent,
-                ref: this.refReticles
-            });
+            this.props.stores.reticlesStore.reticleInFocus.updateSettingsValue({ val: this.getTargetValue(e), reticleProp: 'radius' });
         }
     }
     

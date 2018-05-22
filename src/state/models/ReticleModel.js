@@ -1,5 +1,5 @@
 import { action, computed, observe, observable } from 'mobx';
-import { uniqueId } from 'lodash';
+import { clamp, uniqueId } from 'lodash';
 
 import { EditControlModel } from './EditControlModel';
 
@@ -41,8 +41,14 @@ export class ReticleModel {
   }
 
   initModels(payload) {
+    
+    // Special radius control model and enforce initial clamping
     let isClone = typeof payload.radius === "object";
-    this.radius = new EditControlModel({ label: 'Radius', type: EditControlModel.Type.Range, settings: { reticleProp: ReticleModel.SettingType.Radius, val: isClone ? payload.radius.settings.val : payload.radius || 10, min: 1, max: 1000 } });
+    let targetRadius = isClone ? payload.radius.settings.val : payload.radius || 10;
+    this.radius = new EditControlModel({ label: 'Radius', type: EditControlModel.Type.Range, settings: { reticleProp: ReticleModel.SettingType.Radius, val: targetRadius, min: 1, max: 1000 } });
+    this.updateSettingsValue({ val: this.radius.settings.val, reticleProp: 'radius' });    
+
+    // Remaining default control models
     this.thickness = new EditControlModel({ label: 'Thickness', type: EditControlModel.Type.Range, settings: { reticleProp: ReticleModel.SettingType.Thickness, val: isClone ? payload.thickness.settings.val : 4, min: 1, max: 150 } });
     this.divisions = new EditControlModel({ label: 'Divisions', type: EditControlModel.Type.Range, settings: { reticleProp: ReticleModel.SettingType.Divisions, val: isClone ? payload.divisions.settings.val : 0, min: 0, max: 180 } });
     this.spacing = new EditControlModel({ label: 'Spacing', type: EditControlModel.Type.Range, settings: { reticleProp: ReticleModel.SettingType.Spacing, val: isClone ? payload.spacing.settings.val : 10, min: 1, max: 359 } });
@@ -60,6 +66,12 @@ export class ReticleModel {
 
   @action.bound updateControlInFocus(payload) {
     this.controlInFocus = payload;
+  }
+
+  @action.bound updateSettingsValue(payload) {
+    let control = this[payload.reticleProp];
+    let newVal = clamp(payload.val, control.settings.min, control.settings.max);
+    control.settings.val = newVal;
   }
 
   @action.bound onSettingsChange(payload) {
