@@ -10,8 +10,17 @@ import EditControlWidget from './EditControlWidget';
 @keydown('up', 'right', 'down', 'left', 'shift+up', 'shift+right', 'shift+down', 'shift+left')
 export default class EditControl extends Component {
 
-    @action.bound onMouseDownControl(e, payload) {
-        this.props.stores.reticlesStore.reticleInFocus.updateControlInFocus(payload);
+    constructor(props) {
+        super(props);
+        this.refEl = React.createRef();
+    }
+
+    componentDidMount() {
+        this.props.onRef(this);
+    }
+
+    @action.bound onMouseDownControl(e) {
+        this.props.stores.reticlesStore.reticleInFocus.updateControlInFocus(this.props.item);
     }
 
     render() {
@@ -20,7 +29,8 @@ export default class EditControl extends Component {
 
         return (
             <div className={'reticle-editor-control-row ' + (this.props.controlInFocus.id === item.id ? 'is-selected' : '')}
-                 onMouseDown={(e) => this.onMouseDownControl(e, item)}>
+                 ref={this.refEl}
+                 onMouseDown={this.onMouseDownControl}>
                 
                 <div className='reticle-editor-control-label'>
                     {item.label}

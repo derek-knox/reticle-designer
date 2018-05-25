@@ -22,6 +22,7 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "mobx-react-devtools": "^4.2.15"
+    "mobx-react-devtools": "^4.2.15",
+    "simulate-event": "^1.4.0"
   }
 }

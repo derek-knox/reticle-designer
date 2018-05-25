@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {inject, observer} from 'mobx-react';
+import simulateEvent from "simulate-event";
 
 import EditControl from './EditControl';
 
@@ -7,7 +8,19 @@ import EditControl from './EditControl';
 @observer
 export default class EditLayerContainer extends Component {
 
+    componentDidUpdate() {
+        this.simulateEvent();
+    }
+
+    simulateEvent() {
+        const simulateClickTarget = this[this.props.stores.reticlesStore.reticleInFocus.controlInFocus.label];
+        if (simulateClickTarget) {
+          simulateEvent.simulate(simulateClickTarget.refEl.current, "click");
+        }
+    }
+
     render() {
+
         return (
             <div className="container reticle-editor-edit-container">
                 <div className="wrapper">
@@ -19,6 +32,7 @@ export default class EditLayerContainer extends Component {
                             {this.props.stores.reticlesStore.reticleInFocus.controls.map(item =>
                                 <EditControl key={item.id}
                                              item={item}
+                                             onRef={component => this[item.label] = component}
                                              controlInFocus={this.props.stores.reticlesStore.reticleInFocus.controlInFocus}></EditControl>
                             )}
                         </div>
