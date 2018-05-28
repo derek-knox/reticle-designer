@@ -12,8 +12,6 @@ import { EditControlModel } from '../../../../state/models/EditControlModel';
 @observer
 export default class EditControlWidget extends Component {
 
-    item = null;
-
     getControlByType = (payload) => {
         if (payload.type === EditControlModel.Type.Range)
             return <Slider value={this.props.stores.reticlesStore.reticleInFocus[payload.settings.reticleProp].settings.val}
@@ -27,22 +25,22 @@ export default class EditControlWidget extends Component {
             return '...';
     }
 
-    @keydownScoped('up', 'right') onKeyUpOrRight(e) { this.onSliderChange({ val: this.item.settings.val +1 }) }
-    @keydownScoped('down', 'left') onKeyDownOrLeft(e) { this.onSliderChange({ val: this.item.settings.val -1 }) }
-    @keydownScoped('shift+up', 'shift+right') onKeyShiftAndUpOrRight(e) { this.onSliderChange({ val: this.item.settings.val +10 }) }
-    @keydownScoped('shift+down', 'shift+left') onKeyShiftAndDownOrLeft(e) { this.onSliderChange({ val: this.item.settings.val -10 }) }
+    @keydownScoped('up', 'right') onKeyUpOrRight(e) { this.onSliderChange({ val: this.props.item.settings.val +1 }) }
+    @keydownScoped('down', 'left') onKeyDownOrLeft(e) { this.onSliderChange({ val: this.props.item.settings.val -1 }) }
+    @keydownScoped('shift+up', 'shift+right') onKeyShiftAndUpOrRight(e) { this.onSliderChange({ val: this.props.item.settings.val +10 }) }
+    @keydownScoped('shift+down', 'shift+left') onKeyShiftAndDownOrLeft(e) { this.onSliderChange({ val: this.props.item.settings.val -10 }) }
 
     @action.bound onSliderChange(payload) {
-        this.props.stores.reticlesStore.reticleInFocus.updateSettingsValue({ val: payload.val, reticleProp: this.item.settings.reticleProp });
+        this.props.stores.reticlesStore.reticleInFocus.updateSettingsValue({ val: payload.val, reticleProp: this.props.item.settings.reticleProp });
     }
 
     render() {
 
-        this.item = this.props.item;
+        const item = this.props.item;
 
         return (
             <div className="reticle-editor-control-widget">
-                { this.getControlByType(this.item) }
+                { this.getControlByType(item) }
             </div>
         );
     }
