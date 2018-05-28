@@ -20,21 +20,19 @@ export default class Reticle extends Component {
                 {item.divisions.settings.val === 0
                     ? <circle stroke={'red'} cx="50%" cy="50%" r={item.radius.settings.val} strokeWidth={item.thickness.settings.val} fill="none" />
                     : arcs.map((arcData) => {
-                        if (item.divisions.settings.val > 0 && item.graphic.settings.val) {
-                            return <ReticleWithGraphics key={arcData.id}
-                                                        gfxId={item.graphic.settings.val}
-                                                        radius={item.radius.settings.val}
-                                                        center={{ x: editAreaInfo.point.x, y: editAreaInfo.point.y }}
-                                                        angle={arcData.start} />;
-                        } else {
-                            return <Arc key={arcData.id}
-                                        thickness={item.thickness.settings.val}
-                                        radius={item.radius.settings.val}
-                                        center={{ x: editAreaInfo.point.x, y: editAreaInfo.point.y }}
-                                        start={arcData.start}
-                                        end={arcData.end - item.spacing.settings.val}></Arc>
-                        }
-                    })
+                        return item.divisions.settings.val > 0 && item.graphic.settings.val
+                            ? <ReticleWithGraphics key={arcData.id}
+                                                   gfxId={item.graphic.settings.val}
+                                                   radius={item.radius.settings.val}
+                                                   center={{ x: editAreaInfo.point.x, y: editAreaInfo.point.y }}
+                                                   angle={arcData.start} />
+                            : <Arc key={arcData.id}
+                                   thickness={item.thickness.settings.val}
+                                   radius={item.radius.settings.val}
+                                   center={{ x: editAreaInfo.point.x, y: editAreaInfo.point.y }}
+                                   start={arcData.start}
+                                   end={arcData.end - item.spacing.settings.val}></Arc>
+                        })
                 }
             </svg>
         );
