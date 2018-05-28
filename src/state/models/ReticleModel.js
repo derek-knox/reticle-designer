@@ -53,7 +53,7 @@ export class ReticleModel {
     this.divisions = new EditControlModel({ label: 'Divisions', type: EditControlModel.Type.Range, settings: { reticleProp: ReticleModel.SettingType.Divisions, val: isClone ? payload.divisions.settings.val : 0, min: 0, max: 180 } });
     this.spacing = new EditControlModel({ label: 'Spacing', type: EditControlModel.Type.Range, settings: { reticleProp: ReticleModel.SettingType.Spacing, val: isClone ? payload.spacing.settings.val : 1, min: 1, max: 359 } });
     this.rotation = new EditControlModel({ label: 'Rotation', type: EditControlModel.Type.Range, settings: { reticleProp: ReticleModel.SettingType.Rotation, val: isClone ? payload.rotation.settings.val : 1, min: 1, max: 360 } });
-    this.graphic = new EditControlModel({ label: 'Graphic', type: EditControlModel.Type.List, settings: { reticleProp: ReticleModel.SettingType.Graphic, val: isClone ? payload.graphic.settings.val : null, items: [] } });
+    this.graphic = new EditControlModel({ label: 'Graphic', type: EditControlModel.Type.List, settings: { reticleProp: ReticleModel.SettingType.Graphic, val: isClone ? payload.graphic.settings.val : null } });
     this.direction = new EditControlModel({ label: 'Direction', type: EditControlModel.Type.Range, settings: { reticleProp: ReticleModel.SettingType.Direction, val: isClone ? payload.direction.settings.val : 1, min: 1, max: 360 } });
     this.scale = new EditControlModel({ label: 'Scale', type: EditControlModel.Type.Range, settings: { reticleProp: ReticleModel.SettingType.Scale, val: isClone ? payload.scale.settings.val : 1, min: 1, max: 5 } });
   }
