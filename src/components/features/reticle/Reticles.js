@@ -10,19 +10,21 @@ import { getRadiusFromMouseAndClientRect } from '../../../utils/reticleUtils';
 @observer
 export default class Reticles extends Component {
 
-    refReticles = null;
+    constructor(props) {
+        super(props);
+        this.refReticles = React.createRef();
+    }
 
     getTargetValue(e){
         return getRadiusFromMouseAndClientRect({
             event: e.nativeEvent,
-            ref: this.refReticles
+            ref: this.refReticles.current
         });
     }
 
     @action.bound onMouseDown(e) {
         this.props.stores.editReticleStore.isDrawing = true;
-        this.refReticles = ReactDOM.findDOMNode(this.refs.reticles);
-        this.props.stores.editReticleStore.updateEditArea({ ref: this.refReticles });
+        this.props.stores.editReticleStore.updateEditArea({ ref: this.refReticles.current });
         this.props.stores.reticlesStore.add({ radius: this.getTargetValue(e) });
     }
     
@@ -38,7 +40,7 @@ export default class Reticles extends Component {
 
     render() {
         return (
-            <div ref='reticles' className='reticles-container'>
+            <div ref={this.refReticles} className='reticles-container'>
 
                 <div className='reticles-drag-target'
                      onMouseDown={this.onMouseDown}
