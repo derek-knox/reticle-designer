@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react';
 
 import Reticles from '../features/reticle/Reticles';
+import GraphicsLibrary from "../features/reticle/editor/GraphicsLibrary";
 import ReticleEditor from '../features/reticle/editor/ReticleEditor';
 
 @inject('stores')
@@ -23,6 +24,8 @@ export default class ReticleDesignerPage extends Component {
             : null
           }
         </div>
+
+        <GraphicsLibrary></GraphicsLibrary>
 
       </div>
     );
