@@ -79,7 +79,11 @@ export class ReticleModel {
 
   @action.bound updateSettingsValue(payload) {
     let control = this[payload.reticleProp];
-    let newVal = clamp(payload.val, control.settings.min, control.settings.max);
+    let newVal = null;
+    if(control.type === EditControlModel.Type.Range)
+      newVal = clamp(payload.val, control.settings.min, control.settings.max);
+    else if(control.type === EditControlModel.Type.List)
+      newVal = payload.val;
     control.settings.val = newVal;
   }
 

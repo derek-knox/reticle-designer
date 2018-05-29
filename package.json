@@ -22,6 +22,7 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
+    "@material-ui/core": "^1.1.0",
     "mobx-react-devtools": "^4.2.15",
     "simulate-event": "^1.4.0"
   }

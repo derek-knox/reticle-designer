@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { action } from 'mobx';
 import {inject, observer} from 'mobx-react';
 
-import Button from 'material-ui/Button';
+import Button from "@material-ui/core/Button";
 
 import LayerListItem from './LayerListItem';
 
