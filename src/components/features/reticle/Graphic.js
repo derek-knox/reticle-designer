@@ -8,10 +8,9 @@ export default class Graphic extends Component {
     render() {
 
         const gfxId = this.props.gfxId;
-        console.log(this.props);
 
         return (
-            <use href={gfxId}
+            <use href={'#' + gfxId}
                  x={this.props.angle}
                  y={this.props.angle}
                  width='100px'
