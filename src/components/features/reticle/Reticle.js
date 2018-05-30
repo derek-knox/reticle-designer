@@ -3,7 +3,7 @@ import {inject, observer} from 'mobx-react';
 
 import { getArcDataFromDivisionCount } from '../../../utils/reticleUtils';
 import Arc from './Arc';
-import ReticleWithGraphics from "./ReticleWithGraphics";
+import Graphic from "./Graphic";
 
 @inject('stores')
 @observer
@@ -21,11 +21,11 @@ export default class Reticle extends Component {
                     ? <circle stroke={'red'} cx="50%" cy="50%" r={item.radius.settings.val} strokeWidth={item.thickness.settings.val} fill="none" />
                     : arcs.map((arcData) => {
                         return item.divisions.settings.val > 0 && item.graphic.settings.val
-                            ? <ReticleWithGraphics key={arcData.id}
-                                                   gfxId={item.graphic.settings.val}
-                                                   radius={item.radius.settings.val}
-                                                   center={{ x: editAreaInfo.point.x, y: editAreaInfo.point.y }}
-                                                   angle={arcData.start} />
+                            ? <Graphic key={arcData.id}
+                                       gfxId={item.graphic.settings.val}
+                                       radius={item.radius.settings.val}
+                                       center={{ x: editAreaInfo.point.x, y: editAreaInfo.point.y }}
+                                       angle={arcData.start} />
                             : <Arc key={arcData.id}
                                    thickness={item.thickness.settings.val}
                                    radius={item.radius.settings.val}
