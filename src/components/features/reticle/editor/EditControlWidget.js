@@ -26,12 +26,12 @@ export default class EditControlWidget extends Component {
                            railStyle={{ backgroundColor: '#333333' }}
                            handleStyle={{ borderColor: '#99cc33', backgroundColor: '#99cc33' }} />;
         else if (payload.type === EditControlModel.Type.List)
-            return <FormControl className={null}>
+            return <FormControl className={'widget-' + this.props.item.type}>
                         <Select value={this.props.stores.reticlesStore.reticleInFocus[payload.settings.reticleProp].settings.val || ''}
                                 onChange={this.onSelectChange}
                                 displayEmpty
                                 name="select-gfx"
-                                className={null}>
+                                className={'widget-' + this.props.item.type + '-select'}>
                             <MenuItem value=""><em>None</em></MenuItem>
                             <MenuItem value='gfx-1'>gfx-1</MenuItem>
                             <MenuItem value='gfx-2'>gfx-2</MenuItem>
@@ -60,7 +60,7 @@ export default class EditControlWidget extends Component {
 
         return (
             <div className="reticle-editor-control-widget">
-                { this.getControlByType(item) }
+                {this.getControlByType(item)}
             </div>
         );
     }

@@ -2,14 +2,28 @@ import { createMuiTheme } from 'material-ui/styles';
 
 export default function Theme() {
     return createMuiTheme({
-        typography: {
-            // Use the system font over Roboto.
-            fontFamily: 'Orbitron,"Helvetica Neue",Arial,sans-serif',
+      palette: {
+        primary: {
+            light: "#cdff67",
+            main: "#99cc33",
+            dark: "#669b00",
+            contrastText: "#fff"
         },
-        props: {
-            MuiButtonBase: {
-                disableRipple: true
-            },
+        secondary: {
+            light: "#ff7fff",
+            main: "#ff44ff",
+            dark: "#c800cb",
+            contrastText: "#000"
         }
+      },
+      props: {
+        MuiButtonBase: {
+          disableRipple: true
+        }
+      },
+      typography: {
+        // Use the system font over Roboto.
+        fontFamily: 'Orbitron,"Helvetica Neue",Arial,sans-serif'
+      }
     });
 }
