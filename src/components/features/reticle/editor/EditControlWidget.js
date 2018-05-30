@@ -46,7 +46,6 @@ export default class EditControlWidget extends Component {
     @keydownScoped('shift+down', 'shift+left') onKeyShiftAndDownOrLeft(e) { this.onSliderChange({ val: this.props.item.settings.val -10 }) }
 
     @action.bound onSelectChange(payload) {
-        console.log("change", payload.target.name, payload.target.value);
         this.props.stores.reticlesStore.reticleInFocus.updateSettingsValue({ val: payload.target.value, reticleProp: this.props.item.settings.reticleProp });
     }
 

@@ -52,7 +52,7 @@ export function describeSvgArc(payload) {
     return d;
 }
 
-function polarToCartesian(centerX, centerY, radius, angleInDegrees) {
+export function polarToCartesian(centerX, centerY, radius, angleInDegrees) {
     var angleInRadians = (angleInDegrees - 90) * Math.PI / 180.0;
 
     return {
