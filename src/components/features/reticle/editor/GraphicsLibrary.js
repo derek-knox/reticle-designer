@@ -4,7 +4,7 @@ export default class GraphicsLibrary extends Component {
 
     render() {
         return (
-            <svg version="1.1" xmlns="http://www.w3.org/2000/svg">
+            <svg className='graphics-library' version="1.1" xmlns="http://www.w3.org/2000/svg">
 
                 <defs>
                     <rect id='gfx-1' x="10" y="10" width="60" height="10" />
