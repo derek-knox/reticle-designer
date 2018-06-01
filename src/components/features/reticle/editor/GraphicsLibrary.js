@@ -8,7 +8,7 @@ export default class GraphicsLibrary extends Component {
 
                 <defs>
                     <rect id='gfx-1' x="0" y="0" width="50" height="20" />
-                    <circle id='gfx-2' cx="0" cy="0" r="50" />
+                    <circle id='gfx-2' cx="25" cy="25" r="50" />
                     <polyline id='gfx-3' points="100,100 150,25 150,75 200,0" fill="none" stroke="black" />
                 </defs>
 
