@@ -28,8 +28,8 @@ export default class Graphic extends Component {
             <use href={'#' + gfxId}
                  ref={this.refEl}
                  style={{
-                    'transform': "rotate(" + this.props.direction + "deg) scale(" + this.props.scale + ")",
-                    'transform-origin': transformPoint.x + "px " + transformPoint.y + "px"
+                    transform: "rotate(" + this.props.direction + "deg) scale(" + this.props.scale + ")",
+                    transformOrigin: transformPoint.x + "px " + transformPoint.y + "px"
                  }}
                  x={offsetPoint.x}
                  y={offsetPoint.y} />
