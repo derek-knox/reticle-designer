@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import ReactDOM from 'react-dom';
 import {inject, observer} from 'mobx-react';
 import { clamp } from 'lodash';
 

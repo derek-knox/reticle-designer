@@ -1,6 +1,4 @@
-import { action, computed, observable } from 'mobx';
-import { EditControlModel } from '../models/EditControlModel';
-import { ReticleModel } from '../models/ReticleModel';
+import { action, observable } from 'mobx';
 
 import { getEditAreaInfo } from '../../utils/reticleUtils';
 

@@ -1,4 +1,4 @@
-import { action, computed, observe, observable } from 'mobx';
+import { action, observe, observable } from 'mobx';
 import { clamp, uniqueId } from 'lodash';
 
 import { EditControlModel } from './EditControlModel';

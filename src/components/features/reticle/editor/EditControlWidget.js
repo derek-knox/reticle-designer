@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { action } from 'mobx';
 import { inject, observer } from 'mobx-react';
-import keydown, { keydownScoped } from 'react-keydown';
+import { keydownScoped } from 'react-keydown';
 
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';

@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
-import ReactDOM from 'react-dom';
-import { action, observable } from 'mobx';
+import { action } from 'mobx';
 import {inject, observer} from 'mobx-react';
 
 import Reticle from './Reticle';
