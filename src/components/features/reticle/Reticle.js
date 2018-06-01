@@ -25,7 +25,9 @@ export default class Reticle extends Component {
                                        gfxId={item.graphic.settings.val}
                                        radius={item.radius.settings.val}
                                        center={{ x: editAreaInfo.point.x, y: editAreaInfo.point.y }}
-                                       angle={arcData.start} />
+                                       angle={arcData.start}
+                                       direction={item.direction.settings.val}
+                                       scale={item.scale.settings.val} />
                             : <Arc key={arcData.id}
                                    thickness={item.thickness.settings.val}
                                    radius={item.radius.settings.val}
