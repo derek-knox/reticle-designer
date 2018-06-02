@@ -38,7 +38,8 @@ export default class EditLayerContainer extends Component {
                             )}
 
                             <div className='reticle-editor-widget-helper'>
-                                <WidgetHelper controlInFocus={this.props.stores.reticlesStore.reticleInFocus.controlInFocus} />
+                                <WidgetHelper reticleInFocus={this.props.stores.reticlesStore.reticleInFocus}
+                                              controlInFocus={this.props.stores.reticlesStore.reticleInFocus.controlInFocus}/>
                             </div>
                         </div>
 

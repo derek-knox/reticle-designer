@@ -14,21 +14,22 @@ export default class WidgetHelper extends Component {
         }
     }
 
-    @action.bound onClickX(e) {
+    @action.bound onClickClose(e) {
         this.props.stores.editReticleStore.isGridControlOpen = false;
     }
 
     render() {
 
+        const reticleInFocus = this.props.reticleInFocus;
+        const type = this.props.controlInFocus.type;
+
         return (
             <div className="wrapper">
                 <div className="content-v">
                     <div className="widget-helper">
-                        <div onClick={this.onClickX}>
-                            Close X
-                        </div>
+                        <div onClick={this.onClickClose}>Back</div>
                         <hr/>
-                        Hello
+                        {this.props.controlInFocus.label} Grid for {reticleInFocus.label}
                     </div>
                 </div>
             </div>
