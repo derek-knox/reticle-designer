@@ -29,7 +29,10 @@ export default class WidgetHelper extends Component {
                     <div className="widget-helper">
                         <div onClick={this.onClickClose}>Back</div>
                         <hr/>
-                        {this.props.controlInFocus.label} Grid for {reticleInFocus.label}
+                        {this.props.controlInFocus.label}: <span>GFX</span>
+                        <div>
+                            {}
+                        </div>
                     </div>
                 </div>
             </div>

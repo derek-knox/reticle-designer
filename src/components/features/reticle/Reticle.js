@@ -16,7 +16,7 @@ export default class Reticle extends Component {
         const arcs = getArcDataFromDivisionCount({ divisions: item.divisions.settings.val });
 
         return (
-            <svg className='reticle' width='100%' height='100%' style={{ transform: "rotate(" + item.rotation.settings.val + "deg)" }}>
+            <svg className='reticle' width='100%' height='100%' style={{ transform: "rotate(" + item.rotation.settings.val + "deg)", opacity: item.opacity.settings.val }}>
                 {item.divisions.settings.val === 0
                     ? <circle stroke={'red'} cx="50%" cy="50%" r={item.radius.settings.val} strokeWidth={item.thickness.settings.val} fill="none" />
                     : arcs.map((arcData) => {
