@@ -45,7 +45,7 @@ export class ReticleModel {
     // Special radius control model and enforce initial clamping
     let isClone = typeof payload.radius === "object";
     let targetRadius = isClone ? payload.radius.settings.val : payload.radius || 10;
-    this.radius = new EditControlModel({ label: 'Radius', type: EditControlModel.Type.Range, settings: { reticleProp: ReticleModel.SettingType.Radius, val: targetRadius, min: 1, max: 1000 } });
+    this.radius = new EditControlModel({ label: 'Radius', type: EditControlModel.Type.Range, settings: { reticleProp: ReticleModel.SettingType.Radius, val: targetRadius, min: 1, max: 1000, step: 1 } });
     this.updateSettingsValue({ val: this.radius.settings.val, reticleProp: 'radius' });    
 
     // Remaining default control models
