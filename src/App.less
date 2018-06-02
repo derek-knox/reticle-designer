@@ -170,11 +170,18 @@ body {
   .reticle-editor-edit-container {
     width: 70%;
     background-color: #555;
-      
+    overflow: hidden;
+    
     .reticle-editor-layer-controls {
-      
+
+      transition: transform .4s ease-in-out;
+
       .content-v;
       .no-select;
+
+      &.is-grid-control-open {
+        transform: translateX(-100%);
+      }
 
       .reticle-editor-control-row {
         
@@ -206,6 +213,21 @@ body {
           color: #99cc33;
           border-right: 2px solid #99cc33;
         }
+      }
+    }
+
+    .reticle-editor-widget-helper {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+
+      transform: translateX(100%);
+
+      .content-v;
+      .no-select;
+
+      .widget-helper {
+        padding: 0 15px;
       }
     }
   }

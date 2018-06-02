@@ -5,6 +5,7 @@ import { getEditAreaInfo } from '../../utils/reticleUtils';
 export class EditReticleStore {
 
     @observable isDrawing = false;
+    @observable isGridControlOpen = false;
     @observable editAreaInfo = null;
 
     constructor(stores) {
