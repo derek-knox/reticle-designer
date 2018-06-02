@@ -20,8 +20,6 @@ export default class WidgetHelper extends Component {
 
     render() {
 
-        console.log(this.props.controlInFocus);
-
         return (
             <div className="wrapper">
                 <div className="content-v">
