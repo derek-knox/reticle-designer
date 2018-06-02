@@ -21,6 +21,7 @@ export default class EditControlWidget extends Component {
             return <Slider value={this.props.stores.reticlesStore.reticleInFocus[payload.settings.reticleProp].settings.val}
                            min={payload.settings.min}
                            max={payload.settings.max}
+                           step={payload.settings.step}
                            onChange={(val) => this.onSliderChange({ val })}
                            trackStyle={{ backgroundColor: '#99cc33' }}
                            railStyle={{ backgroundColor: '#333333' }}
@@ -40,10 +41,10 @@ export default class EditControlWidget extends Component {
                    </FormControl>;
     }
 
-    @keydownScoped('up', 'right') onKeyUpOrRight(e) { this.onSliderChange({ val: this.props.item.settings.val +1 }) }
-    @keydownScoped('down', 'left') onKeyDownOrLeft(e) { this.onSliderChange({ val: this.props.item.settings.val -1 }) }
-    @keydownScoped('shift+up', 'shift+right') onKeyShiftAndUpOrRight(e) { this.onSliderChange({ val: this.props.item.settings.val +10 }) }
-    @keydownScoped('shift+down', 'shift+left') onKeyShiftAndDownOrLeft(e) { this.onSliderChange({ val: this.props.item.settings.val -10 }) }
+    @keydownScoped('up', 'right') onKeyUpOrRight(e) { this.onSliderChange({ val: this.props.item.settings.val + this.props.item.settings.step }) }
+    @keydownScoped('down', 'left') onKeyDownOrLeft(e) { this.onSliderChange({ val: this.props.item.settings.val - this.props.item.settings.step }) }
+    @keydownScoped('shift+up', 'shift+right') onKeyShiftAndUpOrRight(e) { this.onSliderChange({ val: this.props.item.settings.val + (this.props.item.settings.val * 10) }) }
+    @keydownScoped('shift+down', 'shift+left') onKeyShiftAndDownOrLeft(e) { this.onSliderChange({ val: this.props.item.settings.val - (this.props.item.settings.val * 10) }) }
 
     @action.bound onSelectChange(payload) {
         this.props.stores.reticlesStore.reticleInFocus.updateSettingsValue({ val: payload.target.value, reticleProp: this.props.item.settings.reticleProp });
