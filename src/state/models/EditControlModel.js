@@ -5,7 +5,7 @@ export class EditControlModel {
 
     static Type = {
         Range: 'range',
-        List: 'list',
+        Grid: 'grid',
     }
 
     static defaultSettings = { reticleProp: null, val: 0, min: 0, max: 100 };

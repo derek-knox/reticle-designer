@@ -23,7 +23,7 @@ export default class EditControlWidget extends Component {
                            trackStyle={{ backgroundColor: '#99cc33' }}
                            railStyle={{ backgroundColor: '#333333' }}
                            handleStyle={{ borderColor: '#99cc33', backgroundColor: '#99cc33' }} />;
-        else if (payload.type === EditControlModel.Type.List)
+        else if (payload.type === EditControlModel.Type.Grid)
             return <GraphicWidget />;
     }
 
