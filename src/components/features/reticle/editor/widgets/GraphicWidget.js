@@ -7,8 +7,7 @@ import {inject, observer} from 'mobx-react';
 export default class GraphicWidget extends Component {
 
     @action.bound onClickX(e) {
-        console.log('onClick', e);
-        this.props.stores.editReticleStore.isGridControlOpen = !this.props.stores.editReticleStore.isGridControlOpen;
+        this.props.stores.editReticleStore.isGridControlOpen = true;
     }
 
     render() {

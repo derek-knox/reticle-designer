@@ -1,4 +1,4 @@
-import { action, computed, observable} from 'mobx';
+import { action, computed, observable } from "mobx";
 import { ReticleModel } from '../models/ReticleModel';
 
 export class ReticlesStore {
@@ -12,9 +12,11 @@ export class ReticlesStore {
   }
 
   @action add(payload) {
-    this.reticleInFocus = new ReticleModel(payload);
+    const newReticle = new ReticleModel(payload);
+    this.items.push(newReticle);
+    
+    this.updateReticleInFocus(newReticle);
     this.lastReticleInFocus = this.reticleInFocus;
-    this.items.push(this.reticleInFocus);
   }
 
   @action.bound clone() {
