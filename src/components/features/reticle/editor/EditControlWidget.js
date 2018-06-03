@@ -10,8 +10,13 @@ import SliderWidget from "./widgets/SliderWidget";
 export default class EditControlWidget extends Component {
 
     getControlByType = (payload) => {
-        if (payload.type === EditControlModel.Type.Range) { return <SliderWidget item={payload} {...this.props} />; }
-        else if (payload.type === EditControlModel.Type.Grid) { return <GraphicWidget item={payload} {...this.props} />; }
+        if (payload.type === EditControlModel.Type.Range) {
+            return <SliderWidget item={payload} {...this.props} />;
+        }
+        else if (payload.type === EditControlModel.Type.Grid) {
+            console.log('use label:', payload.label, 'for dynamic component (Graphic|Color)Widget');
+            return <GraphicWidget item={payload} {...this.props} />;
+        }
     }
 
     render() {
