@@ -151,7 +151,6 @@ body {
         cursor: pointer;
 
         &.is-selected {
-          background-color: #555;
           color: #99cc33;
           border-right: 2px solid #99cc33;
         }
@@ -184,6 +183,7 @@ body {
       }
 
       .reticle-editor-control-row {
+        cursor: pointer;
         
         .content-h;
         align-items: center;
@@ -209,9 +209,8 @@ body {
         }
 
         &.is-selected {
-          background-color: #555;
+          background-color: #444;
           color: #99cc33;
-          border-right: 2px solid #99cc33;
         }
       }
     }
@@ -220,6 +219,7 @@ body {
       position: absolute;
       width: 100%;
       height: 100%;
+      color: #fff;
 
       transform: translateX(100%);
 
@@ -228,6 +228,47 @@ body {
 
       .widget-helper {
         padding: 0 15px;
+
+        .widget-helper-header {
+          flex-grow: 0;
+          justify-content: space-between;
+          align-items: center;
+          
+          .widget-helper-close-button {
+            min-width: 50px;
+            min-height: 32px;
+            color: #fff;
+          }
+        }
+
+        .widget-helper-body {
+          flex-grow: 1;
+          margin: 15px 0;
+          overflow-y: scroll;
+
+          .widget-helper-grid {
+            display: flex;
+            flex-wrap: wrap;
+            align-content: flex-start;
+
+            .widget-helper-grid-item {
+              width: 25%;
+              height: 60px;
+              margin-bottom: 1px;
+              border-bottom: 2px solid #333;
+              overflow: hidden;
+
+              .widget-helper-graphic {
+                width: 100%;
+                height: 100%;
+              }
+              
+              &:hover {
+                border-bottom: 2px solid #99cc33;
+              }
+            }
+          } 
+        }
       }
     }
   }
