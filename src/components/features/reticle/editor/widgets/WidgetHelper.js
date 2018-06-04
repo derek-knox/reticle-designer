@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {action} from 'mobx';
+import {action, observable} from 'mobx';
 import {inject, observer} from 'mobx-react';
 
 import Button from "@material-ui/core/Button";
@@ -11,7 +11,8 @@ import Graphic from "../../Graphic";
 @observer
 export default class WidgetHelper extends Component {
 
-    initialGraphicId = null;
+    @observable initialGraphicId = null;
+    // console.log('TODO: make initialGraphicId a map ({reticleId, initialGraphicId}) instead so each reticle and its graphicId work on a per reticle basis')
 
     componentDidMount() {
         this.initialGraphicId = this.props.reticleInFocus.graphic.settings.val;
@@ -54,7 +55,7 @@ export default class WidgetHelper extends Component {
                                 onClick={this.onClickClose}>x</Button>
                     </div>
                     <div className="widget-helper-body">
-                        <div className={"widget-helper-grid " + (!this.props.stores.editReticleStore.isGridControlOpen ? 'hidden' : ' ')}>
+                        <div className="widget-helper-grid">
 
                             <div key={'gfx-0'}
                                  className={"widget-helper-grid-item " +

@@ -14,7 +14,7 @@ export default class EditControlWidget extends Component {
             return <SliderWidget item={payload} {...this.props} />;
         }
         else if (payload.type === EditControlModel.Type.Grid) {
-            console.log('use label:', payload.label, 'for dynamic component (Graphic|Color)Widget');
+            // console.log('use label:', payload.label, 'for dynamic component (Graphic|Color)Widget');
             return <GraphicWidget item={payload} {...this.props} />;
         }
     }
