@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {action, observable} from 'mobx';
+import {action, observe, observable} from 'mobx';
 import {inject, observer} from 'mobx-react';
 
 import Button from "@material-ui/core/Button";
@@ -11,22 +11,31 @@ import Graphic from "../../Graphic";
 @observer
 export default class WidgetHelper extends Component {
 
+    unobserve = null;
     @observable initialGraphicId = null;
-    // console.log('TODO: make initialGraphicId a map ({reticleId, initialGraphicId}) instead so each reticle and its graphicId work on a per reticle basis')
-
-    componentDidMount() {
-        this.initialGraphicId = this.props.reticleInFocus.graphic.settings.val;
+    
+    constructor(props) {
+        super(props);
+        this.unobserve = observe(this.props.stores.reticlesStore, 'reticleInFocus', this.onChangeReticleInFocus);
     }
     
     componentDidUpdate() {
         if(this.props.controlInFocus.type !== EditControlModel.Type.Grid && this.props.stores.editReticleStore.isGridControlOpen) {
-            this.props.stores.editReticleStore.isGridControlOpen = false;
+            this.reset();
         }
+    }
+
+    componentWillUnmount() {
+        this.unobserve();
+    }
+
+    reset() {
+        this.props.reticleInFocus.graphic.settings.val = this.initialGraphicId;
+        this.props.stores.editReticleStore.isGridControlOpen = false;
     }
     
     @action.bound onClickClose(e) {
-        this.props.reticleInFocus.graphic.settings.val = this.initialGraphicId;
-        this.props.stores.editReticleStore.isGridControlOpen = false;
+        this.reset();
     }
 
     @action.bound onMouseOverGraphic(e, payload) {
@@ -37,6 +46,11 @@ export default class WidgetHelper extends Component {
         this.props.reticleInFocus.graphic.settings.val = payload;
         this.initialGraphicId = payload;
         this.props.stores.editReticleStore.isGridControlOpen = false;
+    }
+
+    @action.bound onChangeReticleInFocus(payload) {
+        payload.oldValue.graphic.settings.val = this.initialGraphicId;
+        this.initialGraphicId = payload.newValue.graphic.settings.val;
     }
 
     render() {
