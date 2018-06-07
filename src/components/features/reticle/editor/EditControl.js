@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { action } from 'mobx';
 import {inject, observer} from 'mobx-react';
 import keydown from 'react-keydown';
+import classnames from 'classnames';
 
 import EditControlWidget from './EditControlWidget';
 
@@ -28,7 +29,7 @@ export default class EditControl extends Component {
         const item = this.props.item;
 
         return (
-            <div className={'reticle-editor-control-row ' + (this.props.controlInFocus.id === item.id ? 'is-selected' : '')}
+            <div className={classnames('reticle-editor-control-row', {'is-selected': this.props.controlInFocus.id === item.id})}
                  ref={this.refEl}
                  onMouseDown={this.onMouseDownControl}>
                 

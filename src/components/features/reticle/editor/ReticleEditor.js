@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {inject, observer} from 'mobx-react';
 import { clamp } from 'lodash';
+import classnames from 'classnames';
 
 import LayersContainer from './LayersContainer';
 import EditLayerContainer from './EditLayerContainer';
@@ -37,7 +38,7 @@ export default class ReticleEditor extends Component {
         const point = this.getClampedPoint({ x, y });
 
         return (
-            <div className={'reticle-editor-container ' + (this.props.stores.editReticleStore.isDrawing ? '' : 'is-edit-ready')}
+            <div className={classnames('reticle-editor-container', {'is-edit-ready': !this.props.stores.editReticleStore.isDrawing})}
                  ref={this.refEditor}
                  style={this.getTransformStyle({ point })} >
                  

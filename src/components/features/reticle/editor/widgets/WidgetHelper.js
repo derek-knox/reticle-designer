@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {action, observe, observable} from 'mobx';
 import {inject, observer} from 'mobx-react';
+import classnames from 'classnames';
 
 import Button from "@material-ui/core/Button";
 
@@ -72,9 +73,9 @@ export default class WidgetHelper extends Component {
                         <div className="widget-helper-grid">
 
                             <div key={'gfx-0'}
-                                 className={"widget-helper-grid-item " +
-                                     (this.initialGraphicId === null ? 'is-initially-selected ' : ' ') +
-                                     (this.props.reticleInFocus.graphic.settings.val === null ? 'is-selected' : '')
+                                 className={classnames("widget-helper-grid-item",
+                                     {'is-initially-selected': this.initialGraphicId === null},
+                                     {'is-selected': this.props.reticleInFocus.graphic.settings.val === null})
                                  }
                                  onMouseOver={(e) => this.onMouseOverGraphic(e, null)}
                                  onClick={(e) => this.onClickGraphic(e, null)}>
@@ -83,9 +84,9 @@ export default class WidgetHelper extends Component {
                             {this.props.stores.editReticleStore.graphics.map((item) => {
                                     return (
                                         <div key={item.id}
-                                             className={"widget-helper-grid-item " + 
-                                                        (this.initialGraphicId === item.id ? 'is-initially-selected ' : ' ') +
-                                                        (this.props.reticleInFocus.graphic.settings.val === item.id ? 'is-selected' : '')
+                                             className={classnames("widget-helper-grid-item ",
+                                                        {'is-initially-selected': this.initialGraphicId === item.id},
+                                                        {'is-selected': this.props.reticleInFocus.graphic.settings.val === item.id})
                                                        }
                                              onMouseOver={(e) => this.onMouseOverGraphic(e, item.id)}
                                              onClick={(e) => this.onClickGraphic(e, item.id)}>

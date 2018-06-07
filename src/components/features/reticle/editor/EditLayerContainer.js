@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {inject, observer} from 'mobx-react';
 import simulateEvent from "simulate-event";
+import classnames from 'classnames';
 
 import EditControl from './EditControl';
 import WidgetHelper from './widgets/WidgetHelper';
@@ -29,7 +30,7 @@ export default class EditLayerContainer extends Component {
                 
                         <div className='reticle-editor-heading'>{this.props.stores.reticlesStore.reticleInFocus.label}</div>
 
-                        <div className={'reticle-editor-layer-controls ' + (this.props.stores.editReticleStore.isGridControlOpen ? 'is-grid-control-open' : '')}>
+                        <div className={classnames('reticle-editor-layer-controls', {'is-grid-control-open': this.props.stores.editReticleStore.isGridControlOpen})}>
                             {this.props.stores.reticlesStore.reticleInFocus.controls.map(item =>
                                 <EditControl key={item.id}
                                              item={item}
