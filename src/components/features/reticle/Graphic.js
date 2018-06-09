@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { observable } from 'mobx';
 import {inject, observer} from 'mobx-react';
 
 import {polarToCartesian} from "../../../utils/reticleUtils";
@@ -7,10 +8,11 @@ import {polarToCartesian} from "../../../utils/reticleUtils";
 @observer
 export default class Graphic extends Component {
 
+    @observable offsetRect = { width: 0, height: 0 };
+
     constructor(props) {
         super(props);
         this.refEl = React.createRef();
-        this.offsetRect = { width: 0, height: 0 };
     }
 
     componentDidMount() {
@@ -32,10 +34,10 @@ export default class Graphic extends Component {
                  ref={this.refEl}
                  style={{
                     transform: "rotate(" + rotation + "deg) scale(" + this.props.scale + ")",
-                    transformOrigin: transformPoint.x + "px " + transformPoint.y + "px"
+                    transformOrigin: Math.floor(transformPoint.x) + "px " + Math.floor(transformPoint.y) + "px"
                  }}
-                 x={offsetPoint.x}
-                 y={offsetPoint.y} />
+                 x={Math.floor(offsetPoint.x)}
+                 y={Math.floor(offsetPoint.y)} />
         );
     }
 

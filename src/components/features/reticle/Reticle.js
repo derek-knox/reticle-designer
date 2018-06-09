@@ -20,7 +20,7 @@ export default class Reticle extends Component {
                 {item.divisions.settings.val === 0
                     ? <circle stroke={'red'} cx="50%" cy="50%" r={item.radius.settings.val} strokeWidth={item.thickness.settings.val} fill="none" />
                     : arcs.map((arcData) => {
-                        return item.divisions.settings.val > 0 && item.graphic.settings.val
+                        return item.divisions.settings.val > 0 && Boolean(item.graphic.settings.val)
                             ? <Graphic key={arcData.id}
                                        gfxId={item.graphic.settings.val}
                                        radius={item.radius.settings.val}
