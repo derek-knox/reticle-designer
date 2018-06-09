@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { observable } from 'mobx';
 import {inject, observer} from 'mobx-react';
 import { clamp } from 'lodash';
 import classnames from 'classnames';
@@ -10,7 +11,7 @@ import EditLayerContainer from './EditLayerContainer';
 @observer
 export default class ReticleEditor extends Component {
 
-    refEditor = null;
+    @observable refEditor = null;
     offsetH = 20;
 
     constructor(props) {
