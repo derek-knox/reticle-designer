@@ -4,7 +4,7 @@ import {inject, observer} from 'mobx-react';
 
 import classnames from "classnames";
 
-import Graphic from '../../Graphic';
+import Graphic from '../../../Graphic';
 
 @inject('stores')
 @observer

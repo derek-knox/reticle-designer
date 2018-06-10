@@ -5,9 +5,9 @@ import {inject, observer} from 'mobx-react';
 import Button from "@material-ui/core/Button";
 
 import {EditControlModel} from '../../../../../state/models/EditControlModel';
-import ColorWidgetGrid from './ColorWidgetGrid';
-import GraphicWidgetGrid from './GraphicWidgetGrid';
 import { ReticleModel } from '../../../../../state/models/ReticleModel';
+import ColorWidgetGrid from './color/ColorWidgetGrid';
+import GraphicWidgetGrid from './graphic/GraphicWidgetGrid';
 
 @inject('stores')
 @observer

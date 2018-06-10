@@ -3,8 +3,8 @@ import { inject, observer } from 'mobx-react';
 
 import { EditControlModel } from '../../../../state/models/EditControlModel';
 import { ReticleModel } from '../../../../state/models/ReticleModel';
-import ColorWidget from './widgets/ColorWidget';
-import GraphicWidget from './widgets/GraphicWidget';
+import ColorWidget from './widgets/color/ColorWidget';
+import GraphicWidget from './widgets/graphic/GraphicWidget';
 import SliderWidget from "./widgets/SliderWidget";
 
 @inject('stores')

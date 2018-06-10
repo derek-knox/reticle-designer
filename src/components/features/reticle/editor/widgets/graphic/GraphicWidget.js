@@ -4,7 +4,7 @@ import {inject, observer} from 'mobx-react';
 
 import Button from "@material-ui/core/Button";
 
-import Graphic from "../../Graphic";
+import Graphic from "../../../Graphic";
 
 @inject('stores')
 @observer
