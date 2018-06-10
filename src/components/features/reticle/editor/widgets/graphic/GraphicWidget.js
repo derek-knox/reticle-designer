@@ -16,7 +16,9 @@ export default class GraphicWidget extends Component {
 
     render() {
 
-        const graphicId = this.props.stores.reticlesStore.reticleInFocus.graphic.settings.val;
+        const reticleInFocus = this.props.stores.reticlesStore.reticleInFocus;
+        const graphicId = reticleInFocus.graphic.settings.val;
+        const color = this.props.stores.colorStore.getColor(reticleInFocus.color.settings.val);
 
         return (
             <div className="graphic-widget">
@@ -25,6 +27,7 @@ export default class GraphicWidget extends Component {
                     {graphicId
                         ? <svg className="widget-helper-graphic" width="50px" height="20px">
                             <Graphic key={graphicId}
+                                     color={color}
                                      gfxId={graphicId}
                                      radius={0}
                                      center={{ x: 0, y: 0 }}

@@ -52,12 +52,14 @@ export default class GraphicWidgetGrid extends Component {
 
     render() {
 
+        const color = this.props.stores.colorStore.getColor(this.props.reticleInFocus.color.settings.val);
+
         return (
             <div className="widget-helper-grid">
                 <div key={'gfx-0'}
                     className={classnames("widget-helper-grid-item",
-                    {'is-initially-selected': this.initialGraphicId === null},
-                    {'is-selected': this.props.reticleInFocus.graphic.settings.val === null})
+                        {'is-initially-selected': this.initialGraphicId === null},
+                        {'is-selected': this.props.reticleInFocus.graphic.settings.val === null})
                     }
                     onMouseOver={(e) => this.onMouseOverGraphic(e, null)}
                     onClick={(e) => this.onClickGraphic(e, null)}>
@@ -74,12 +76,13 @@ export default class GraphicWidgetGrid extends Component {
                     onClick={(e) => this.onClickGraphic(e, item.id)}>
                                 <svg className="widget-helper-graphic" width="100%" height="100%">
                                     <Graphic key={item.id}
-                                                gfxId={item.id}
-                                                radius={0}
-                                                center={{ x: 0, y: 0 }}
-                                                angle={0}
-                                                direction={0}
-                                                scale={1} />
+                                             color={color}
+                                             gfxId={item.id}
+                                             radius={0}
+                                             center={{ x: 0, y: 0 }}
+                                             angle={0}
+                                             direction={0}
+                                             scale={1} />
                                 </svg>
                             </div>
                         );
