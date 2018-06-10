@@ -56,7 +56,7 @@ export default class ColorWidgetGrid extends Component {
         return (
             <div className="widget-helper-grid widget-helper-grid-color">
                 {this.props.stores.colorStore.items.map((palette) => {
-                        return <ColorPalette key={palette.id} palette={palette} />
+                        return <ColorPalette key={palette.id} reticleInFocus={this.props.reticleInFocus} palette={palette} />
                     })
                 }
             </div>

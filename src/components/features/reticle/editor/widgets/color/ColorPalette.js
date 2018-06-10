@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {inject, observer} from 'mobx-react';
 
+import ColorSwatch from './ColorSwatch';
+
 @inject('stores')
 @observer
 export default class ColorPalette extends Component {
@@ -15,11 +17,7 @@ export default class ColorPalette extends Component {
                 </div>
 
                 {this.props.palette.colors.map((color, idx) => {
-                    return (
-                        <div key={idx} className='color-item'>
-                            <div className='color-swatch' style={{ backgroundColor: color }}></div>
-                        </div>
-                    )
+                    return <ColorSwatch key={idx} reticleInFocus={this.props.reticleInFocus} color={color} />;
                 })}
             </div>
         );

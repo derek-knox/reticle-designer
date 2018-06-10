@@ -57,12 +57,12 @@ export default class GraphicWidgetGrid extends Component {
         return (
             <div className="widget-helper-grid">
                 <div key={'gfx-0'}
-                    className={classnames("widget-helper-grid-item",
-                        {'is-initially-selected': this.initialGraphicId === null},
-                        {'is-selected': this.props.reticleInFocus.graphic.settings.val === null})
-                    }
-                    onMouseOver={(e) => this.onMouseOverGraphic(e, null)}
-                    onClick={(e) => this.onClickGraphic(e, null)}>
+                     className={classnames("widget-helper-grid-item",
+                         {'is-initially-selected': this.initialGraphicId === null},
+                         {'is-selected': this.props.reticleInFocus.graphic.settings.val === null})
+                     }
+                     onMouseOver={(e) => this.onMouseOverGraphic(e, null)}
+                     onClick={(e) => this.onClickGraphic(e, null)}>
                 None</div>
 
                 {this.props.stores.editReticleStore.graphics.map((item) => {
