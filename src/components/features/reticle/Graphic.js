@@ -34,7 +34,9 @@ export default class Graphic extends Component {
                  ref={this.refEl}
                  style={{
                     transform: "rotate(" + rotation + "deg) scale(" + this.props.scale + ")",
-                    transformOrigin: transformPoint.x + "px " + transformPoint.y + "px"
+                    transformOrigin: transformPoint.x + "px " + transformPoint.y + "px",
+                    stroke: this.props.color,
+                    fill: this.props.color
                  }}
                  x={offsetPoint.x}
                  y={offsetPoint.y} />

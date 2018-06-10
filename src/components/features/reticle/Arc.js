@@ -10,7 +10,7 @@ export default class Arc extends Component {
     render() {
         return (
             <path fill="none"
-                  stroke="red"
+                  stroke={this.props.color}
                   strokeWidth={this.props.thickness}
                   d={describeSvgArc({ x: this.props.center.x,
                                       y: this.props.center.y,

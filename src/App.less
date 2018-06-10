@@ -257,6 +257,39 @@ body {
             flex-wrap: wrap;
             align-content: flex-start;
 
+            &.widget-helper-grid-color {
+              
+              .content-v;
+
+              flex-grow: 1;
+
+              .widget-helper-grid-color-row {
+
+                .content-h;
+                margin-bottom: 15px;
+
+                .color-item {
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  flex-grow: 1;
+                  height: 36px;
+                  cursor: pointer;
+
+                  .color-swatch {
+                    border: 1px solid #000;
+                    width: 50%;
+                    height: 50%;
+                  }
+
+                  &.color-wheel {
+                    justify-content: flex-start;
+                  }
+                }
+              }
+
+            }
+
             .widget-helper-grid-item {
               width: 25%;
               height: 60px;

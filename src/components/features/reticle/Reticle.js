@@ -14,14 +14,16 @@ export default class Reticle extends Component {
         const item = this.props.item;
         const editAreaInfo = this.props.stores.editReticleStore.editAreaInfo;
         const arcs = getArcDataFromDivisionCount({ divisions: item.divisions.settings.val });
+        const color = this.props.stores.colorStore.getColor(item.color.settings.val);
 
         return (
             <svg className='reticle' width='100%' height='100%' style={{ transform: "rotate(" + item.rotation.settings.val + "deg)", opacity: item.opacity.settings.val }}>
                 {item.divisions.settings.val === 0
-                    ? <circle stroke={'red'} cx="50%" cy="50%" r={item.radius.settings.val} strokeWidth={item.thickness.settings.val} fill="none" />
+                    ? <circle stroke={color} fill="none" cx="50%" cy="50%" r={item.radius.settings.val} strokeWidth={item.thickness.settings.val} />
                     : arcs.map((arcData) => {
                         return item.divisions.settings.val > 0 && Boolean(item.graphic.settings.val)
                             ? <Graphic key={arcData.id}
+                                       color={color}
                                        gfxId={item.graphic.settings.val}
                                        radius={item.radius.settings.val}
                                        center={{ x: editAreaInfo.point.x, y: editAreaInfo.point.y }}
@@ -29,6 +31,7 @@ export default class Reticle extends Component {
                                        direction={item.direction.settings.val}
                                        scale={item.scale.settings.val} />
                             : <Arc key={arcData.id}
+                                   color={color}
                                    thickness={item.thickness.settings.val}
                                    radius={item.radius.settings.val}
                                    center={{ x: editAreaInfo.point.x, y: editAreaInfo.point.y }}
