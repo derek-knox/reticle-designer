@@ -5,7 +5,9 @@ import {inject, observer} from 'mobx-react';
 import Button from "@material-ui/core/Button";
 
 import {EditControlModel} from '../../../../../state/models/EditControlModel';
+import ColorWidgetGrid from './ColorWidgetGrid';
 import GraphicWidgetGrid from './GraphicWidgetGrid';
+import { ReticleModel } from '../../../../../state/models/ReticleModel';
 
 @inject('stores')
 @observer
@@ -20,6 +22,15 @@ export default class WidgetHelper extends Component {
         this.isReset = false;
     }
 
+    getWidgetGridByType(payload) {
+        const control = this.props.controlInFocus;
+        if(control.settings.reticleProp === ReticleModel.SettingType.Color) {
+            return <ColorWidgetGrid reticleInFocus={this.props.reticleInFocus} isReset={this.isReset} />;
+        } else if (control.settings.reticleProp === ReticleModel.SettingType.Graphic){
+            return <GraphicWidgetGrid reticleInFocus={this.props.reticleInFocus} isReset={this.isReset} />;
+        }
+    }
+
     reset() {
         this.isReset = true;
         this.props.stores.editReticleStore.isGridControlOpen = false;
@@ -30,6 +41,7 @@ export default class WidgetHelper extends Component {
     }
 
     render() {
+
         return (
             <div className="wrapper">
                 <div className="content-v widget-helper">
@@ -41,7 +53,7 @@ export default class WidgetHelper extends Component {
                                 onClick={this.onClickClose}>x</Button>
                     </div>
                     <div className="widget-helper-body">
-                        <GraphicWidgetGrid reticleInFocus={this.props.reticleInFocus} isReset={this.isReset}></GraphicWidgetGrid>                         
+                        {this.getWidgetGridByType()}
                     </div>
                 </div>
             </div>

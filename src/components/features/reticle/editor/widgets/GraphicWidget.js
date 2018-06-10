@@ -8,7 +8,7 @@ import Graphic from "../../Graphic";
 
 @inject('stores')
 @observer
-export default class graphicIdWidget extends Component {
+export default class GraphicWidget extends Component {
 
     @action.bound onClickOpenGrid(e) {
         this.props.stores.editReticleStore.isGridControlOpen = true;
