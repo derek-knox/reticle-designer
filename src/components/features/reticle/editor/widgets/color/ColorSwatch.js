@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import { action } from "mobx";
 import {inject, observer} from 'mobx-react';
 
 @inject('stores')

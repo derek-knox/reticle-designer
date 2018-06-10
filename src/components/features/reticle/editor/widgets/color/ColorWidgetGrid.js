@@ -2,8 +2,6 @@ import React, {Component} from 'react';
 import { action, observe, observable } from "mobx";
 import {inject, observer} from 'mobx-react';
 
-import classnames from "classnames";
-
 import ColorPalette from "./ColorPalette";
 
 @inject('stores')

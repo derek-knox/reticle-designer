@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {action, observe, observable} from 'mobx';
+import {action, observable} from 'mobx';
 import {inject, observer} from 'mobx-react';
 
 import Button from "@material-ui/core/Button";

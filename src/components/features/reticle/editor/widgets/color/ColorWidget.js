@@ -14,8 +14,6 @@ export default class ColorWidget extends Component {
 
     render() {
 
-        const colorId = this.props.stores.reticlesStore.reticleInFocus.color.settings.val;
-
         return (
             <div className="color-widget">
                 <Button className="open-grid-button"
