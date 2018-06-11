@@ -7,8 +7,15 @@ export default class ColorWheel extends Component {
 
     render() {
         return (
-            <div>
-                W
+            <div className='color-wheel'>
+                {this.props.palette.colors.map((color, idx) => {
+                        return (
+                            <div className={'color-wheel-slice'}
+                                 key={idx}
+                                 style={{ backgroundColor: color }} ></div>
+                        );
+                    })             
+                }
             </div>
         );
     }
