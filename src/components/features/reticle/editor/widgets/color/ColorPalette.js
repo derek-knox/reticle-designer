@@ -11,11 +11,6 @@ export default class ColorPalette extends Component {
 
         return (
             <div className='widget-helper-grid-color-row'>
-                
-                <div className="color-item color-wheel">
-                    WH
-                </div>
-
                 {this.props.palette.colors.map((color, idx) => {
                     return <ColorSwatch key={idx} reticleInFocus={this.props.reticleInFocus} color={color} />;
                 })}

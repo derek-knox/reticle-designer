@@ -198,6 +198,51 @@ body {
         .reticle-editor-control-widget {
           width: 50%;
 
+          .color-widget {
+            
+            .content-h;
+            justify-content: center;
+            align-items: center;
+
+            .widget-helper-grid-color-row {
+
+              .content-h;
+
+              .color-item {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-grow: 1;
+                height: 18px;
+                border-bottom: 2px solid transparent;
+                cursor: pointer;
+
+                .color-swatch {
+                  border: 1px solid #000;
+                  width: 50%;
+                  height: 50%;
+                }
+
+                &.is-initially-selected {
+                  border-bottom: 2px solid #99cc33;
+                }
+
+                &.is-selected {
+                  border-bottom: 2px solid rgba(153, 204, 51, .5);
+
+                  &.is-initially-selected {
+                    border-bottom: 2px solid #99cc33;
+                  }
+                }
+                
+                &:hover {
+                  border-bottom: 2px solid rgba(153, 204, 51, .5);
+                }
+              }
+            }
+
+          }
+
           // TODO widget-list & widget-list-select are likely temp in favor or proper Theme or override approach
           .widget-list {
             width: 100%;
@@ -212,6 +257,12 @@ body {
           color: #99cc33;
           width: 100%;
           border-bottom: 1px solid #99cc33;
+
+          &.color-grid-button {
+            width: 32px;
+            min-width: 32px;
+            margin-left: 4px;
+          }
         }
 
         &.is-selected {
@@ -262,54 +313,6 @@ body {
               .content-v;
 
               flex-grow: 1;
-
-              .widget-helper-grid-color-row {
-
-                .content-h;
-                margin-bottom: 15px;
-
-                .color-item {
-                  display: flex;
-                  justify-content: center;
-                  align-items: center;
-                  flex-grow: 1;
-                  height: 36px;
-                  border-bottom: 2px solid transparent;
-                  cursor: pointer;
-
-                  .color-swatch {
-                    border: 1px solid #000;
-                    width: 50%;
-                    height: 50%;
-                  }
-
-                  &.color-wheel {
-                    justify-content: flex-start;
-                    border-color: transparent;
-
-                    &:hover {
-                      border-color: transparent;
-                    }
-                  }
-
-                  &.is-initially-selected {
-                    border-bottom: 2px solid #99cc33;
-                  }
-
-                  &.is-selected {
-                    border-bottom: 2px solid rgba(153, 204, 51, .5);
-
-                    &.is-initially-selected {
-                      border-bottom: 2px solid #99cc33;
-                    }
-                  }
-                  
-                  &:hover {
-                    border-bottom: 2px solid rgba(153, 204, 51, .5);
-                  }
-                }
-              }
-
             }
 
             .widget-helper-grid-item {
