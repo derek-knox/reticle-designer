@@ -21,7 +21,7 @@ export default class ColorWidget extends Component {
 
         return (
             <div className="color-widget">
-                <ColorPalette key={palette.id} reticleInFocus={this.props.reticleInFocus} palette={palette} />
+                <ColorPalette key={palette.id} palette={palette} />
                 <Button className="open-grid-button color-grid-button"
                         onClick={this.onClickOpenGrid}>
                     <ColorWheel />
