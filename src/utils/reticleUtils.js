@@ -52,15 +52,15 @@ export function describeSvgArc(payload) {
 }
 
 export function describeSvgWedge(payload) {
-    var start = polarToCartesian(payload.x, payload.y, payload.radius, payload.endAngle);
-    var end = polarToCartesian(payload.x, payload.y, payload.radius, payload.startAngle);
+    var start = polarToCartesian(payload.x + payload.offset, payload.y + payload.offset, payload.radius, payload.endAngle);
+    var end = polarToCartesian(payload.x + payload.offset, payload.y + payload.offset, payload.radius, payload.startAngle);
     
     var largeArcFlag = payload.endAngle - payload.startAngle <= 180 ? "0" : "1";
 
     var d = [
         "M", start.x, start.y,
         "A", payload.radius, payload.radius, 0, largeArcFlag, 0, end.x, end.y,
-        "L", payload.radius, payload.radius,
+        "L", payload.offset + payload.radius, payload.offset + payload.radius,
         "L", start.x, start.y
     ].join(" ");
 

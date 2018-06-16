@@ -29,24 +29,25 @@ export default class ColorWheel extends Component {
                 ...slice
             }
         });
-
-        console.log(coloredSlices)
-
+        const offset = this.props.offset || 0;
+        
         return (
             <div className='color-wheel'>
                 <svg width='100%' height='100%'>
-                {coloredSlices.map((coloredSlice, idx) => {
-                    return (
-                        <ColorWedge className={classnames('color-wheel-wedge',
-                                        { 'is-selected': this.props.colorInFocusIndex === idx })}
-                                    key={idx}
-                                    color={coloredSlice.color}
-                                    radius={coloredSlice.radius}
-                                    center={{ x: coloredSlice.x, y: coloredSlice.y }}
-                                    start={coloredSlice.startAngle}
-                                    end={coloredSlice.endAngle}></ColorWedge>
-                    );
-                })}
+                    {coloredSlices.map((coloredSlice, idx) => {
+                        return (
+                            <ColorWedge key={idx}
+                                        className={classnames('color-wheel-wedge',
+                                            { 'is-selected': this.props.colorInFocusIndex === idx })}
+                                        isFocused={this.props.colorInFocusIndex === idx}
+                                        color={coloredSlice.color}
+                                        radius={coloredSlice.radius}
+                                        center={{ x: coloredSlice.x, y: coloredSlice.y }}
+                                        offset={offset}
+                                        start={coloredSlice.startAngle}
+                                        end={coloredSlice.endAngle}></ColorWedge>
+                        );
+                    })}
                 </svg>
             </div>
         );
