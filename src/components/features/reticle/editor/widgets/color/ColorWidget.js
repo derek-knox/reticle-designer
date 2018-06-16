@@ -16,13 +16,14 @@ export default class ColorWidget extends Component {
     render() {
 
         const palette = this.props.stores.colorStore.colorPaletteInFocus;
-
+        const colorInFocusIndex = this.props.stores.reticlesStore.reticleInFocus.color.settings.val;
+        
         return (
             <div className="color-widget">
                 <ColorPalette key={palette.id} palette={palette} />
                 <div className="open-grid-button color-grid-button"
                         onClick={this.onClickOpenGrid}>
-                    <ColorWheel palette={palette} />
+                    <ColorWheel palette={palette} colorInFocusIndex={colorInFocusIndex} />
                 </div>
             </div>
         );

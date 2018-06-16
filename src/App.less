@@ -71,8 +71,7 @@ body {
   
   display: flex;
   flex-direction: row;
-  align-items: center;
-  justify-content: center;
+  .center-h-v;
 }
 
 .reticle-stage {
@@ -84,9 +83,9 @@ body {
   height: 90vh;
   display: flex;
   flex-direction: row;
-  align-items: center;
-  justify-content: center;
   overflow: hidden;
+  
+  .center-h-v;
 
   .reticles-directions {
     position: absolute;
@@ -201,8 +200,7 @@ body {
           .color-widget {
             
             .content-h;
-            justify-content: center;
-            align-items: center;
+            .center-h-v;
 
             .widget-helper-grid-color-row {
 
@@ -258,10 +256,23 @@ body {
           width: 100%;
           border-bottom: 1px solid #99cc33;
 
+          
           &.color-grid-button {
             width: 32px;
             height: 32px;
             margin-left: 4px;
+            
+            display: flex;
+            .center-h-v;
+
+            .color-wheel {
+              width: 20px;
+              height: 20px;
+
+              .color-wheel-slice {
+                height: 4px;
+              }
+            }
           }
         }
 
@@ -316,6 +327,9 @@ body {
               overflow: hidden;
               cursor: pointer;
 
+              .content-v;
+              .center-h-v;
+
               .widget-helper-graphic {
                 width: 100%;
                 height: 100%;
@@ -341,11 +355,22 @@ body {
         }
       }
     }
+  }
+}
 
-    .color-wheel {
-      .color-wheel-slice {
-        height: 6px;  
-      }
+.color-wheel {
+  width: 24px;
+  height: 24px;
+  border-radius: 100%;
+  overflow: hidden;
+
+  .color-wheel-slice {
+    height: 5px;
+    position: relative;
+
+    &.is-selected {
+      border-top: 1px solid #444;
+      border-bottom: 1px solid #444;
     }
   }
 }
@@ -375,6 +400,11 @@ body {
   display: flex;
   flex-grow: 1;
   flex-direction: column;
+}
+
+.center-h-v {
+  align-items: center;
+  justify-content: center;
 }
 
 /* Scrollbars */

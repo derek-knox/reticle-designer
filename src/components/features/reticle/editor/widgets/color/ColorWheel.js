@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {inject, observer} from 'mobx-react';
 
+import classnames from 'classnames';
+
 @inject('stores')
 @observer
 export default class ColorWheel extends Component {
@@ -10,7 +12,8 @@ export default class ColorWheel extends Component {
             <div className='color-wheel'>
                 {this.props.palette.colors.map((color, idx) => {
                         return (
-                            <div className={'color-wheel-slice'}
+                            <div className={classnames('color-wheel-slice',
+                                    { 'is-selected': this.props.colorInFocusIndex === idx })}
                                  key={idx}
                                  style={{ backgroundColor: color }} ></div>
                         );

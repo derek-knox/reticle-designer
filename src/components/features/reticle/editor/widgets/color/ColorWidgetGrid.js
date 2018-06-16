@@ -52,6 +52,8 @@ export default class ColorWidgetGrid extends Component {
 
     render() {
 
+        const colorInFocusIndex = this.props.stores.reticlesStore.reticleInFocus.color.settings.val;
+
         return (
             <div className="widget-helper-grid">
                 {this.props.stores.colorStore.items.map((item) => {
@@ -62,7 +64,7 @@ export default class ColorWidgetGrid extends Component {
                                     { 'is-selected': this.props.stores.colorStore.colorPaletteInFocus.id === item.id })}
                                  onMouseOver={(e) => this.onMouseOverPalette(e, item.id)}
                                  onClick={(e) => this.onClickPalette(e, item.id)}>
-                                    <ColorWheel palette={item} />
+                                    <ColorWheel palette={item} colorInFocusIndex={colorInFocusIndex} />
                             </div>
                         );
                     })
