@@ -38,7 +38,6 @@ export function getArcDataFromDivisionCount(payload) {
 }
 
 export function describeSvgArc(payload) {
-
     var start = polarToCartesian(payload.x, payload.y, payload.radius, payload.endAngle);
     var end = polarToCartesian(payload.x, payload.y, payload.radius, payload.startAngle);
 
@@ -47,6 +46,22 @@ export function describeSvgArc(payload) {
     var d = [
         "M", start.x, start.y,
         "A", payload.radius, payload.radius, 0, largeArcFlag, 0, end.x, end.y
+    ].join(" ");
+
+    return d;
+}
+
+export function describeSvgWedge(payload) {
+    var start = polarToCartesian(payload.x, payload.y, payload.radius, payload.endAngle);
+    var end = polarToCartesian(payload.x, payload.y, payload.radius, payload.startAngle);
+    
+    var largeArcFlag = payload.endAngle - payload.startAngle <= 180 ? "0" : "1";
+
+    var d = [
+        "M", start.x, start.y,
+        "A", payload.radius, payload.radius, 0, largeArcFlag, 0, end.x, end.y,
+        "L", payload.radius, payload.radius,
+        "L", start.x, start.y
     ].join(" ");
 
     return d;

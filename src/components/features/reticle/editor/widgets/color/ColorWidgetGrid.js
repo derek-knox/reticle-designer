@@ -64,7 +64,7 @@ export default class ColorWidgetGrid extends Component {
                                     { 'is-selected': this.props.stores.colorStore.colorPaletteInFocus.id === item.id })}
                                  onMouseOver={(e) => this.onMouseOverPalette(e, item.id)}
                                  onClick={(e) => this.onClickPalette(e, item.id)}>
-                                    <ColorWheel palette={item} colorInFocusIndex={colorInFocusIndex} />
+                                    <ColorWheel palette={item} colorInFocusIndex={colorInFocusIndex} size={12} />
                             </div>
                         );
                     })
