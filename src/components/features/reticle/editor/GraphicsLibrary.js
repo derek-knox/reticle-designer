@@ -28,8 +28,8 @@ export default class GraphicsLibrary extends Component {
                 </defs>
 
                 <defs ref={node => this.refEl = node}>
-                    <g id="gfx – 1"><use href="#gfx-bg" /><g transform="translate(25 25)"><rect width="50" height="50" /><rect x="0.5" y="0.5" width="49" height="49" /></g></g>
-                    <g id="gfx – 2"><use href="#gfx-bg" /><g transform="translate(25 25)"><circle cx="25" cy="25" r="25" /><circle cx="25" cy="25" r="24.5" /></g></g>
+                    <g id="gfx – 1"><use href="#gfx-bg" /><g transform="translate(25 25)"><rect x="0.5" y="0.5" width="49" height="49" /></g></g>
+                    <g id="gfx – 2"><use href="#gfx-bg" /><g transform="translate(25 25)"><circle cx="25" cy="25" r="24.5" /></g></g>
                     <g id="gfx – 3"><use href="#gfx-bg" /><path d="M535,75.292l25-25v25l25-25" transform="translate(-509.5 -12.792)" /></g>
                 </defs>
 

@@ -25,12 +25,12 @@ export default class GraphicWidget extends Component {
                 <Button className="open-grid-button"
                         onClick={this.onClickOpenGrid}>
                     {graphicId
-                        ? <svg className="widget-helper-graphic" width="50px" height="20px">
+                        ? <svg className="widget-helper-graphic" width="50px" height="50px">
                             <Graphic key={graphicId}
                                      color={color}
                                      gfxId={graphicId}
                                      radius={0}
-                                     center={{ x: 0, y: 0 }}
+                                     center={{ x: 25, y: 25 }}
                                      angle={0}
                                      direction={0}
                                      scale={1} />

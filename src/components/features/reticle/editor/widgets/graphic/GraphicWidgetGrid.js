@@ -74,12 +74,12 @@ export default class GraphicWidgetGrid extends Component {
                     }
                     onMouseOver={(e) => this.onMouseOverGraphic(e, item.id)}
                     onClick={(e) => this.onClickGraphic(e, item.id)}>
-                                <svg className="widget-helper-graphic" width="100%" height="100%">
+                                <svg className="widget-helper-graphic" width="50px" height="50px">
                                     <Graphic key={item.id}
                                              color={color}
                                              gfxId={item.id}
                                              radius={0}
-                                             center={{ x: 0, y: 0 }}
+                                             center={{ x: 25, y: 25 }}
                                              angle={0}
                                              direction={0}
                                              scale={1} />
