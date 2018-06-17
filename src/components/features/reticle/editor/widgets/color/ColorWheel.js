@@ -40,6 +40,7 @@ export default class ColorWheel extends Component {
                                         className={classnames('color-wheel-wedge',
                                             { 'is-selected': this.props.colorInFocusIndex === idx })}
                                         isFocused={this.props.colorInFocusIndex === idx}
+                                        isFocusedOffset={this.props.size * .4}
                                         color={coloredSlice.color}
                                         radius={coloredSlice.radius}
                                         center={{ x: coloredSlice.x, y: coloredSlice.y }}

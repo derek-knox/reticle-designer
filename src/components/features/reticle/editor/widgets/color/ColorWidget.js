@@ -23,7 +23,7 @@ export default class ColorWidget extends Component {
                 <ColorPalette key={palette.id} palette={palette} />
                 <div className="open-grid-button color-grid-button"
                      onClick={this.onClickOpenGrid}>
-                    <ColorWheel palette={palette} colorInFocusIndex={colorInFocusIndex} size={10} />
+                    <ColorWheel palette={palette} colorInFocusIndex={colorInFocusIndex} size={10} offset={6} />
                 </div>
             </div>
         );
