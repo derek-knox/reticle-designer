@@ -10,7 +10,8 @@ export default class ColorWedge extends Component {
     getTranslation() {
         if (this.props.isFocused) {
             const angle = this.props.end - (this.props.end - this.props.start) / 2;
-            return polarToCartesian(0, 0, this.props.isFocusedOffset, angle);
+            const point = polarToCartesian(0, 0, this.props.isFocusedOffset, angle);
+            return point;
         } else {
             return { x: 0, y: 0 };
         }
