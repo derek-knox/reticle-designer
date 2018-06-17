@@ -23,9 +23,10 @@ export default class Graphic extends Component {
 
         const gfxId = this.props.gfxId;
         const point = polarToCartesian(this.props.center.x, this.props.center.y, this.props.radius, this.props.angle);
-        const offsetPoint = { x: point.x - this.offsetRect.width / 2, y: point.y - this.offsetRect.height / 2 };
-        const transformPoint = { x: offsetPoint.x + this.offsetRect.width / 2, y: offsetPoint.y + this.offsetRect.height / 2 };
-        
+        const offsetRectHalved = { width: this.offsetRect.width / 2, height: this.offsetRect.height / 2 };
+        const offsetPoint = { x: point.x - offsetRectHalved.width, y: point.y - offsetRectHalved.height };
+        const transformPoint = { x: offsetPoint.x + offsetRectHalved.width, y: offsetPoint.y + offsetRectHalved.height };
+
         let rotation = this.props.direction + this.props.angle;
         if(rotation > 360) rotation -= 360;
 

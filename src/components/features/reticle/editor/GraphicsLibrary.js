@@ -23,10 +23,14 @@ export default class GraphicsLibrary extends Component {
         return (
             <svg className='graphics-library' version="1.1" xmlns="http://www.w3.org/2000/svg">
 
+                <defs>
+                    <rect id="gfx-bg" width="100" height="100" fill="none" stroke="none" />
+                </defs>
+
                 <defs ref={node => this.refEl = node}>
-                    <rect id='gfx-1' x="0" y="0" width="50" height="20" />
-                    <circle id='gfx-2' cx="25" cy="25" r="50" />
-                    <polyline id='gfx-3' points="100,100 150,25 150,75 200,0" fill="none" />
+                    <g id="gfx – 1"><use href="#gfx-bg" /><g transform="translate(25 25)"><rect width="50" height="50" /><rect x="0.5" y="0.5" width="49" height="49" /></g></g>
+                    <g id="gfx – 2"><use href="#gfx-bg" /><g transform="translate(25 25)"><circle cx="25" cy="25" r="25" /><circle cx="25" cy="25" r="24.5" /></g></g>
+                    <g id="gfx – 3"><use href="#gfx-bg" /><path d="M535,75.292l25-25v25l25-25" transform="translate(-509.5 -12.792)" /></g>
                 </defs>
 
             </svg>
