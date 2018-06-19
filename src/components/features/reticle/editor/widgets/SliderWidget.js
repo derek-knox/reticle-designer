@@ -37,9 +37,9 @@ export default class SliderWidget extends Component {
                        max={item.settings.max}
                        step={item.settings.step}
                        onChange={(val) => this.onSliderChange({ val })}
-                       trackStyle={{ backgroundColor: '#99cc33' }}
-                       railStyle={{ backgroundColor: '#333333' }}
-                       handleStyle={{ borderColor: '#99cc33', backgroundColor: '#99cc33' }} />;
+                       trackStyle={{ backgroundColor: '#99cc33', height: '2px' }}
+                       railStyle={{ backgroundColor: '#333333', height: '2px' }}
+                       handleStyle={{ borderColor: '#99cc33', backgroundColor: '#99cc33', marginTop: '-6px', boxShadow: '0 0 5px #444' }} />;
     }
 
 }
