@@ -6,6 +6,7 @@ import { ReticleModel } from '../../../../state/models/ReticleModel';
 import ColorWidget from './widgets/color/ColorWidget';
 import GraphicWidget from './widgets/graphic/GraphicWidget';
 import SliderWidget from "./widgets/SliderWidget";
+import ToggleRangeWidget from "./widgets/ToggleRangeWidget";
 
 @inject('stores')
 @observer
@@ -21,6 +22,9 @@ export default class EditControlWidget extends Component {
             } else if (payload.settings.reticleProp === ReticleModel.SettingType.Graphic) {
                 return <GraphicWidget item={payload} {...this.props} />;
             }
+        }
+        else if (payload.type === EditControlModel.Type.ToggleRange) {
+            return <ToggleRangeWidget item={payload} {...this.props} />;
         }
     }
 

@@ -6,6 +6,7 @@ export class EditControlModel {
     static Type = {
         Range: 'range',
         Grid: 'grid',
+        ToggleRange: 'toggle-range',
     }
 
     static defaultSettings = { reticleProp: null, val: 0, min: 0, max: 100 };
