@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { action } from "mobx";
 import { inject, observer } from 'mobx-react';
 
+import Switch from "@material-ui/core/Switch";
+
 import { keydownScoped } from "react-keydown";
 
 import Slider from "rc-slider";
@@ -28,7 +30,7 @@ export default class ToggleRangeWidget extends Component {
         this.props.stores.reticlesStore.reticleInFocus.updateSettingsValue({ val: payload.val, reticleProp: this.props.item.settings.reticleProp });
     }
     
-    @action.bound onClickToggleIsStroke() {
+    @action.bound onToggleChange() {
         const currentlyIsStroke = this.props.item.settings.isStroke;
         this.props.stores.reticlesStore.reticleInFocus.updateSettingsValue({ isStroke: !currentlyIsStroke, reticleProp: this.props.item.settings.reticleProp });
     }
@@ -38,9 +40,19 @@ export default class ToggleRangeWidget extends Component {
         const item = this.props.item;
 
         return (
-            <div className='content-h'>
+            <div className='widget-toggle-slider'>
+                <div className='toggle-stroke-and-fill'>
+                    <Switch className='toggle-stroke-and-fill-switch'
+                            checked={item.settings.isStroke}
+                            onChange={this.onToggleChange}
+                            value='isStroke'
+                            color='primary'
+                    />
+                    <div>+</div>
+                </div>
                 {item.settings.isStroke
-                 ? <Slider value={this.props.stores.reticlesStore.reticleInFocus[item.settings.reticleProp].settings.val}
+                 ? <Slider className='slider-stroke-and-fill'
+                           value={this.props.stores.reticlesStore.reticleInFocus[item.settings.reticleProp].settings.val}
                            min={item.settings.min}
                            max={item.settings.max}
                            step={item.settings.step}
@@ -50,7 +62,6 @@ export default class ToggleRangeWidget extends Component {
                            handleStyle={{ borderColor: '#99cc33', backgroundColor: '#99cc33', marginTop: '-6px', boxShadow: '0 0 5px #444' }} />
                  : null
                 }
-                <div onClick={this.onClickToggleIsStroke}>*-*</div>
             </div>
         );
     }

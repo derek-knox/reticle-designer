@@ -19,7 +19,7 @@ export default class ColorWidget extends Component {
         const colorInFocusIndex = this.props.stores.reticlesStore.reticleInFocus.color.settings.val;
         
         return (
-            <div className="color-widget">
+            <div className="widget-color">
                 <ColorPalette key={palette.id} palette={palette} />
                 <div className="open-grid-button color-grid-button"
                      onClick={this.onClickOpenGrid}>
