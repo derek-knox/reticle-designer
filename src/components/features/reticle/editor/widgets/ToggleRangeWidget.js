@@ -25,9 +25,12 @@ export default class ToggleRangeWidget extends Component {
     }
 
     @action.bound onSliderChange(payload) {
-        console.log('onSliderChange', payload);
         this.props.stores.reticlesStore.reticleInFocus.updateSettingsValue({ val: payload.val, reticleProp: this.props.item.settings.reticleProp });
-        console.log(this.props.stores.reticlesStore.reticleInFocus);
+    }
+    
+    @action.bound onClickToggleIsStroke() {
+        const currentlyIsStroke = this.props.item.settings.isStroke;
+        this.props.stores.reticlesStore.reticleInFocus.updateSettingsValue({ isStroke: !currentlyIsStroke, reticleProp: this.props.item.settings.reticleProp });
     }
 
     render() {
@@ -36,15 +39,18 @@ export default class ToggleRangeWidget extends Component {
 
         return (
             <div className='content-h'>
-                <Slider value={this.props.stores.reticlesStore.reticleInFocus[item.settings.reticleProp].settings.val}
-                        min={item.settings.min}
-                        max={item.settings.max}
-                        step={item.settings.step}
-                        onChange={(val) => this.onSliderChange({ val })}
-                        trackStyle={{ backgroundColor: '#99cc33', height: '2px' }}
-                        railStyle={{ backgroundColor: '#333333', height: '2px' }}
-                        handleStyle={{ borderColor: '#99cc33', backgroundColor: '#99cc33', marginTop: '-6px', boxShadow: '0 0 5px #444' }} />
-                <div>*-*</div>
+                {item.settings.isStroke
+                 ? <Slider value={this.props.stores.reticlesStore.reticleInFocus[item.settings.reticleProp].settings.val}
+                           min={item.settings.min}
+                           max={item.settings.max}
+                           step={item.settings.step}
+                           onChange={(val) => this.onSliderChange({ val })}
+                           trackStyle={{ backgroundColor: '#99cc33', height: '2px' }}
+                           railStyle={{ backgroundColor: '#333333', height: '2px' }}
+                           handleStyle={{ borderColor: '#99cc33', backgroundColor: '#99cc33', marginTop: '-6px', boxShadow: '0 0 5px #444' }} />
+                 : null
+                }
+                <div onClick={this.onClickToggleIsStroke}>*-*</div>
             </div>
         );
     }

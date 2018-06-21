@@ -97,8 +97,8 @@ export class ReticleModel {
     else if(control.type === EditControlModel.Type.Grid)
       newVal = payload.val;
     else if(control.type === EditControlModel.Type.ToggleRange) {
-      newVal = payload.val;
-      control.settings.isStroke = payload.isStroke || control.settings.isStroke;
+      newVal = payload.val || control.settings.val;
+      control.settings.isStroke = payload.hasOwnProperty('isStroke') ? payload.isStroke : control.settings.isStroke;
     }
     control.settings.val = newVal;
   }
