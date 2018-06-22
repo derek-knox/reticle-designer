@@ -10,7 +10,7 @@ import Graphic from '../../../Graphic';
 @observer
 export default class GraphicWidgetGrid extends Component {
 
-    @observable initialGraphicId = null;
+    @observable initialGraphicId = this.props.reticleInFocus.graphic.settings.val;
     unobserve = null;
 
     constructor(props) {
@@ -68,9 +68,9 @@ export default class GraphicWidgetGrid extends Component {
                 {this.props.stores.editReticleStore.graphics.map((item) => {
                     return (
                         <div key={item.id}
-                        className={classnames("widget-helper-grid-item",
-                        {'is-initially-selected': this.initialGraphicId === item.id},
-                        {'is-selected': this.props.reticleInFocus.graphic.settings.val === item.id})
+                             className={classnames("widget-helper-grid-item",
+                                {'is-initially-selected': this.initialGraphicId === item.id},
+                                {'is-selected': this.props.reticleInFocus.graphic.settings.val === item.id})
                     }
                     onMouseOver={(e) => this.onMouseOverGraphic(e, item.id)}
                     onClick={(e) => this.onClickGraphic(e, item.id)}>
