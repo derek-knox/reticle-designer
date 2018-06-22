@@ -28,6 +28,7 @@ export default class GraphicWidget extends Component {
                         ? <svg className="widget-helper-graphic" width="50px" height="50px">
                             <Graphic key={graphicId}
                                      color={color}
+                                     strokeSettings={reticleInFocus.stroke.settings}
                                      gfxId={graphicId}
                                      radius={0}
                                      center={{ x: 25, y: 25 }}

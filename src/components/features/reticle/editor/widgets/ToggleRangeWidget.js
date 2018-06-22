@@ -2,10 +2,9 @@ import React, { Component } from 'react';
 import { action } from "mobx";
 import { inject, observer } from 'mobx-react';
 
-import Switch from "@material-ui/core/Switch";
-
 import { keydownScoped } from "react-keydown";
 
+import Switch from "@material-ui/core/Switch";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 
@@ -48,7 +47,6 @@ export default class ToggleRangeWidget extends Component {
                             value='isStroke'
                             color='primary'
                     />
-                    <div>+</div>
                 </div>
                 {item.settings.isStroke
                  ? <Slider className='slider-stroke-and-fill'

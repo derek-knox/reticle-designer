@@ -30,14 +30,19 @@ export default class Graphic extends Component {
         let rotation = this.props.direction + this.props.angle;
         if(rotation > 360) rotation -= 360;
 
+        const isStroke = this.props.strokeSettings.isStroke;
+        const strokeWidth = isStroke ? this.props.strokeSettings.val : 1;
+
         return (
+
             <use href={'#' + gfxId}
                  ref={this.refEl}
                  style={{
                     transform: "rotate(" + rotation + "deg) scale(" + this.props.scale + ")",
                     transformOrigin: transformPoint.x + "px " + transformPoint.y + "px",
                     stroke: this.props.color,
-                    fill: this.props.color
+                    strokeWidth: strokeWidth,
+                    fill: isStroke ? 'none' : this.props.color
                  }}
                  x={offsetPoint.x}
                  y={offsetPoint.y} />

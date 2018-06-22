@@ -24,6 +24,7 @@ export default class Reticle extends Component {
                         return item.divisions.settings.val > 0 && Boolean(item.graphic.settings.val)
                             ? <Graphic key={arcData.id}
                                        color={color}
+                                       strokeSettings={item.stroke.settings}
                                        gfxId={item.graphic.settings.val}
                                        radius={item.radius.settings.val}
                                        center={{ x: editAreaInfo.point.x, y: editAreaInfo.point.y }}

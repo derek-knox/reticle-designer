@@ -68,7 +68,7 @@ export default class GraphicWidgetGrid extends Component {
                 {this.props.stores.editReticleStore.graphics.map((item) => {
                     return (
                         <div key={item.id}
-                        className={classnames("widget-helper-grid-item ",
+                        className={classnames("widget-helper-grid-item",
                         {'is-initially-selected': this.initialGraphicId === item.id},
                         {'is-selected': this.props.reticleInFocus.graphic.settings.val === item.id})
                     }
@@ -77,6 +77,7 @@ export default class GraphicWidgetGrid extends Component {
                                 <svg className="widget-helper-graphic" width="50px" height="50px">
                                     <Graphic key={item.id}
                                              color={color}
+                                             strokeSettings={this.props.reticleInFocus.stroke.settings}
                                              gfxId={item.id}
                                              radius={0}
                                              center={{ x: 25, y: 25 }}
