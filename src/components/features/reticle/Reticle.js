@@ -17,7 +17,11 @@ export default class Reticle extends Component {
         const color = this.props.stores.colorStore.getColor(item.color.settings.val);
 
         return (
-            <svg className='reticle' width='100%' height='100%' style={{ transform: "rotate(" + item.rotation.settings.val + "deg)", opacity: item.opacity.settings.val }}>
+            <svg className='reticle'
+                 width='100%'
+                 height='100%'
+                 viewBox={'0 0 ' + editAreaInfo.rect.width + ' ' + editAreaInfo.rect.height}
+                 style={{ transform: "rotate(" + item.rotation.settings.val + "deg)", opacity: item.opacity.settings.val }}>
                 {item.divisions.settings.val === 0
                     ? <circle stroke={color} fill="none" cx="50%" cy="50%" r={item.radius.settings.val} strokeWidth={item.thickness.settings.val} />
                     : arcs.map((arcData) => {
