@@ -24,7 +24,7 @@ export default class App extends Component {
     return (
       <div className='app'>
         <RouterView routerStore={this.props.stores.routerStore} viewMap={viewMap} />
-        <DevTools />
+        {/* <DevTools /> */}
       </div>
     );
 
