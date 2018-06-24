@@ -1,4 +1,6 @@
 import { action, observable } from 'mobx';
+import domtoimage from "dom-to-image";
+import FileSaver from "file-saver";
 
 import { getEditAreaInfo } from '../../utils/reticleUtils';
 
@@ -20,6 +22,19 @@ export class EditReticleStore {
 
     @action updateEditArea(payload) {
         this.editAreaInfo = getEditAreaInfo(payload);
+    }
+
+    @action takeSnapshot() {
+        this.isSnapshotInProcess = true;
+        const target = document.getElementById("reticles-snapshot-target"),
+              targetRect = target.getBoundingClientRect();
+        domtoimage.toBlob(target, { quality: 1, bgcolor: '#333', width: targetRect.width, height: targetRect.height })
+            .then(this.onShapshotProcessed);
+    }
+
+    @action.bound onShapshotProcessed(payload) {
+        FileSaver.saveAs(payload, "fui-reticles-" + Date.now() + ".png");
+        this.isSnapshotInProcess = false;
     }
 
 }

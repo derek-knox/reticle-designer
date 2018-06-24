@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import { action } from 'mobx';
 import {inject, observer} from 'mobx-react';
-import domtoimage from "dom-to-image";
-import FileSaver from 'file-saver';
 
 import Button from "@material-ui/core/Button";
 
@@ -17,13 +15,7 @@ export default class LayersContainer extends Component {
     }
 
     @action.bound onClickSnapshot(e) {
-        this.props.stores.editReticleStore.isSnapshotInProcess = true;
-        domtoimage.toBlob(document.getElementById('reticles-snapshot-target'), { quality: 1, bgcolor: '#333' }).then(this.onShapshotProcessed);
-    }
-
-    @action.bound onShapshotProcessed(payload) {
-        FileSaver.saveAs(payload, "fui-reticles-" + Date.now() + ".png");
-        this.props.stores.editReticleStore.isSnapshotInProcess = false;
+        this.props.stores.editReticleStore.takeSnapshot();
     }
 
     render() {
