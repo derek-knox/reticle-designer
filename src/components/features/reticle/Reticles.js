@@ -39,7 +39,7 @@ export default class Reticles extends Component {
 
     render() {
         return (
-            <div ref={this.refReticles} className='reticles-container'>
+            <div id='reticles-snapshot-target' ref={this.refReticles} className='reticles-container'>
 
                 <div className='reticles-drag-target'
                      onMouseDown={this.onMouseDown}
