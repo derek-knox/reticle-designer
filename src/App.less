@@ -150,17 +150,7 @@ svg {
       flex-grow: 1;
       overflow-y: scroll;
 
-      .reticle-editor-layer-list-item {
-        padding: 5px 15px 5px;
-        cursor: pointer;
-
-        &.is-selected {
-          color: #99cc33;
-          border-right: 2px solid #99cc33;
-        }
-        
-        .no-select;
-      }
+      
     }
     
     .reticle-editor-layers-button {
@@ -447,4 +437,35 @@ svg {
 
 .hidden {
   display: none;
+}
+
+.reticle-editor-layer-list-item-draggable-container {
+
+  &.dragging-layer {
+    font-family: 'Orbitron', sans-serif;
+    text-transform: uppercase;
+
+    z-index: 1;
+  }
+
+  .content-h;
+
+  .reticle-editor-layer-list-item-draggable {
+    padding: 5px 10px 5px;
+    cursor: row-resize;
+    color: #99cc33;
+  }
+  
+  .reticle-editor-layer-list-item {
+    padding: 5px 5px 5px;
+    cursor: pointer;
+    flex-grow: 1;
+    
+    &.is-selected {
+      color: #99cc33;
+      border-right: 2px solid #99cc33;
+    }
+    
+    .no-select;
+  }
 }
