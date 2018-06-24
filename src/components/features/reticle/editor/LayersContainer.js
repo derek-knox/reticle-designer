@@ -17,10 +17,13 @@ export default class LayersContainer extends Component {
     }
 
     @action.bound onClickSnapshot(e) {
-        domtoimage.toBlob(document.getElementById('reticles-snapshot-target'), { quality: 1, bgcolor: '#333' })
-            .then(function (blob) {
-                FileSaver.saveAs(blob, 'fui-reticles-' + Date.now() + '.png');
-            });
+        this.props.stores.editReticleStore.isSnapshotInProcess = true;
+        domtoimage.toBlob(document.getElementById('reticles-snapshot-target'), { quality: 1, bgcolor: '#333' }).then(this.onShapshotProcessed);
+    }
+
+    @action.bound onShapshotProcessed(payload) {
+        FileSaver.saveAs(payload, "fui-reticles-" + Date.now() + ".png");
+        this.props.stores.editReticleStore.isSnapshotInProcess = false;
     }
 
     render() {

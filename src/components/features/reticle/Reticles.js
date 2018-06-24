@@ -51,14 +51,17 @@ export default class Reticles extends Component {
                         <Reticle key={item.id} item={item}></Reticle>
                 )}
 
-                <div className='reticles-directions'>
-                    { this.props.stores.editReticleStore.isDrawing
-                        ? <span>Let Go Whenever</span>
-                        : this.props.stores.reticlesStore.items.length > 1
-                            ? <span>Click & Drag to Add Reticle<hr/>Shift Click & Drag to Select Reticle</span>
-                            : <span>Click & Drag</span>
-                    }
-                </div>
+                {this.props.stores.editReticleStore.isSnapshotInProcess
+                    ? null
+                    : <div className='reticles-directions'>
+                          {this.props.stores.editReticleStore.isDrawing
+                              ? <span>Let Go Whenever</span>
+                              : this.props.stores.reticlesStore.items.length > 1
+                                  ? <span>Click & Drag to Add Reticle<hr />Shift Click & Drag to Select Reticle</span>
+                                  : <span>Click & Drag</span>
+                          }
+                      </div>
+                }
 
             </div>
         );
