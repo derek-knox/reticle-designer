@@ -38,7 +38,7 @@ export default class LayersContainer extends Component {
                                           useDragHandle={true}
                                           onSortEnd={this.onSortEnd}
                                           lockAxis='y'
-                                          transitionDuration={220}
+                                          transitionDuration={160}
                                           lockToContainerEdges={true}
                                           helperClass='dragging-layer' />
 
@@ -55,7 +55,7 @@ export default class LayersContainer extends Component {
     }
 }
 
-const DragHandle = SortableHandle(() => <div className='reticle-editor-layer-list-item-draggable'>::</div>);
+const DragHandle = SortableHandle(() => <div className='reticle-editor-layer-list-item-draggable'>&#8214;</div>);
 
 const SortableItem = SortableElement(({ value }) => (
     <div className='reticle-editor-layer-list-item-draggable-container'>
