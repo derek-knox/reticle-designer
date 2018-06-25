@@ -23,6 +23,13 @@ export class ReticlesStore {
     this.add(this.reticleInFocus);
   }
 
+  @action.bound delete(payload) {
+    const isTargetLayerTheReticleInFocus = payload === this.reticleInFocus;
+    const idx = this.items.indexOf(payload);
+
+    console.log('delete at', idx);
+  }
+
   @action.bound updateReticleInFocus(payload) {
     this.reticleInFocus = this.getReticleById(payload.id);
   }

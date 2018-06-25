@@ -7,6 +7,10 @@ import classnames from 'classnames';
 @observer
 export default class LayerListItem extends Component {
 
+    @action.bound onClickDeleteLayer(e, payload) {
+        this.props.stores.reticlesStore.delete(payload);
+    }
+
     @action.bound onClickLayer(e, payload) {
         this.props.stores.reticlesStore.updateReticleInFocus({ id: payload.id})
     }
@@ -14,11 +18,17 @@ export default class LayerListItem extends Component {
     render() {
 
         const item = this.props.item;
+        const isFocused = this.props.stores.reticlesStore.reticleInFocus.id === item.id;
 
         return (
-            <div className={classnames('reticle-editor-layer-list-item', {'is-selected': this.props.stores.reticlesStore.reticleInFocus.id === item.id})}
+            <div className={classnames('reticle-editor-layer-list-item', {'is-selected': isFocused})}
                  onClick={(e) => this.onClickLayer(e, item)}>
                 {item.label}
+                {isFocused
+                    ? <div className='reticle-editor-layer-list-item-trash'
+                           onClick={(e) => this.onClickDeleteLayer(e, item)}>-</div>
+                    : null
+                }
             </div>
         );
     }
