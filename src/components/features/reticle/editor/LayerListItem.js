@@ -9,10 +9,11 @@ export default class LayerListItem extends Component {
 
     @action.bound onClickDeleteLayer(e, payload) {
         this.props.stores.reticlesStore.delete(payload);
+        e.stopPropagation();
     }
 
     @action.bound onClickLayer(e, payload) {
-        this.props.stores.reticlesStore.updateReticleInFocus({ id: payload.id})
+        this.props.stores.reticlesStore.updateReticleInFocus({ id: payload.id});
     }
 
     render() {
@@ -26,7 +27,7 @@ export default class LayerListItem extends Component {
                 {item.label}
                 {isFocused
                     ? <div className='reticle-editor-layer-list-item-trash'
-                           onClick={(e) => this.onClickDeleteLayer(e, item)}>-</div>
+                           onClick={(e) => this.onClickDeleteLayer(e, item)}>x</div>
                     : null
                 }
             </div>

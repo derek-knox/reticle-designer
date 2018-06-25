@@ -16,22 +16,22 @@ export class ReticlesStore {
     this.items.push(newReticle);
     
     this.updateReticleInFocus(newReticle);
-    this.lastReticleInFocus = this.reticleInFocus;
   }
-
+  
   @action.bound clone() {
     this.add(this.reticleInFocus);
   }
-
+  
   @action.bound delete(payload) {
-    const isTargetLayerTheReticleInFocus = payload === this.reticleInFocus;
-    const idx = this.items.indexOf(payload);
-
-    console.log('delete at', idx);
+    this.items.remove(this.getReticleById(payload.id));
+    const updateTarget = this.items.length > 0 ? this.items[0] : null;
+    this.updateReticleInFocus(updateTarget);
   }
-
+  
   @action.bound updateReticleInFocus(payload) {
-    this.reticleInFocus = this.getReticleById(payload.id);
+    const isEmpty = payload === null;
+    this.reticleInFocus = isEmpty ? null : this.getReticleById(payload.id);
+    this.lastReticleInFocus = isEmpty ? null : this.reticleInFocus;
   }
 
   getReticleById(id) {
