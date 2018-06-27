@@ -1,5 +1,5 @@
 import { action, observable } from 'mobx';
-import domtoimage from "dom-to-image";
+import domtoimage from "../../vendor-forks/dom-to-image";
 import FileSaver from "file-saver";
 
 import { getEditAreaInfo } from '../../utils/reticleUtils';
