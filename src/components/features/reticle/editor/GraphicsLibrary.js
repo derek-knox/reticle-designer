@@ -32,6 +32,7 @@ export default class GraphicsLibrary extends Component {
                     <g id="gfx – 2"><use href="#gfx-bg" /><g transform="translate(25 25)"><circle cx="25" cy="25" r="25" /><circle cx="25" cy="25" r="24.5" /></g></g>
                     <g id="gfx – 3"><use href="#gfx-bg" /><path d="M535,75.292l25-25v25l25-25" transform="translate(-509.5 -12.792)" /></g>
                     <g id="gfx – 4"><use href="#gfx-bg" /><path d="M694.833,23.333h30" transform="translate(-659.333 27.167)" /><path d="M694.833,23.333h50" transform="translate(-669.333 7.167)" /><path d="M694.833,23.333h10" transform="translate(-649.333 47.167)" /><path d="M694.833,23.333h40" transform="translate(-664.333 17.167)" /><path d="M694.833,23.333h20" transform="translate(-654.333 37.167)" /></g>
+                    <g id="gfx – 5"><use href="#gfx-bg" /><path d="M7.806,1.7H27.5V7.217H7.806V19.549H27.5v5.477H7.806V38.32H2.246v-50h5.56Z" transform="translate(34.754 36.68)" /></g>
                 </defs>
 
             </svg>

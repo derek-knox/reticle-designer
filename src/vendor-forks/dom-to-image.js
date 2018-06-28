@@ -192,8 +192,7 @@
         }
 
         function cloneChildren(original, clone, filter) {
-            var children = original.tagName === "use" ? copyShadowChild(original) : original.childNodes;
-
+            var children = original.tagName === 'use' ? copyShadowChild(original) : original.childNodes;
             if (children.length === 0) return Promise.resolve(clone);
 
             return cloneChildrenInOrder(clone, util.asArray(children), filter)
