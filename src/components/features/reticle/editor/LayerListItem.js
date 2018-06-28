@@ -26,7 +26,7 @@ export default class LayerListItem extends Component {
                  onClick={(e) => this.onClickLayer(e, item)}>
                 {item.label}
                 {isFocused
-                    ? <div className='reticle-editor-layer-list-item-trash'
+                    ? <div className='reticle-editor-layer-list-item-button'
                            onClick={(e) => this.onClickDeleteLayer(e, item)}>x</div>
                     : null
                 }
