@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { action } from 'mobx';
 import {inject, observer} from 'mobx-react';
+import classnames from "classnames";
 
 import Reticle from './Reticle';
 import { getRadiusFromMouseAndClientRect } from '../../../utils/reticleUtils';
@@ -48,12 +49,12 @@ export default class Reticles extends Component {
                 </div>
 
                 { this.props.stores.reticlesStore.items.map(item =>
-                        <Reticle key={item.id} item={item}></Reticle>
+                    <Reticle key={item.id} item={item}></Reticle>
                 )}
 
                 {this.props.stores.editReticleStore.isSnapshotInProcess
                     ? null
-                    : <div className='reticles-directions'>
+                    : <div className={classnames('reticles-directions', { 'is-edit-ready': !this.props.stores.editReticleStore.isDrawing })}>
                           {this.props.stores.editReticleStore.isDrawing
                               ? <span>Let Go Whenever</span>
                               : this.props.stores.reticlesStore.items.length > 1
