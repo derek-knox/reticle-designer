@@ -23,6 +23,8 @@ export default class EditLayerContainer extends Component {
 
     render() {
 
+        const controlVisibility = this.props.stores.reticlesStore.reticleInFocus.getControlsVisibility();
+
         return (
             <div className="container reticle-editor-edit-container">
                 <div className="wrapper">
@@ -35,6 +37,7 @@ export default class EditLayerContainer extends Component {
                                 <EditControl key={item.id}
                                              item={item}
                                              onRef={component => this[item.label] = component}
+                                             isVisible={controlVisibility[item.settings.reticleProp]}
                                              controlInFocus={this.props.stores.reticlesStore.reticleInFocus.controlInFocus}></EditControl>
                             )}
 

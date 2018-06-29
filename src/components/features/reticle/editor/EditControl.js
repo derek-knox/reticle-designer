@@ -29,7 +29,8 @@ export default class EditControl extends Component {
         const item = this.props.item;
 
         return (
-            <div className={classnames('reticle-editor-control-row', {'is-selected': this.props.controlInFocus.id === item.id})}
+            <div className={classnames('reticle-editor-control-row', {'is-selected': this.props.controlInFocus.id === item.id,
+                                                                      'is-hidden': !this.props.isVisible})}
                  ref={this.refEl}
                  onMouseDown={this.onMouseDownControl}>
                 

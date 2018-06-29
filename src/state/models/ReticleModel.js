@@ -1,4 +1,4 @@
-import { action, observe, observable } from 'mobx';
+import { action, computed, observe, observable } from "mobx";
 import { clamp, uniqueId } from 'lodash';
 
 import { EditControlModel } from './EditControlModel';
@@ -105,5 +105,25 @@ export class ReticleModel {
 
   @action.bound onSettingsChange(payload) {
     this.updateControlInFocus(payload.control);
+  }
+
+  getControlsVisibility() {
+    return computed(() => {
+      let obj = {},
+          hasDivisions = this.divisions.settings.val > 0,
+          hasValidGraphicsControls = Boolean(hasDivisions && this.graphic.settings.val);
+      obj[ReticleModel.SettingType.Color] = true;
+      obj[ReticleModel.SettingType.Opacity] = true;
+      obj[ReticleModel.SettingType.Radius] = true;
+      obj[ReticleModel.SettingType.Thickness] = true;
+      obj[ReticleModel.SettingType.Divisions] = true;
+      obj[ReticleModel.SettingType.Spacing] = hasDivisions;
+      obj[ReticleModel.SettingType.Rotation] = hasDivisions;
+      obj[ReticleModel.SettingType.Graphic] = hasDivisions;
+      obj[ReticleModel.SettingType.Stroke] = hasValidGraphicsControls;
+      obj[ReticleModel.SettingType.Direction] = hasValidGraphicsControls;
+      obj[ReticleModel.SettingType.Scale] = hasValidGraphicsControls;
+      return obj;
+    }).get();
   }
 }
