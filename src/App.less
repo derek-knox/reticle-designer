@@ -183,13 +183,19 @@ svg {
       }
 
       .reticle-editor-control-row {
-        cursor: pointer;
         
         .content-h;
         align-items: center;
+        overflow: hidden;
         
+        height: 38px;
         padding: 5px 15px 5px;
-        border-top: 1px solid #333;
+        border-bottom: 1px solid #333;
+        cursor: pointer;
+        
+        &:first-child { 
+          border-top: 1px solid #333;
+        }
 
         .reticle-editor-control-label {
           width: 50%;
@@ -280,7 +286,6 @@ svg {
           color: #99cc33;
           width: 100%;
           border-bottom: 1px solid #99cc33;
-
           
           &.color-grid-button {
             width: 32px;
@@ -303,7 +308,7 @@ svg {
         }
 
         &.is-hidden {
-          visibility: hidden;
+          opacity: .2;
         }
       }
     }

@@ -115,9 +115,9 @@ export class ReticleModel {
       obj[ReticleModel.SettingType.Color] = true;
       obj[ReticleModel.SettingType.Opacity] = true;
       obj[ReticleModel.SettingType.Radius] = true;
-      obj[ReticleModel.SettingType.Thickness] = true;
+      obj[ReticleModel.SettingType.Thickness] = !hasValidGraphicsControls;
       obj[ReticleModel.SettingType.Divisions] = true;
-      obj[ReticleModel.SettingType.Spacing] = hasDivisions;
+      obj[ReticleModel.SettingType.Spacing] = hasDivisions && !hasValidGraphicsControls;
       obj[ReticleModel.SettingType.Rotation] = hasDivisions;
       obj[ReticleModel.SettingType.Graphic] = hasDivisions;
       obj[ReticleModel.SettingType.Stroke] = hasValidGraphicsControls;
