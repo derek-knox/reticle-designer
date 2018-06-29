@@ -33,7 +33,12 @@ export default class EditControl extends Component {
                                       {'is-selected': this.props.controlInFocus.id === item.id,
                                        'is-disabled': !this.props.isVisible})}
                  ref={this.refEl}
-                 onMouseDown={this.onMouseDownControl}>
+                 onMouseDown={this.props.isVisible ? this.onMouseDownControl : null}>
+
+                {!this.props.isVisible
+                    ? <div className='is-disabled-blocker'></div>
+                    : null
+                }
                 
                 <div className='reticle-editor-control-label'>
                     {item.label}
