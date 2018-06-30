@@ -40,7 +40,7 @@ export class ReticleModel {
 
   constructor(payload) {
     this.id = uniqueId();
-    this.label = 'R-' + ++ReticleModel.layerId;
+    this.label = payload.dummyId || 'R-' + ++ReticleModel.layerId;
 
     this.initModels(payload);
     this.initControls();

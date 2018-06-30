@@ -22,8 +22,13 @@ export class EditReticleStore {
     }
 
     @action updatePositionHelperReticleInFocus(payload) {
-        this.positionHelperReticleInFocus = payload ? new ReticleModel(payload) : null;
-        if(payload) { this.positionHelperReticleInFocus.color.settings.val = this.stores.colorStore.getHelperColor(); }
+        if(payload) {
+            const newPayload = Object.assign({ dummyId: -1 }, payload);
+            this.positionHelperReticleInFocus = new ReticleModel(newPayload);
+            this.positionHelperReticleInFocus.color.settings.val = this.stores.colorStore.getHelperColor();
+        } else {
+            this.positionHelperReticleInFocus = null;
+        }
     }
 
     @action updateGraphics(payload) {
