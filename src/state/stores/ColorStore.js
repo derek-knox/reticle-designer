@@ -7,6 +7,8 @@ export class ColorStore {
     @observable colorPaletteInFocus = null;
     @observable lastColorPaletteInFocus = null;
 
+    helperColor = { id: -1, color: '#99CC33' }
+
     constructor(stores) {
         this.stores = stores;
 
@@ -34,8 +36,13 @@ export class ColorStore {
         this.colorPaletteInFocus = this.getColorPaletteById(payload.id);
     }
 
+    getHelperColor() {
+        return this.helperColor.id;
+    }
+
     getColor(payload) {
         return computed(() => {
+            if (payload === this.helperColor.id) { return this.helperColor.color; }
             return this.colorPaletteInFocus.colors[payload];
         }).get();
     }

@@ -4,16 +4,26 @@ import FileSaver from "file-saver";
 
 import { getEditAreaInfo } from '../../utils/reticleUtils';
 
+import { ReticleModel } from "../models/ReticleModel";
+
 export class EditReticleStore {
 
     @observable isDrawing = false;
     @observable isSnapshotInProcess = false;
     @observable isGridControlOpen = false;
+
+    @observable positionHelperReticleInFocus = null;
+
     @observable graphics = [];
     @observable editAreaInfo = null;
 
     constructor(stores) {
         this.stores = stores;
+    }
+
+    @action updatePositionHelperReticleInFocus(payload) {
+        this.positionHelperReticleInFocus = new ReticleModel(payload);
+        this.positionHelperReticleInFocus.color.settings.val = this.stores.colorStore.getHelperColor();
     }
 
     @action updateGraphics(payload) {

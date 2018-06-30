@@ -48,9 +48,13 @@ export default class Reticles extends Component {
                      onMouseUp={this.onMouseUp}>
                 </div>
 
-                { this.props.stores.reticlesStore.items.map(item =>
+                {this.props.stores.reticlesStore.items.map(item =>
                     <Reticle key={item.id} item={item}></Reticle>
                 )}
+                {this.props.stores.reticlesStore.items.length > 0 && this.props.stores.editReticleStore.positionHelperReticleInFocus
+                    ? <Reticle className='reticle-layer-helper' item={this.props.stores.editReticleStore.positionHelperReticleInFocus}></Reticle>
+                    : null
+                }
 
                 {this.props.stores.editReticleStore.isSnapshotInProcess
                     ? null
