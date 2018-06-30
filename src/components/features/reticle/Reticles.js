@@ -15,6 +15,12 @@ export default class Reticles extends Component {
         this.refReticles = React.createRef();
     }
 
+    componentDidUpdate() {
+        if(!this.props.stores.reticlesStore.getHasReticles()) {
+            this.props.stores.editReticleStore.updatePositionHelperReticleInFocus(null);
+        }
+    }
+
     getTargetValue(e){
         return getRadiusFromMouseAndClientRect({
             event: e.nativeEvent,
@@ -51,7 +57,7 @@ export default class Reticles extends Component {
                 {this.props.stores.reticlesStore.items.map(item =>
                     <Reticle key={item.id} item={item}></Reticle>
                 )}
-                {this.props.stores.reticlesStore.items.length > 0 && this.props.stores.editReticleStore.positionHelperReticleInFocus
+                {this.props.stores.reticlesStore.getHasReticles() && this.props.stores.editReticleStore.positionHelperReticleInFocus
                     ? <Reticle className='reticle-layer-helper' item={this.props.stores.editReticleStore.positionHelperReticleInFocus}></Reticle>
                     : null
                 }

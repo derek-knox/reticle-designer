@@ -24,7 +24,7 @@ export class ReticlesStore {
   
   @action.bound delete(payload) {
     this.items.remove(this.getReticleById(payload.id));
-    const updateTarget = this.items.length > 0 ? this.items[0] : null;
+    const updateTarget = this.getHasReticles() ? this.items[0] : null;
     this.updateReticleInFocus(updateTarget);
   }
   
@@ -32,6 +32,12 @@ export class ReticlesStore {
     const isEmpty = payload === null;
     this.reticleInFocus = isEmpty ? null : this.getReticleById(payload.id);
     this.lastReticleInFocus = isEmpty ? null : this.reticleInFocus;
+  }
+
+  getHasReticles() {
+    return computed(() => {
+      return this.items.length > 0;
+    }).get();
   }
 
   getReticleById(id) {
