@@ -34,7 +34,7 @@ export default class GraphicWidget extends Component {
                                      center={{ x: 25, y: 25 }}
                                      angle={0}
                                      direction={0}
-                                     scale={1} />
+                                     scale={{ x: 1, y: 1 }} />
                           </svg>
                         : 'None'
                     }

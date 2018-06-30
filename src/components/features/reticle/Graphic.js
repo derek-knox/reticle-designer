@@ -38,7 +38,7 @@ export default class Graphic extends Component {
             <use href={'#' + gfxId}
                  ref={this.refEl}
                  style={{
-                    transform: "rotate(" + rotation + "deg) scale(" + this.props.scale + ")",
+                    transform: "rotate(" + rotation + "deg) scale(" + this.props.scale.x + ", " + this.props.scale.y + ")",
                     transformOrigin: transformPoint.x + "px " + transformPoint.y + "px",
                     stroke: this.props.color,
                     strokeWidth: strokeWidth,

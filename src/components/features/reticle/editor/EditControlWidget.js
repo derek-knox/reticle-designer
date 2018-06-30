@@ -4,6 +4,7 @@ import { inject, observer } from 'mobx-react';
 import { EditControlModel } from '../../../../state/models/EditControlModel';
 import { ReticleModel } from '../../../../state/models/ReticleModel';
 import ColorWidget from './widgets/color/ColorWidget';
+import DualSliderWidget from "./widgets/DualSliderWidget";
 import GraphicWidget from './widgets/graphic/GraphicWidget';
 import SliderWidget from "./widgets/SliderWidget";
 import ToggleRangeWidget from "./widgets/ToggleRangeWidget";
@@ -15,6 +16,9 @@ export default class EditControlWidget extends Component {
     getControlByType = (payload) => {
         if (payload.type === EditControlModel.Type.Range) {
             return <SliderWidget item={payload} {...this.props} />;
+        }
+        else if (payload.type === EditControlModel.Type.DualRange) {
+            return <DualSliderWidget item={payload} {...this.props} />;
         }
         else if (payload.type === EditControlModel.Type.Grid) {
             if(payload.settings.reticleProp === ReticleModel.SettingType.Color) {
