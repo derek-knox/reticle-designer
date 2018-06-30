@@ -16,8 +16,13 @@ export default class LayerListItem extends Component {
         this.props.stores.editReticleStore.updatePositionHelperReticleInFocus(this.props.item);
     }
 
+    @action.bound onMouseOutLayer(e) {
+        this.props.stores.editReticleStore.updatePositionHelperReticleInFocus(null);
+    }
+
     @action.bound onClickLayer(e, payload) {
         this.props.stores.reticlesStore.updateReticleInFocus({ id: payload.id});
+        this.props.stores.editReticleStore.updatePositionHelperReticleInFocus(null);
     }
 
     render() {
@@ -27,6 +32,7 @@ export default class LayerListItem extends Component {
 
         return (
             <div className={classnames('reticle-editor-layer-list-item', {'is-selected': isFocused})}
+                 onMouseOut={this.onMouseOutLayer}
                  onMouseOver={this.onMouseOverLayer}
                  onClick={(e) => this.onClickLayer(e, item)}>
                 {item.label}
