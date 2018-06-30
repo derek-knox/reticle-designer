@@ -28,6 +28,18 @@ export default class Reticles extends Component {
         });
     }
 
+    getHelperLabel() {
+        let helperLabel = 'Click & Drag';
+        if(this.props.stores.editReticleStore.isDrawing) {
+            helperLabel = this.props.stores.reticlesStore.items.length < 2 ? 'Let Go Whenever' : 'You got this shit';
+        } else {
+            if (this.props.stores.reticlesStore.items.length >= 2) {
+                helperLabel = '';
+            }
+        }
+        return helperLabel;
+    }
+
     @action.bound onMouseDown(e) {
         this.props.stores.editReticleStore.isDrawing = true;
         this.props.stores.editReticleStore.updateEditArea({ ref: this.refReticles.current });
@@ -45,6 +57,10 @@ export default class Reticles extends Component {
     }
 
     render() {
+
+        const isEditReady = !this.props.stores.editReticleStore.isDrawing;
+        const isHidden = isEditReady && this.props.stores.reticlesStore.items.length >= 2 || this.props.stores.reticlesStore.items.length >= 3;
+
         return (
             <div id='reticles-snapshot-target' ref={this.refReticles} className='reticles-container'>
 
@@ -64,13 +80,8 @@ export default class Reticles extends Component {
 
                 {this.props.stores.editReticleStore.isSnapshotInProcess
                     ? null
-                    : <div className={classnames('reticles-directions', { 'is-edit-ready': !this.props.stores.editReticleStore.isDrawing })}>
-                          {this.props.stores.editReticleStore.isDrawing
-                              ? <span>Let Go Whenever</span>
-                              : this.props.stores.reticlesStore.items.length > 1
-                                  ? <span>Click & Drag to Add Reticle<hr />Shift Click & Drag to Select Reticle</span>
-                                  : <span>Click & Drag</span>
-                          }
+                    : <div className={classnames('reticles-directions', { 'is-edit-ready': isEditReady, 'hidden': isHidden })}>
+                          <span>{this.getHelperLabel()}</span>
                       </div>
                 }
 

@@ -9,6 +9,7 @@ export default class LayerListItem extends Component {
 
     @action.bound onClickDeleteLayer(e, payload) {
         this.props.stores.reticlesStore.delete(payload);
+        this.onMouseOutLayer(e); // Case where two layers exist and 2nd is deleted to ensure out trigger
         e.stopPropagation();
     }
 
