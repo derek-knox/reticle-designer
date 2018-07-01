@@ -6,15 +6,24 @@ import classnames from 'classnames';
 import {ReticleModel} from '../../../../state/models/ReticleModel';
 import EditControl from './EditControl';
 import WidgetHelper from './widgets/WidgetHelper';
+import { observable } from 'mobx';
 
 @inject('stores')
 @observer
 export default class EditLayerContainer extends Component {
 
+    @observable controlsWithSpacers = [
+        { label: ReticleModel.SettingType.Opacity, top: 0 },
+        { label: ReticleModel.SettingType.Thickness, top: 0 },
+        { label: ReticleModel.SettingType.Rotation, top: 0 }
+    ];
 
     constructor(props) {
         super(props);
-        this.controlsWithSpacers = [ReticleModel.SettingType.Opacity, ReticleModel.SettingType.Thickness, ReticleModel.SettingType.Rotation];
+    }
+
+    componentDidMount() {
+        this.updateDividerPositions();
     }
 
     componentDidUpdate() {
@@ -26,6 +35,13 @@ export default class EditLayerContainer extends Component {
         if (simulateClickTarget) {
           simulateEvent.simulate(simulateClickTarget.refEl.current, "click");
         }
+    }
+
+    updateDividerPositions() {
+        this.controlsWithSpacers.forEach((item) => {
+            const el = this[item.label].refEl.current;
+            item.top = el.offsetTop + el.offsetHeight + 13;
+        });
     }
 
     render() {
@@ -43,12 +59,15 @@ export default class EditLayerContainer extends Component {
                             {this.props.stores.reticlesStore.reticleInFocus.controls.map(item =>
                                 <EditControl key={item.id}
                                              item={item}
-                                             onRef={component => this[item.label] = component}
-                                             hasDivider={this.controlsWithSpacers.includes(item.settings.reticleProp)}
+                                             onRef={component => this[item.settings.reticleProp] = component}
+                                             hasDivider={this.controlsWithSpacers.find((ctrl) => ctrl.label === item.settings.reticleProp)}
                                              isVisible={controlVisibility[item.settings.reticleProp]}
                                              controlInFocus={this.props.stores.reticlesStore.reticleInFocus.controlInFocus}></EditControl>
                             )}
 
+                            {this.controlsWithSpacers.map((item, idx) =>
+                                <div className='divider' key={idx} style={ { top: item.top + 'px' }}></div>
+                            )}
 
                             <div className='reticle-editor-widget-helper'>
                                 <WidgetHelper reticleInFocus={this.props.stores.reticlesStore.reticleInFocus}
