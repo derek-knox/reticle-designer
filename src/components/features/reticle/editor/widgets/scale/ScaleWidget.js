@@ -17,10 +17,10 @@ export default class ScaleWidget extends Component {
         const reticleInFocus = this.props.stores.reticlesStore.reticleInFocus;
 
         return (
-            <div className="graphic-widget">
+            <div className="widget-scale">
                 <Button className="open-grid-button"
-                    onClick={this.onClickOpenGrid}>
-                    TEST
+                        onClick={this.onClickOpenGrid}>
+                    {reticleInFocus.scale.settings.val.x}<span className='scale-widget-divider'>x</span>{reticleInFocus.scale.settings.val.y}
                 </Button>
             </div>
         );

@@ -302,6 +302,10 @@ svg {
             }
 
           }
+
+          .widget-scale {
+            .scale-widget-divider;
+          }
         }
 
         .open-grid-button {
@@ -367,7 +371,8 @@ svg {
             flex-wrap: wrap;
             align-content: flex-start;
 
-            .widget-helper-grid-item {
+            .widget-helper-grid-item,
+            .widget-helper-grid-scale-cell {
               width: 25%;
               height: 60px;
               margin-bottom: 1px;
@@ -393,6 +398,28 @@ svg {
               &:hover {
                 border-bottom: 2px solid rgba(153, 204, 51, .5);
               }
+            }
+
+            .widget-helper-grid-scale-cell {
+              font-size: 50%;
+              margin: 0;
+              background-color: #333;
+              cursor: pointer;
+
+              .widget-helper-grid-scale-cell-label {
+                transform: scaleX(.1);
+              }
+
+            }
+
+            .widget-helper-grid-scale-feedback {
+              .scale-widget-divider;
+
+              font-size: 100%;
+              padding: 20px;
+              color: #99cc33;
+              text-align: center;
+              width: 100%;
             }
           } 
         }
@@ -531,4 +558,10 @@ svg {
     width: 100%;
     text-align: center;
   }
+}
+
+.scale-widget-divider {
+  font-size: 70%;
+  padding: 0 4px;
+  text-align: center;
 }
