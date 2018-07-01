@@ -64,7 +64,7 @@ export class ReticleModel {
     this.graphic = new EditControlModel({ label: 'Graphic', type: EditControlModel.Type.Grid, settings: { reticleProp: ReticleModel.SettingType.Graphic, val: isClone ? payload.graphic.settings.val : null } });
     this.stroke = new EditControlModel({ label: 'Stroke', type: EditControlModel.Type.ToggleRange, settings: { reticleProp: ReticleModel.SettingType.Stroke, isStroke: true, val: isClone ? payload.stroke.settings.val : 1, min: 1, max: 10, step: 1  } });
     this.direction = new EditControlModel({ label: 'Direction', type: EditControlModel.Type.Range, settings: { reticleProp: ReticleModel.SettingType.Direction, val: isClone ? payload.direction.settings.val : 0, min: 0, max: 360, step: 1 } });
-    this.scale = new EditControlModel({ label: 'Scale', type: EditControlModel.Type.DualRange, settings: { reticleProp: ReticleModel.SettingType.Scale, val: isClone ? payload.scale.settings.val : {x: 1, y: 1}, min: .1, max: 3, step: .1 } });
+    this.scale = new EditControlModel({ label: 'Scale', type: EditControlModel.Type.Grid, settings: { reticleProp: ReticleModel.SettingType.Scale, val: isClone ? payload.scale.settings.val : {x: 1, y: 1}, min: .1, max: 3, step: .1 } });
   }
 
   initControls() {
@@ -94,8 +94,6 @@ export class ReticleModel {
     let newVal = null;
     if(control.type === EditControlModel.Type.Range)
       newVal = clamp(payload.val, control.settings.min, control.settings.max);
-    else if(control.type === EditControlModel.Type.DualRange)
-      newVal = { x: clamp(payload.val.x, control.settings.min, control.settings.max), y: clamp(payload.val.y, control.settings.min, control.settings.max) };
     else if(control.type === EditControlModel.Type.Grid)
       newVal = payload.val;
     else if(control.type === EditControlModel.Type.ToggleRange) {

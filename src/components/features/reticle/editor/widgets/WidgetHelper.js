@@ -8,6 +8,7 @@ import {EditControlModel} from '../../../../../state/models/EditControlModel';
 import { ReticleModel } from '../../../../../state/models/ReticleModel';
 import ColorWidgetGrid from './color/ColorWidgetGrid';
 import GraphicWidgetGrid from './graphic/GraphicWidgetGrid';
+import ScaleWidgetGrid from './scale/ScaleWidgetGrid';
 
 @inject('stores')
 @observer
@@ -28,6 +29,8 @@ export default class WidgetHelper extends Component {
             return <ColorWidgetGrid reticleInFocus={this.props.reticleInFocus} isReset={this.isReset} />;
         } else if (control.settings.reticleProp === ReticleModel.SettingType.Graphic){
             return <GraphicWidgetGrid reticleInFocus={this.props.reticleInFocus} isReset={this.isReset} />;
+        } else if (control.settings.reticleProp === ReticleModel.SettingType.Scale){
+            return <ScaleWidgetGrid reticleInFocus={this.props.reticleInFocus} isReset={this.isReset} />;
         }
     }
 
