@@ -34,7 +34,6 @@ export default class ScaleWidgetGrid extends Component {
     }
 
     initGridData() {
-
         const settings = this.props.reticleInFocus.scale.settings;
         const size = settings.max/settings.step;
         let x = settings.min;
