@@ -37,6 +37,8 @@ export default class ToggleRangeWidget extends Component {
     render() {
 
         const item = this.props.item;
+        const value = this.props.stores.reticlesStore.reticleInFocus[item.settings.reticleProp].settings.val;
+        const currentValue = parseFloat(value).toFixed(2).replace('.00', '');
 
         return (
             <div className='widget-toggle-slider'>
@@ -49,15 +51,18 @@ export default class ToggleRangeWidget extends Component {
                     />
                 </div>
                 {item.settings.isStroke
-                 ? <Slider className='slider-stroke-and-fill'
-                           value={this.props.stores.reticlesStore.reticleInFocus[item.settings.reticleProp].settings.val}
-                           min={item.settings.min}
-                           max={item.settings.max}
-                           step={item.settings.step}
-                           onChange={(val) => this.onSliderChange({ val })}
-                           trackStyle={{ backgroundColor: '#99cc33', height: '2px' }}
-                           railStyle={{ backgroundColor: '#333333', height: '2px' }}
-                           handleStyle={{ borderColor: '#99cc33', backgroundColor: '#99cc33', marginTop: '-6px', boxShadow: '0 0 5px #444' }} />
+                 ? <div className='slider-stroke-and-fill-container'>
+                    <Slider className='slider-stroke-and-fill'
+                            value={value}
+                            min={item.settings.min}
+                            max={item.settings.max}
+                            step={item.settings.step}
+                            onChange={(val) => this.onSliderChange({ val })}
+                            trackStyle={{ backgroundColor: '#99cc33', height: '2px' }}
+                            railStyle={{ backgroundColor: '#333333', height: '2px' }}
+                            handleStyle={{ borderColor: '#99cc33', backgroundColor: '#99cc33', marginTop: '-6px', boxShadow: '0 0 5px #444' }} />
+                    <span className='control-info control-info-slider-current'>{currentValue}</span>
+                   </div>
                  : null
                 }
             </div>

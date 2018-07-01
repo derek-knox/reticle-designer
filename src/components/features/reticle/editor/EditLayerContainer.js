@@ -3,12 +3,19 @@ import {inject, observer} from 'mobx-react';
 import simulateEvent from "simulate-event";
 import classnames from 'classnames';
 
+import {ReticleModel} from '../../../../state/models/ReticleModel';
 import EditControl from './EditControl';
 import WidgetHelper from './widgets/WidgetHelper';
 
 @inject('stores')
 @observer
 export default class EditLayerContainer extends Component {
+
+
+    constructor(props) {
+        super(props);
+        this.controlsWithSpacers = [ReticleModel.SettingType.Opacity, ReticleModel.SettingType.Thickness, ReticleModel.SettingType.Rotation];
+    }
 
     componentDidUpdate() {
         this.simulateEvent();
@@ -37,9 +44,11 @@ export default class EditLayerContainer extends Component {
                                 <EditControl key={item.id}
                                              item={item}
                                              onRef={component => this[item.label] = component}
+                                             hasDivider={this.controlsWithSpacers.includes(item.settings.reticleProp)}
                                              isVisible={controlVisibility[item.settings.reticleProp]}
                                              controlInFocus={this.props.stores.reticlesStore.reticleInFocus.controlInFocus}></EditControl>
                             )}
+
 
                             <div className='reticle-editor-widget-helper'>
                                 <WidgetHelper reticleInFocus={this.props.stores.reticlesStore.reticleInFocus}
