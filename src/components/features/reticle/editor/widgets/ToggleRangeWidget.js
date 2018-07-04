@@ -60,7 +60,7 @@ export default class ToggleRangeWidget extends Component {
                             onChange={(val) => this.onSliderChange({ val })}
                             trackStyle={{ backgroundColor: '#99cc33', height: '2px' }}
                             railStyle={{ backgroundColor: '#333333', height: '2px' }}
-                            handleStyle={{ borderColor: '#99cc33', backgroundColor: '#99cc33', marginTop: '-6px', boxShadow: '0 0 5px #444' }} />
+                            handleStyle={{ borderColor: '#99cc33', backgroundColor: '#333', marginTop: '-6px', boxShadow: '0 0 12px #333' }} />
                     <span className='control-info control-info-slider-current'>{currentValue}</span>
                    </div>
                  : null
