@@ -144,7 +144,7 @@ svg {
   
   .reticle-editor-heading {
     padding: 15px 15px 25px;
-    font-size: 120%;
+    font-size: 80%;
     font-style: italic;
 
     .no-select;
@@ -247,12 +247,15 @@ svg {
                   width: 50%;
                   height: 50%;
                   border-radius: 50%;
-                  border: 1px solid #000;
-                  box-shadow: rgb(51, 51, 51) 0px 0px 12px;
+                  border: 2px solid #000;
                 }
-
+                
                 &.is-initially-selected {
                   border-bottom: 2px solid #99cc33;
+                  
+                  .color-swatch {
+                    box-shadow: rgb(51, 51, 51) 0px 0px 12px;
+                  }
                 }
 
                 &.is-selected {
@@ -378,7 +381,7 @@ svg {
               width: 25%;
               height: 60px;
               margin-bottom: 1px;
-              border-bottom: 2px solid #333;
+              border-bottom: 2px solid transparent;
               overflow: hidden;
               cursor: pointer;
 
