@@ -11,6 +11,7 @@ export default class ScaleWidgetGrid extends Component {
 
     @observable gridData = { cellSizeInPx: 0, items: [] };
     @observable initialScale = this.props.reticleInFocus.scale.settings.val;
+    @observable scaleFeedbackPosition = { x: 0, y: 0 };
     unobserve = null;
 
     constructor(props) {
@@ -58,6 +59,9 @@ export default class ScaleWidgetGrid extends Component {
     }
 
     onMouseOverScaleTile(e, payload) {
+
+        this.scaleFeedbackPosition = { x: e.target.offsetLeft - 46, y: e.target.offsetTop - 90 };
+
         // Prevent quick hover after selection causing scale to update
         if (this.props.stores.editReticleStore.isGridControlOpen) {
             this.props.reticleInFocus.scale.settings.val = payload;
@@ -98,7 +102,8 @@ export default class ScaleWidgetGrid extends Component {
                     );
                 })
                 }
-                <div className='widget-helper-grid-scale-feedback'>
+                <div className='widget-helper-grid-scale-feedback'
+                     style={{ transform: 'translate(' + this.scaleFeedbackPosition.x + 'px,' + this.scaleFeedbackPosition.y + 'px)' }}>
                     {reticleInFocusScaleVal.x}<span className='scale-widget-divider'>x</span>{reticleInFocusScaleVal.y}
                 </div>
             </div>
