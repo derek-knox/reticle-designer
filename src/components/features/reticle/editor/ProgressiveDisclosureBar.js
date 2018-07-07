@@ -7,7 +7,7 @@ import {inject, observer} from 'mobx-react';
 export default class ProgressiveDisclosureBar extends Component {
 
     @action.bound onClickToggleVisibility(e) {
-        // create and hook to ProgressiveDisclosureStore
+        this.props.stores.editReticleStore.isMinimized = !this.props.stores.editReticleStore.isMinimized;
     }
 
     render() {
@@ -20,8 +20,9 @@ export default class ProgressiveDisclosureBar extends Component {
                 <div className='progressive-disclosure-bar-goals'>
                     <span>{goal.id + '/' + count}:</span> <span>{goal.message}</span>
                 </div>
+                <div className="progressive-disclosure-bar-divider"></div>
                 <div className='progressive-disclosure-bar-visibility' onClick={this.onClickToggleVisibility}>
-                    -
+                    {this.props.stores.editReticleStore.isMinimized ? '+' : '-'}
                 </div>
             </div>
         );

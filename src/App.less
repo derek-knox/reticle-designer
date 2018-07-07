@@ -135,19 +135,29 @@ svg {
     background-color: #99cc33;
     
     .content-h;
-    justify-content: space-between;
+    justify-content: flex-end;
     
     .progressive-disclosure-bar-goals {
+      width: inherit;
       font-weight: bold;
       padding: 10px 12px;
+      border: 1px solid #000;
+      pointer-events: none;
+    }
+
+    .progressive-disclosure-bar-divider {
+      width: 8px;
+      background-color: #333;
     }
     
     .progressive-disclosure-bar-visibility {
       color: #99cc33;
       background-color: #555;
       padding: 10px 12px;
-      border-left: 8px solid #333;
+      text-align: center;
+      width: 12px;
       cursor: pointer;
+      border: 1px solid #000;
     }
   }
 

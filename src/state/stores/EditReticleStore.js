@@ -11,6 +11,7 @@ export class EditReticleStore {
     @observable isDrawing = false;
     @observable isSnapshotInProcess = false;
     @observable isGridControlOpen = false;
+    @observable isMinimized = false;
 
     @observable positionHelperReticleInFocus = null;
 

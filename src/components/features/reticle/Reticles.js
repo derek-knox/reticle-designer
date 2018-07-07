@@ -48,6 +48,7 @@ export default class Reticles extends Component {
     
     @action.bound onMouseMove(e) {
         if (this.props.stores.editReticleStore.isDrawing && this.props.stores.reticlesStore.reticleInFocus) {
+            this.props.stores.editReticleStore.isMinimized = false;
             this.props.stores.reticlesStore.reticleInFocus.updateSettingsValue({ val: this.getTargetValue(e), reticleProp: 'radius' });
         }
     }

@@ -27,10 +27,13 @@ export default class ReticleEditor extends Component {
         return { x, y }
     }
 
-    getTransformStyle(payload) {
+    getStyle(payload) {
         const applyTransform = this.props.stores.reticlesStore.lastReticleInFocus === this.props.stores.reticlesStore.reticleInFocus && this.props.stores.editReticleStore.isDrawing;
         const previousTransform = this.refEditor.current ? this.refEditor.current.style.transform : null;
-        return { transform: applyTransform ? 'translate(' + payload.point.x + 'px, ' + payload.point.y + 'px)' : previousTransform };
+        return { 
+            height: this.props.stores.editReticleStore.isMinimized ? 0 : '',
+            transform: applyTransform ? 'translate(' + payload.point.x + 'px, ' + payload.point.y + 'px)' : previousTransform
+        };
     }
 
     render() {
@@ -42,7 +45,7 @@ export default class ReticleEditor extends Component {
         return (
             <div className={classnames('reticle-editor-container', {'is-edit-ready': !this.props.stores.editReticleStore.isDrawing})}
                  ref={this.refEditor}
-                 style={this.getTransformStyle({ point })} >
+                 style={this.getStyle({ point })} >
 
                 <ProgressiveDisclosureBar></ProgressiveDisclosureBar>
                  
