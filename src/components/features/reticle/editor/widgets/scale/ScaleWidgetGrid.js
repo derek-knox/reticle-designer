@@ -60,11 +60,11 @@ export default class ScaleWidgetGrid extends Component {
 
     onMouseOverScaleTile(e, payload) {
 
-        this.scaleFeedbackPosition = { x: e.target.offsetLeft - 46, y: e.target.offsetTop - 90 };
-
+        
         // Prevent quick hover after selection causing scale to update
         if (this.props.stores.editReticleStore.isGridControlOpen) {
             this.props.reticleInFocus.scale.settings.val = payload;
+            this.scaleFeedbackPosition = { x: e.currentTarget.offsetLeft - 46, y: e.currentTarget.offsetTop - 90 };
         }
     }
 
@@ -92,7 +92,8 @@ export default class ScaleWidgetGrid extends Component {
                         <div key={idx}
                             className={classnames('widget-helper-grid-scale-cell',
                                 { 'is-initially-selected': this.initialScale.x === item.x && this.initialScale.y === item.y },
-                                { 'is-selected': reticleInFocusScaleVal.x === item.x && reticleInFocusScaleVal.y === item.y })
+                                { 'is-selected': reticleInFocusScaleVal.x === item.x && reticleInFocusScaleVal.y === item.y },
+                                { 'is-uniform-scale-helper': idx === 84 || idx === 189 || idx === 294 })
                             }
                             onMouseOver={(e) => this.onMouseOverScaleTile(e, item)}
                             onClick={(e) => this.onClickScaleTile(e, item)}
