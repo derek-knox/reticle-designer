@@ -11,10 +11,14 @@ export default class ProgressiveDisclosureBar extends Component {
     }
 
     render() {
+
+        const count = this.props.stores.progressiveDisclosureStore.goals.length;
+        const goal = this.props.stores.progressiveDisclosureStore.getCurrentGoal();
+
         return (
             <div className='progressive-disclosure-bar'>
                 <div className='progressive-disclosure-bar-goals'>
-                    <span>{1 + '/' + 5}:</span> <span>{ "Use 3+ graphics on a reticle" }</span>
+                    <span>{goal.id + '/' + count}:</span> <span>{goal.message}</span>
                 </div>
                 <div className='progressive-disclosure-bar-visibility' onClick={this.onClickToggleVisibility}>
                     -
