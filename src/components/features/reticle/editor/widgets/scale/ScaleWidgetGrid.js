@@ -59,7 +59,6 @@ export default class ScaleWidgetGrid extends Component {
     }
 
     onMouseOverScaleTile(e, payload) {
-
         
         // Prevent quick hover after selection causing scale to update
         if (this.props.stores.editReticleStore.isGridControlOpen) {

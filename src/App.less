@@ -125,11 +125,30 @@ svg {
   height: 600px;
   text-align: left;
   display: flex;
-  overflow: hidden;
   border: 1px solid #000;
 
-  .reticle-editor-wrapper {
-    display: flex;
+  .progressive-disclosure-bar {
+    position: absolute;
+    top: -44px;
+    width: 100%;
+    color: #333;
+    background-color: #99cc33;
+    
+    .content-h;
+    justify-content: space-between;
+    
+    .progressive-disclosure-bar-goals {
+      font-weight: bold;
+      padding: 10px 12px;
+    }
+    
+    .progressive-disclosure-bar-visibility {
+      color: #fff;
+      background-color: #555;
+      padding: 10px 12px;
+      border-left: 8px solid #333;
+      cursor: pointer;
+    }
   }
 
   &.is-edit-ready {
@@ -140,6 +159,7 @@ svg {
     width: 30%;
     border-right: 1px solid #333;
     position: relative;
+    overflow: hidden;
   }
   
   .reticle-editor-heading {
@@ -173,7 +193,7 @@ svg {
     width: 70%;
     background-color: #555;
     overflow: hidden;
-    
+
     .reticle-editor-layer-controls {
 
       position: relative;
@@ -507,7 +527,7 @@ svg {
   user-select: none;
 }
 
-.hidden {
+.is-hidden {
   display: none;
 }
 

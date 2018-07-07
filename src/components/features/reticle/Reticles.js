@@ -80,7 +80,7 @@ export default class Reticles extends Component {
 
                 {this.props.stores.editReticleStore.isSnapshotInProcess
                     ? null
-                    : <div className={classnames('reticles-directions', { 'is-edit-ready': isEditReady, 'hidden': isHidden })}>
+                    : <div className={classnames('reticles-directions', { 'is-edit-ready': isEditReady, 'is-hidden': isHidden })}>
                           <span>{this.getHelperLabel()}</span>
                       </div>
                 }

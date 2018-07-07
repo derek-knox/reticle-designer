@@ -19,6 +19,7 @@ export default class ReticleDesignerPage extends Component {
 
         <div className='reticle-stage'>
           <Reticles></Reticles>
+
           {this.props.stores.reticlesStore.items.length > 0
             ? <ReticleEditor></ReticleEditor>
             : null

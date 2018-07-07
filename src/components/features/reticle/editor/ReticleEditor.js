@@ -4,8 +4,9 @@ import {inject, observer} from 'mobx-react';
 import { clamp } from 'lodash';
 import classnames from 'classnames';
 
-import LayersContainer from './LayersContainer';
 import EditLayerContainer from './EditLayerContainer';
+import LayersContainer from './LayersContainer';
+import ProgressiveDisclosureBar from './ProgressiveDisclosureBar';
 
 @inject('stores')
 @observer
@@ -42,6 +43,8 @@ export default class ReticleEditor extends Component {
             <div className={classnames('reticle-editor-container', {'is-edit-ready': !this.props.stores.editReticleStore.isDrawing})}
                  ref={this.refEditor}
                  style={this.getTransformStyle({ point })} >
+
+                <ProgressiveDisclosureBar></ProgressiveDisclosureBar>
                  
                 <LayersContainer></LayersContainer>
                 <EditLayerContainer></EditLayerContainer>
