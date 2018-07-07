@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import {action} from 'mobx';
 import {inject, observer} from 'mobx-react';
 
+import classnames from 'classnames';
+
 @inject('stores')
 @observer
 export default class ProgressiveDisclosureBar extends Component {
@@ -17,7 +19,9 @@ export default class ProgressiveDisclosureBar extends Component {
 
         return (
             <div className='progressive-disclosure-bar'>
-                <div className='progressive-disclosure-bar-goals'>
+                <div className={classnames('progressive-disclosure-bar-goals', {
+                                           'is-hidden': this.props.stores.editReticleStore.isMinimized
+                                })}>
                     <span>{goal.id + '/' + count}:</span> <span>{goal.message}</span>
                 </div>
                 <div className="progressive-disclosure-bar-divider"></div>

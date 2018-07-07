@@ -30,8 +30,10 @@ export default class ReticleEditor extends Component {
     getStyle(payload) {
         const applyTransform = this.props.stores.reticlesStore.lastReticleInFocus === this.props.stores.reticlesStore.reticleInFocus && this.props.stores.editReticleStore.isDrawing;
         const previousTransform = this.refEditor.current ? this.refEditor.current.style.transform : null;
-        return { 
-            height: this.props.stores.editReticleStore.isMinimized ? 0 : '',
+        const isMinimized = this.props.stores.editReticleStore.isMinimized;
+        return {
+            borderWidth: isMinimized ? 0 : '',
+            height: isMinimized ? 0 : '',
             transform: applyTransform ? 'translate(' + payload.point.x + 'px, ' + payload.point.y + 'px)' : previousTransform
         };
     }
