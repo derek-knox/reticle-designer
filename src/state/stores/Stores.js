@@ -4,6 +4,7 @@ import { routes } from '../utils/Routes';
 import { ColorStore } from './ColorStore';
 import { EditReticleStore } from './EditReticleStore';
 import { ReticlesStore } from './ReticlesStore';
+import { PrecisionSelectStore } from './PrecisionSelectStore';
 import { ProgressiveDisclosureStore } from './ProgressiveDisclosureStore';
 
 export default class {
@@ -15,6 +16,7 @@ export default class {
     this.colorStore = new ColorStore(this);
     this.editReticleStore = new EditReticleStore(this);
     this.reticlesStore = new ReticlesStore(this);
+    this.precisionSelectStore = new PrecisionSelectStore(this);
     this.progressiveDisclosureStore = new ProgressiveDisclosureStore(this);
 
   }

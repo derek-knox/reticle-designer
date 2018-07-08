@@ -40,10 +40,19 @@ export default class Reticles extends Component {
         return helperLabel;
     }
 
+    @action.bound onContextMenu(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        const pos = { x: e.nativeEvent.offsetX, y: e.nativeEvent.offsetY };
+        this.props.stores.precisionSelectStore.updatePanel({isVisible: true, position: pos});
+    }
+
     @action.bound onMouseDown(e) {
-        this.props.stores.editReticleStore.isDrawing = true;
-        this.props.stores.editReticleStore.updateEditArea({ ref: this.refReticles.current });
-        this.props.stores.reticlesStore.add({ radius: this.getTargetValue(e) });
+        if(e.button === 0) { // only left click
+            this.props.stores.editReticleStore.isDrawing = true;
+            this.props.stores.editReticleStore.updateEditArea({ ref: this.refReticles.current });
+            this.props.stores.reticlesStore.add({ radius: this.getTargetValue(e) });
+        }
     }
     
     @action.bound onMouseMove(e) {
@@ -66,6 +75,7 @@ export default class Reticles extends Component {
             <div id='reticles-snapshot-target' ref={this.refReticles} className='reticles-container'>
 
                 <div className='reticles-drag-target'
+                     onContextMenu={this.onContextMenu}
                      onMouseDown={this.onMouseDown}
                      onMouseMove={this.onMouseMove}
                      onMouseUp={this.onMouseUp}>
