@@ -3,7 +3,7 @@ import { inject, observer } from 'mobx-react';
 
 import Reticles from '../features/reticle/Reticles';
 import GraphicsLibrary from "../features/reticle/editor/GraphicsLibrary";
-import PrecisionSelect from "../features/reticle/PrecisionSelect";
+import PrecisionSelect from "../features/reticle/precision-panel/PrecisionSelect";
 import ReticleEditor from '../features/reticle/editor/ReticleEditor';
 
 @inject('stores')

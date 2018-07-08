@@ -123,22 +123,34 @@ svg {
   position: absolute;
   left: 0;
   top: 0;
-  width: 140px;
+  width: 120px;
   background-color: #444;
   border: 1px solid #000;
+  text-align: left;
   z-index: 1;
 
   .precision-select-header {
     padding: 15px 15px 25px;
     font-size: 80%;
     font-style: italic;
-    text-align: left;
 
     .no-select;
   }
 
   .precision-select-list {
+    max-height: 300px;
+    margin-bottom: 15px;
+    height: auto;
 
+    .precision-select-list-item {
+      padding: 5px 15px 5px;
+      cursor: pointer;
+
+      &.is-selected {
+        color: #99cc33;
+        border-right: 2px solid #99cc33;
+      }
+    }
   }
 }
 

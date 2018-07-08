@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import { action, observable } from 'mobx';
 import {inject, observer} from 'mobx-react';
 
+import PrecisionSelectListItem from './PrecisionSelectListItem';
+
 @inject('stores')
 @observer
 export default class PrecisionSelect extends Component {
@@ -18,27 +20,31 @@ export default class PrecisionSelect extends Component {
     }
 
     getStyle() {
-        // const rect = this.refEl.getBoundingClientRect();
-        console.dir(this.refEl);
-        let point = this.props.stores.precisionSelectStore.position;
-        // point.x -= point.x - rect.width/2;
-        // point.y -= point.y - 50;
+        const rect = this.refEl.current ? this.refEl.current.getBoundingClientRect() : { width: 0, height: 0 };
+        let point = { x: this.props.stores.precisionSelectStore.position.x, y: this.props.stores.precisionSelectStore.position.y };
+        point.x -= rect.width/2;
+        point.y -= 50;
         return {
             transform: 'translate(' + point.x + 'px, ' + point.y + 'px)'
         };
     }
 
     render() {
+
+        const matches = this.props.stores.reticlesStore.items.filter(reticle => {
+            return reticle.radius.settings.val > 200
+        });
+
         return (
             <div className='precision-select-container'
-                 onMouseLeave={this.onMouseLeave}
                  ref={this.refEl}
+                 onMouseLeave={this.onMouseLeave}
                  style={this.getStyle()}>
                 <div className='precision-select-header'>
                     Precision Select
                 </div>
                 <div className='precision-select-list'>
-                    ...
+                    {matches.map(item => <PrecisionSelectListItem key={item.id} item={item}></PrecisionSelectListItem>)}
                 </div>
             </div>
         );
