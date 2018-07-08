@@ -43,6 +43,7 @@ export default class Reticles extends Component {
     @action.bound onContextMenu(e) {
         e.preventDefault();
         e.stopPropagation();
+        if(this.props.stores.reticlesStore.items.length < 3) { return; }
         const pos = { x: e.nativeEvent.offsetX, y: e.nativeEvent.offsetY };
         this.props.stores.precisionSelectStore.updatePanel({isVisible: true, position: pos});
     }

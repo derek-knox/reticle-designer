@@ -26,7 +26,7 @@ export default class ReticleDesignerPage extends Component {
             : null
           }
 
-          {this.props.stores.precisionSelectStore.isVisible
+          {this.props.stores.precisionSelectStore.matches.length > 0 && this.props.stores.precisionSelectStore.isVisible
             ? <PrecisionSelect></PrecisionSelect>
             : null
           }

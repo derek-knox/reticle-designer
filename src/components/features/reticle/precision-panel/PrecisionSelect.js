@@ -31,9 +31,7 @@ export default class PrecisionSelect extends Component {
 
     render() {
 
-        const matches = this.props.stores.reticlesStore.items.filter(reticle => {
-            return reticle.radius.settings.val > 200
-        });
+        const matches = this.props.stores.precisionSelectStore.matches;
 
         return (
             <div className='precision-select-container'
