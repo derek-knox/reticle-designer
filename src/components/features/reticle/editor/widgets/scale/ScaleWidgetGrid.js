@@ -34,7 +34,7 @@ export default class ScaleWidgetGrid extends Component {
         this.unobserve();
     }
 
-    initGridData() {
+    @action.bound initGridData() {
         const settings = this.props.reticleInFocus.scale.settings;
         const size = settings.max/settings.step;
         let x = settings.min;
@@ -54,11 +54,11 @@ export default class ScaleWidgetGrid extends Component {
         this.gridData.cellSizeInPx = (this.refEl.current.offsetWidth/size) + 'px';
     }
 
-    reset() {
+    @action.bound reset() {
         this.props.reticleInFocus.scale.settings.val = this.initialScale;
     }
 
-    onMouseOverScaleTile(e, payload) {
+    @action.bound onMouseOverScaleTile(e, payload) {
         
         // Prevent quick hover after selection causing scale to update
         if (this.props.stores.editReticleStore.isGridControlOpen) {
@@ -67,7 +67,7 @@ export default class ScaleWidgetGrid extends Component {
         }
     }
 
-    onClickScaleTile(e, payload) {
+    @action.bound onClickScaleTile(e, payload) {
         this.props.reticleInFocus.scale.settings.val = payload;
         this.initialScale = payload;
         this.props.stores.editReticleStore.isGridControlOpen = false;
