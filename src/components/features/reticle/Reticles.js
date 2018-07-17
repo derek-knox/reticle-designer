@@ -3,6 +3,7 @@ import { action } from 'mobx';
 import {inject, observer} from 'mobx-react';
 import classnames from "classnames";
 
+import MorphToReticle from "../../features/MorphToReticle";
 import Reticle from './Reticle';
 import { getRadiusFromMouseAndClientRect } from '../../../utils/reticleUtils';
 
@@ -95,6 +96,11 @@ export default class Reticles extends Component {
                     : <div className={classnames('reticles-directions', { 'is-edit-ready': isEditReady, 'is-hidden': isHidden })}>
                           <span>{this.getHelperLabel()}</span>
                       </div>
+                }
+
+                {this.props.stores.editReticleStore.isSnapshotInProcess
+                    ? null
+                    : <MorphToReticle startAnimation={!isEditReady}></MorphToReticle>
                 }
 
             </div>

@@ -92,16 +92,36 @@ svg {
   
   .center-h-v;
 
+  .morph-to-reticle,
   .reticles-directions {
     position: absolute;
     z-index: 0;
 
     &.is-edit-ready {
-      border: 1px solid #fff;
       padding: 10px;
     }
 
     .no-select;
+  }
+
+  .morph-to-reticle {
+    border: 1px solid #fff;
+    padding: 10px;
+    
+    width: auto;
+    height: auto;
+    border-radius: 0;
+    
+    transition: all .3s;
+
+    .copy-mirror {
+      opacity: 0;
+    }
+
+    &.animate {
+      padding: 0;
+      // opacity: 0;
+    }
   }
   
   .reticles-drag-target {
