@@ -65,7 +65,7 @@ export default class GraphicWidgetGrid extends Component {
                      onClick={(e) => this.onClickGraphic(e, null)}>
                 None</div>
 
-                {this.props.stores.editReticleStore.graphics.map((item) => {
+                {this.props.stores.editReticleStore.graphics.map((item, idx) => {
                     return (
                         <div key={item.id}
                              className={classnames("widget-helper-grid-item",
@@ -85,6 +85,7 @@ export default class GraphicWidgetGrid extends Component {
                                              direction={0}
                                              scale={{ x: 1, y: 1 }} />
                                 </svg>
+                                <span className='widget-helper-grid-item-number-label'>{idx + 1}</span>
                             </div>
                         );
                     })

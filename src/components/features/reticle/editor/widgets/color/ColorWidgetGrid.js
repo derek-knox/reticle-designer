@@ -56,7 +56,7 @@ export default class ColorWidgetGrid extends Component {
 
         return (
             <div className="widget-helper-grid">
-                {this.props.stores.colorStore.items.map((item) => {
+                {this.props.stores.colorStore.items.map((item, idx) => {
                         return (
                             <div key={item.id}
                                  className={classnames("widget-helper-grid-item",
@@ -65,6 +65,7 @@ export default class ColorWidgetGrid extends Component {
                                  onMouseOver={(e) => this.onMouseOverPalette(e, item.id)}
                                  onClick={(e) => this.onClickPalette(e, item.id)}>
                                     <ColorWheel palette={item} colorInFocusIndex={colorInFocusIndex} size={15} offset={15} />
+                                    <span className='widget-helper-grid-item-number-label'>{idx + 1}</span>
                             </div>
                         );
                     })
