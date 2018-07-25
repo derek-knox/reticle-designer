@@ -58,7 +58,7 @@ export class ReticleModel {
     this.color = new EditControlModel({ label: 'Color', type: EditControlModel.Type.Grid, settings: { reticleProp: ReticleModel.SettingType.Color, val: isClone ? payload.color.settings.val : 0 } });
     this.opacity = new EditControlModel({ label: 'Opacity', type: EditControlModel.Type.Range, settings: { reticleProp: ReticleModel.SettingType.Opacity, val: isClone ? payload.opacity.settings.val : 1, min: 0, max: 1, step: .01 } });
     this.thickness = new EditControlModel({ label: 'Thickness', type: EditControlModel.Type.Range, settings: { reticleProp: ReticleModel.SettingType.Thickness, val: isClone ? payload.thickness.settings.val : 4, min: 1, max: 150, step: 1 } });
-    this.divisions = new EditControlModel({ label: 'Divisions', type: EditControlModel.Type.Range, settings: { reticleProp: ReticleModel.SettingType.Divisions, val: isClone ? payload.divisions.settings.val : 0, min: 0, max: 270, step: 1 } });
+    this.divisions = new EditControlModel({ label: 'Divisions', type: EditControlModel.Type.WeightedRange, settings: { reticleProp: ReticleModel.SettingType.Divisions, val: isClone ? payload.divisions.settings.val : 0, min: 0, max: 270, step: 1 } });
     this.spacing = new EditControlModel({ label: 'Spacing', type: EditControlModel.Type.Range, settings: { reticleProp: ReticleModel.SettingType.Spacing, val: isClone ? payload.spacing.settings.val : 1, min: 1, max: 359, step: .1 } });
     this.rotation = new EditControlModel({ label: 'Rotation', type: EditControlModel.Type.Range, settings: { reticleProp: ReticleModel.SettingType.Rotation, val: isClone ? payload.rotation.settings.val : 0, min: 0, max: 360, step: .1 } });
     this.graphic = new EditControlModel({ label: 'Graphic', type: EditControlModel.Type.Grid, settings: { reticleProp: ReticleModel.SettingType.Graphic, val: isClone ? payload.graphic.settings.val : null } });
@@ -92,7 +92,7 @@ export class ReticleModel {
   @action.bound updateSettingsValue(payload) {
     let control = this[payload.reticleProp];
     let newVal = null;
-    if(control.type === EditControlModel.Type.Range)
+    if(control.type === EditControlModel.Type.Range || control.type === EditControlModel.Type.WeightedRange)
       newVal = clamp(payload.val, control.settings.min, control.settings.max);
     else if(control.type === EditControlModel.Type.Grid)
       newVal = payload.val;

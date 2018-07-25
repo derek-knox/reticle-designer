@@ -8,6 +8,7 @@ import GraphicWidget from './widgets/graphic/GraphicWidget';
 import ScaleWidget from "./widgets/scale/ScaleWidget";
 import SliderWidget from "./widgets/SliderWidget";
 import ToggleRangeWidget from "./widgets/ToggleRangeWidget";
+import WeightedSliderWidget from "./widgets/WeightedSliderWidget";
 
 @inject('stores')
 @observer
@@ -16,6 +17,9 @@ export default class EditControlWidget extends Component {
     getControlByType = (payload) => {
         if (payload.type === EditControlModel.Type.Range) {
             return <SliderWidget item={payload} {...this.props} />;
+        }
+        else if (payload.type === EditControlModel.Type.WeightedRange) {
+            return <WeightedSliderWidget item={payload} {...this.props} />;
         }
         else if (payload.type === EditControlModel.Type.Grid) {
             if(payload.settings.reticleProp === ReticleModel.SettingType.Color) {

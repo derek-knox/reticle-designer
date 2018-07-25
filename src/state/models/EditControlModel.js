@@ -5,6 +5,7 @@ export class EditControlModel {
 
     static Type = {
         Range: 'range',
+        WeightedRange: 'weighted-range',
         Grid: 'grid',
         ToggleRange: 'toggle-range',
     }
