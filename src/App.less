@@ -200,7 +200,14 @@ svg {
       padding: 10px 12px;
       border: 1px solid #000;
       background-color: #99cc33;
+      opacity: 1;
       pointer-events: none;
+      transition: all 200ms ease-out;
+
+      &.is-hidden {
+        opacity: 0;
+        display: block;
+      }
     }
 
     .progressive-disclosure-bar-divider {
