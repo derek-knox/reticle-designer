@@ -40,19 +40,22 @@ export default class ReticleEditor extends Component {
 
     render() {
 
+        const isVisible = this.props.isVisible;
         const x = this.props.stores.reticlesStore.lastReticleInFocus ? this.props.stores.reticlesStore.lastReticleInFocus.radius.settings.val : 0;
         const y = this.refEditor.current ? -this.refEditor.current.clientHeight/2 : 0;
-        const point = this.getClampedPoint({ x, y });
+        const point = isVisible ? this.getClampedPoint({ x, y }) : { x: 0, y: 0 };
 
         return (
-            <div className={classnames('reticle-editor-container', {'is-edit-ready': !this.props.stores.editReticleStore.isDrawing})}
+            <div className={classnames('reticle-editor-container', {
+                    'is-visible': isVisible,
+                    'is-edit-ready': !this.props.stores.editReticleStore.isDrawing
+                 })}
                  ref={this.refEditor}
                  style={this.getStyle({ point })} >
 
-                <ProgressiveDisclosureBar></ProgressiveDisclosureBar>
-                 
-                <LayersContainer></LayersContainer>
-                <EditLayerContainer></EditLayerContainer>
+                { isVisible ? <ProgressiveDisclosureBar></ProgressiveDisclosureBar> : null }
+                { isVisible ? <LayersContainer></LayersContainer> : null }
+                { isVisible ? <EditLayerContainer></EditLayerContainer> : null }
                
             </div>
         );

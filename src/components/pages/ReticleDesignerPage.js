@@ -12,6 +12,7 @@ export default class ReticleDesignerPage extends Component {
   
   render() {
 
+    const isEditorVisible = this.props.stores.reticlesStore.items.length > 0;
     const isPrecisionSelectFocused = this.props.stores.precisionSelectStore.matches.length > 0 && this.props.stores.precisionSelectStore.isVisible;
 
     return (
@@ -24,10 +25,7 @@ export default class ReticleDesignerPage extends Component {
         <div className='reticle-stage'>
           <Reticles></Reticles>
 
-          {this.props.stores.reticlesStore.items.length > 0
-            ? <ReticleEditor></ReticleEditor>
-            : null
-          }
+          <ReticleEditor isVisible={isEditorVisible}></ReticleEditor>
 
           <PrecisionSelect isFocused={isPrecisionSelectFocused}></PrecisionSelect>
 

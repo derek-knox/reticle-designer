@@ -163,6 +163,9 @@ svg {
 }
 
 .reticle-editor-container {
+
+  .no-select;
+
   background-color: #444;
   position: absolute;
   top: 50%;
@@ -172,8 +175,15 @@ svg {
   text-align: left;
   display: flex;
   border: 1px solid #000;
-
+  opacity: 0;
+  transform: translateY(-300px);
   transition: all 200ms ease-out;
+  pointer-events: none;
+
+  &.is-visible {
+    pointer-events: inherit;
+    opacity: 1;
+  }
 
   .progressive-disclosure-bar {
     position: absolute;
