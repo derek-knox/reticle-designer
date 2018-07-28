@@ -11,6 +11,9 @@ import ReticleEditor from '../features/reticle/editor/ReticleEditor';
 export default class ReticleDesignerPage extends Component {
   
   render() {
+
+    const isPrecisionSelectFocused = this.props.stores.precisionSelectStore.matches.length > 0 && this.props.stores.precisionSelectStore.isVisible;
+
     return (
       <div className='page'>
         
@@ -26,10 +29,8 @@ export default class ReticleDesignerPage extends Component {
             : null
           }
 
-          {this.props.stores.precisionSelectStore.matches.length > 0 && this.props.stores.precisionSelectStore.isVisible
-            ? <PrecisionSelect></PrecisionSelect>
-            : null
-          }
+          <PrecisionSelect isFocused={isPrecisionSelectFocused}></PrecisionSelect>
+
         </div>
 
         <GraphicsLibrary></GraphicsLibrary>
