@@ -26,7 +26,7 @@ export default class PrecisionSelect extends Component {
         if(this.props.isFocused) {
             point = { x: this.props.stores.precisionSelectStore.position.x, y: this.props.stores.precisionSelectStore.position.y };
             point.x -= rect.width/2;
-            point.y -= 50;
+            point.y -= 80;
         } else {
             const editAreaInfo = this.props.stores.editReticleStore.editAreaInfo;
             const x = editAreaInfo ? (editAreaInfo.point.x - (rect.width / 2)) : 0;

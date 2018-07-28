@@ -34,7 +34,7 @@ export default class Reticles extends Component {
             helperLabel = this.props.stores.reticlesStore.items.length < 2 ? 'Let Go Whenever' : 'You got this shit';
         } else {
             if (this.props.stores.reticlesStore.items.length >= 2) {
-                helperLabel = '';
+                helperLabel = "Peace";
             }
         }
         return helperLabel;

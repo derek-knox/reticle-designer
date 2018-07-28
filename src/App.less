@@ -93,14 +93,24 @@ svg {
   .center-h-v;
 
   .reticles-directions {
+    
+    .no-select;
+
     position: absolute;
     z-index: 0;
-
+    transform: scale(1.1);
+    transition: all 200ms ease-out;
+    
     &.is-edit-ready {
-      padding: 10px;
+      transform: scale(1);
     }
-
-    .no-select;
+    
+    &.is-hidden {
+      opacity: 0;
+      transform: scale(.9);
+      transition: all 600ms ease-out;
+      display: block;
+    }
   }
   
   .reticles-drag-target {
@@ -129,9 +139,11 @@ svg {
   text-align: left;
   z-index: 1;
   opacity: 0;
+  pointer-events: none;
   transition: all 200ms ease-out;
   
   &.is-focused {
+    pointer-events: all;
     opacity: 1;
   }
 
