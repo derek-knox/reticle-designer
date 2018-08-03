@@ -34,7 +34,7 @@ export default class ProgressiveDisclosureBar extends Component {
         
         const goalCount = this.props.stores.progressiveDisclosureStore.goals.length;
         const goalList = this.props.stores.progressiveDisclosureStore.goals;
-        const currentGoalIndex = goalList.indexOf(this.props.stores.progressiveDisclosureStore.getCurrentGoal());
+        const currentGoalIndex = this.props.stores.progressiveDisclosureStore.progressId;
         const offsetX = -(this.goalWidth * currentGoalIndex);
 
         return (

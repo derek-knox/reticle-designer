@@ -9,7 +9,7 @@ export default class ProgressiveDisclosureGoal extends Component {
         return (
             <div className='progressive-disclosure-bar-goal'
                  style={ { width: this.props.width + 'px' } }>
-                <span>{this.props.goal.id + '/' + this.props.goalCount}:</span> <span>{this.props.goal.message}</span>
+                <span>{this.props.goal.id + 1 + '/' + this.props.goalCount}:</span> <span>{this.props.goal.message}</span>
             </div>
         );
     }

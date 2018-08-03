@@ -13,10 +13,12 @@ import LayerListItem from './LayerListItem';
 export default class LayersContainer extends Component {
 
     @action.bound onClickClone(e) {
+        this.props.stores.progressiveDisclosureStore.updateHasInteracted("cloneButtonClick");
         this.props.stores.reticlesStore.clone();
     }
-
+    
     @action.bound onClickSnapshot(e) {
+        this.props.stores.progressiveDisclosureStore.updateHasInteracted("snapshotButtonClick");
         this.props.stores.editReticleStore.takeSnapshot();
     }
 
@@ -42,10 +44,16 @@ export default class LayersContainer extends Component {
                                           lockToContainerEdges={true}
                                           helperClass='dragging-layer' />
 
-                            <Button className="reticle-editor-layers-button"
-                                    onClick={this.onClickClone}>Clone {this.props.stores.reticlesStore.reticleInFocus.label}</Button>
-                            <Button className="reticle-editor-layers-button"
-                                    onClick={this.onClickSnapshot}>Snapshot</Button>
+                            {this.props.stores.progressiveDisclosureStore.hasCompletedGoal3()
+                                ? <Button className="reticle-editor-layers-button" onClick={this.onClickClone}>Clone {this.props.stores.reticlesStore.reticleInFocus.label}</Button>
+                                : null
+                            }
+
+                            {this.props.stores.progressiveDisclosureStore.hasCompletedGoal4()
+                                ? <Button className="reticle-editor-layers-button" onClick={this.onClickSnapshot}>Snapshot</Button>
+                                : null
+                            }
+
                         </div>
                     
                     </div>
