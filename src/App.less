@@ -214,11 +214,22 @@ svg {
       background-color: #99cc33;
       opacity: 1;
       pointer-events: none;
+      overflow: hidden;
       transition: all 200ms ease-out;
 
       &.is-hidden {
         opacity: 0;
         display: block;
+      }
+
+      .progressive-disclosure-bar-goals-list {
+        width: 2100px;
+        transition: all 1200ms ease-in-out;
+
+        .progressive-disclosure-bar-goal {
+          min-width: 417px;
+          display: inline-block;
+        }
       }
     }
 
