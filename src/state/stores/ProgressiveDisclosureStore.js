@@ -11,6 +11,10 @@ export class ProgressiveDisclosureStore {
         { id: 5, message: 'Take a snapshot' }
     ];
 
+    constructor(stores) {
+        this.stores = stores;
+    }
+
     getCurrentGoal() {
         return computed(() => {
             return this.goals.find(el => el.id === this.progressId);

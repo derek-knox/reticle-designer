@@ -22,11 +22,11 @@ export default class ProgressiveDisclosureBar extends Component {
         this.updateGoalWidth();
     }
 
-    @action.bound updateGoalWidth(e) {
+    @action.bound updateGoalWidth() {
         this.goalWidth = this.refElBarGoals.current.offsetWidth;
     }
     
-    @action.bound onClickToggleVisibility(e) {
+    @action.bound onClickToggleVisibility() {
         this.props.stores.editReticleStore.isMinimized = !this.props.stores.editReticleStore.isMinimized;
     }
     
