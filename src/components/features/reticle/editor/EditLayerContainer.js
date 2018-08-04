@@ -56,14 +56,105 @@ export default class EditLayerContainer extends Component {
                         <div className='reticle-editor-heading'>{this.props.stores.reticlesStore.reticleInFocus.label}</div>
 
                         <div className={classnames('reticle-editor-layer-controls', {'is-grid-control-open': this.props.stores.editReticleStore.isGridControlOpen})}>
-                            {this.props.stores.reticlesStore.reticleInFocus.controls.map(item =>
-                                <EditControl key={item.id}
-                                             item={item}
-                                             onRef={component => this[item.settings.reticleProp] = component}
-                                             hasDivider={this.controlsWithSpacers.find((ctrl) => ctrl.label === item.settings.reticleProp)}
-                                             isVisible={controlVisibility[item.settings.reticleProp]}
-                                             controlInFocus={this.props.stores.reticlesStore.reticleInFocus.controlInFocus}></EditControl>
-                            )}
+
+                            <EditControl
+                                item={this.props.stores.reticlesStore.reticleInFocus.color}
+                                onRef={component => this[this.props.stores.reticlesStore.reticleInFocus.color.settings.reticleProp] = component}
+                                hasDivider={this.controlsWithSpacers.find((ctrl) => ctrl.label === this.props.stores.reticlesStore.reticleInFocus.color.settings.reticleProp)}
+                                isVisible={controlVisibility[this.props.stores.reticlesStore.reticleInFocus.color.settings.reticleProp]}
+                                isLocked={false}
+                                controlInFocus={this.props.stores.reticlesStore.reticleInFocus.controlInFocus}>
+                            </EditControl>
+
+                            <EditControl
+                                item={this.props.stores.reticlesStore.reticleInFocus.opacity}
+                                onRef={component => this[this.props.stores.reticlesStore.reticleInFocus.opacity.settings.reticleProp] = component}
+                                hasDivider={this.controlsWithSpacers.find((ctrl) => ctrl.label === this.props.stores.reticlesStore.reticleInFocus.opacity.settings.reticleProp)}
+                                isVisible={controlVisibility[this.props.stores.reticlesStore.reticleInFocus.opacity.settings.reticleProp]}
+                                isLocked={false}
+                                controlInFocus={this.props.stores.reticlesStore.reticleInFocus.controlInFocus}>
+                            </EditControl>
+
+                            <EditControl
+                                item={this.props.stores.reticlesStore.reticleInFocus.radius}
+                                onRef={component => this[this.props.stores.reticlesStore.reticleInFocus.radius.settings.reticleProp] = component}
+                                hasDivider={this.controlsWithSpacers.find((ctrl) => ctrl.label === this.props.stores.reticlesStore.reticleInFocus.radius.settings.reticleProp)}
+                                isVisible={controlVisibility[this.props.stores.reticlesStore.reticleInFocus.radius.settings.reticleProp]}
+                                isLocked={false}
+                                controlInFocus={this.props.stores.reticlesStore.reticleInFocus.controlInFocus}>
+                            </EditControl>
+
+                            <EditControl
+                                item={this.props.stores.reticlesStore.reticleInFocus.thickness}
+                                onRef={component => this[this.props.stores.reticlesStore.reticleInFocus.thickness.settings.reticleProp] = component}
+                                hasDivider={this.controlsWithSpacers.find((ctrl) => ctrl.label === this.props.stores.reticlesStore.reticleInFocus.thickness.settings.reticleProp)}
+                                isVisible={controlVisibility[this.props.stores.reticlesStore.reticleInFocus.thickness.settings.reticleProp]}
+                                isLocked={false}
+                                controlInFocus={this.props.stores.reticlesStore.reticleInFocus.controlInFocus}>
+                            </EditControl>
+
+                            <EditControl
+                                item={this.props.stores.reticlesStore.reticleInFocus.divisions}
+                                onRef={component => this[this.props.stores.reticlesStore.reticleInFocus.divisions.settings.reticleProp] = component}
+                                hasDivider={this.controlsWithSpacers.find((ctrl) => ctrl.label === this.props.stores.reticlesStore.reticleInFocus.divisions.settings.reticleProp)}
+                                isVisible={controlVisibility[this.props.stores.reticlesStore.reticleInFocus.divisions.settings.reticleProp]}
+                                isLocked={!this.props.stores.progressiveDisclosureStore.hasCompletedGoal1()}
+                                controlInFocus={this.props.stores.reticlesStore.reticleInFocus.controlInFocus}>
+                            </EditControl>
+
+                            <EditControl
+                                item={this.props.stores.reticlesStore.reticleInFocus.spacing}
+                                onRef={component => this[this.props.stores.reticlesStore.reticleInFocus.spacing.settings.reticleProp] = component}
+                                hasDivider={this.controlsWithSpacers.find((ctrl) => ctrl.label === this.props.stores.reticlesStore.reticleInFocus.spacing.settings.reticleProp)}
+                                isVisible={controlVisibility[this.props.stores.reticlesStore.reticleInFocus.spacing.settings.reticleProp]}
+                                isLocked={!this.props.stores.progressiveDisclosureStore.hasCompletedGoal1()}
+                                controlInFocus={this.props.stores.reticlesStore.reticleInFocus.controlInFocus}>
+                            </EditControl>
+
+                            <EditControl
+                                item={this.props.stores.reticlesStore.reticleInFocus.rotation}
+                                onRef={component => this[this.props.stores.reticlesStore.reticleInFocus.rotation.settings.reticleProp] = component}
+                                hasDivider={this.controlsWithSpacers.find((ctrl) => ctrl.label === this.props.stores.reticlesStore.reticleInFocus.rotation.settings.reticleProp)}
+                                isVisible={controlVisibility[this.props.stores.reticlesStore.reticleInFocus.rotation.settings.reticleProp]}
+                                isLocked={!this.props.stores.progressiveDisclosureStore.hasCompletedGoal1()}
+                                controlInFocus={this.props.stores.reticlesStore.reticleInFocus.controlInFocus}>
+                            </EditControl>
+
+                            <EditControl
+                                item={this.props.stores.reticlesStore.reticleInFocus.graphic}
+                                onRef={component => this[this.props.stores.reticlesStore.reticleInFocus.graphic.settings.reticleProp] = component}
+                                hasDivider={this.controlsWithSpacers.find((ctrl) => ctrl.label === this.props.stores.reticlesStore.reticleInFocus.graphic.settings.reticleProp)}
+                                isVisible={controlVisibility[this.props.stores.reticlesStore.reticleInFocus.graphic.settings.reticleProp]}
+                                isLocked={!this.props.stores.progressiveDisclosureStore.hasCompletedGoal2()}
+                                controlInFocus={this.props.stores.reticlesStore.reticleInFocus.controlInFocus}>
+                            </EditControl>
+
+                            <EditControl
+                                item={this.props.stores.reticlesStore.reticleInFocus.stroke}
+                                onRef={component => this[this.props.stores.reticlesStore.reticleInFocus.stroke.settings.reticleProp] = component}
+                                hasDivider={this.controlsWithSpacers.find((ctrl) => ctrl.label === this.props.stores.reticlesStore.reticleInFocus.stroke.settings.reticleProp)}
+                                isVisible={controlVisibility[this.props.stores.reticlesStore.reticleInFocus.stroke.settings.reticleProp]}
+                                isLocked={!this.props.stores.progressiveDisclosureStore.hasCompletedGoal2()}
+                                controlInFocus={this.props.stores.reticlesStore.reticleInFocus.controlInFocus}>
+                            </EditControl>
+
+                            <EditControl
+                                item={this.props.stores.reticlesStore.reticleInFocus.direction}
+                                onRef={component => this[this.props.stores.reticlesStore.reticleInFocus.direction.settings.reticleProp] = component}
+                                hasDivider={this.controlsWithSpacers.find((ctrl) => ctrl.label === this.props.stores.reticlesStore.reticleInFocus.direction.settings.reticleProp)}
+                                isVisible={controlVisibility[this.props.stores.reticlesStore.reticleInFocus.direction.settings.reticleProp]}
+                                isLocked={!this.props.stores.progressiveDisclosureStore.hasCompletedGoal2()}
+                                controlInFocus={this.props.stores.reticlesStore.reticleInFocus.controlInFocus}>
+                            </EditControl>
+
+                            <EditControl
+                                item={this.props.stores.reticlesStore.reticleInFocus.scale}
+                                onRef={component => this[this.props.stores.reticlesStore.reticleInFocus.scale.settings.reticleProp] = component}
+                                hasDivider={this.controlsWithSpacers.find((ctrl) => ctrl.label === this.props.stores.reticlesStore.reticleInFocus.scale.settings.reticleProp)}
+                                isVisible={controlVisibility[this.props.stores.reticlesStore.reticleInFocus.scale.settings.reticleProp]}
+                                isLocked={!this.props.stores.progressiveDisclosureStore.hasCompletedGoal2()}
+                                controlInFocus={this.props.stores.reticlesStore.reticleInFocus.controlInFocus}>
+                            </EditControl>
 
                             {this.controlsWithSpacers.map((item, idx) =>
                                 <div className='divider' key={idx} style={ { top: item.top + 'px' }}></div>

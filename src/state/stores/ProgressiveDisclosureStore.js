@@ -4,7 +4,7 @@ export class ProgressiveDisclosureStore {
 
     @observable progressId = 0;
     @observable goals = [
-        { id: 0, message: 'Create 3 reticles' },
+        { id: 0, message: 'Create 5 reticles' },
         { id: 1, message: 'Create a single arc reticle' },
         { id: 2, message: 'Create a 3+ graphics reticle' },
         { id: 3, message: 'Clone an existing reticle' },
@@ -21,7 +21,7 @@ export class ProgressiveDisclosureStore {
 
     hasCompletedGoal1() {
         return computed(() => {
-            return this.stores.reticlesStore.items.length > 2;
+            return this.stores.reticlesStore.items.length > 4;
         }).get();
     }
 

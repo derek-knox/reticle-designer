@@ -27,22 +27,23 @@ export default class EditControl extends Component {
     render() {
 
         const item = this.props.item;
+        const isDisabled = this.props.isLocked || !this.props.isVisible
 
         return (
             <div className={classnames('reticle-editor-control-row',
                                       {'is-selected': this.props.controlInFocus.id === item.id,
                                        'has-divider': this.props.hasDivider,
-                                       'is-disabled': !this.props.isVisible})}
+                                       'is-disabled': isDisabled})}
                  ref={this.refEl}
                  onMouseDown={this.props.isVisible ? this.onMouseDownControl : null}>
 
-                {!this.props.isVisible
+                {isDisabled
                     ? <div className='is-disabled-blocker'></div>
                     : null
                 }
                 
                 <div className='reticle-editor-control-label'>
-                    {item.label}
+                    {this.props.isLocked ? 'Locked' : item.label}
                 </div>
 
                 <EditControlWidget item={item} {...this.props}></EditControlWidget>

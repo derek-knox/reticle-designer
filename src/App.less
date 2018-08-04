@@ -275,8 +275,6 @@ svg {
     .reticle-editor-layers-items {
       flex-grow: 1;
       overflow-y: scroll;
-
-      
     }
     
     .reticle-editor-layers-button {
@@ -284,6 +282,10 @@ svg {
       height: 40px;
       min-height: 40px;
       font-size: 80%;
+
+      &:disabled {
+        opacity: .2;
+      }
     }
   }
 
@@ -321,6 +323,8 @@ svg {
         }
 
         &.is-disabled {
+          pointer-events: none;
+
           .is-disabled-blocker {
             z-index: 2;
             cursor: auto;

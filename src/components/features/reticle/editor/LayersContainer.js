@@ -27,6 +27,10 @@ export default class LayersContainer extends Component {
     }
 
     render() {
+
+        const hasCompletedGoal3 = this.props.stores.progressiveDisclosureStore.hasCompletedGoal3();
+        const hasCompletedGoal4 = this.props.stores.progressiveDisclosureStore.hasCompletedGoal4();
+
         return (
             <div className="container reticle-editor-layers-container">
                 <div className="wrapper">
@@ -44,15 +48,23 @@ export default class LayersContainer extends Component {
                                           lockToContainerEdges={true}
                                           helperClass='dragging-layer' />
 
-                            {this.props.stores.progressiveDisclosureStore.hasCompletedGoal3()
-                                ? <Button className="reticle-editor-layers-button" onClick={this.onClickClone}>Clone {this.props.stores.reticlesStore.reticleInFocus.label}</Button>
-                                : null
-                            }
+                            <Button className="reticle-editor-layers-button"
+                                    disabled={!hasCompletedGoal3}
+                                    onClick={this.onClickClone}>
+                                        {hasCompletedGoal3
+                                            ? <span>Clone {this.props.stores.reticlesStore.reticleInFocus.label}</span>
+                                            : 'Locked'
+                                        }
+                            </Button>
 
-                            {this.props.stores.progressiveDisclosureStore.hasCompletedGoal4()
-                                ? <Button className="reticle-editor-layers-button" onClick={this.onClickSnapshot}>Snapshot</Button>
-                                : null
-                            }
+                            <Button className="reticle-editor-layers-button"
+                                    disabled={!hasCompletedGoal4}
+                                    onClick={this.onClickSnapshot}>
+                                        {hasCompletedGoal4
+                                            ? 'Snapshot'
+                                            : 'Locked'
+                                        }
+                            </Button>
 
                         </div>
                     
