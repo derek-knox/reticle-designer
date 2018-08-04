@@ -30,6 +30,9 @@ export default class LayersContainer extends Component {
 
         const hasCompletedGoal3 = this.props.stores.progressiveDisclosureStore.hasCompletedGoal3();
         const hasCompletedGoal4 = this.props.stores.progressiveDisclosureStore.hasCompletedGoal4();
+        const currentReticleLabel = this.props.stores.reticlesStore.reticleInFocus.label; // explicit dereference to ensure rerender for new list item adds
+        const cloneButtonLabel = hasCompletedGoal3 ? 'Clone ' + currentReticleLabel: 'Locked';
+        const snapshotButtonLabel = hasCompletedGoal4 ? 'Snapshot' : 'Locked';
 
         return (
             <div className="container reticle-editor-layers-container">
@@ -51,19 +54,13 @@ export default class LayersContainer extends Component {
                             <Button className="reticle-editor-layers-button"
                                     disabled={!hasCompletedGoal3}
                                     onClick={this.onClickClone}>
-                                        {hasCompletedGoal3
-                                            ? <span>Clone {this.props.stores.reticlesStore.reticleInFocus.label}</span>
-                                            : 'Locked'
-                                        }
+                                {cloneButtonLabel}
                             </Button>
 
                             <Button className="reticle-editor-layers-button"
                                     disabled={!hasCompletedGoal4}
                                     onClick={this.onClickSnapshot}>
-                                        {hasCompletedGoal4
-                                            ? 'Snapshot'
-                                            : 'Locked'
-                                        }
+                                {snapshotButtonLabel}
                             </Button>
 
                         </div>
