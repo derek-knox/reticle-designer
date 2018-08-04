@@ -43,7 +43,7 @@ export default class ProgressiveDisclosureBar extends Component {
 
     @action.bound onGoalChangeUpdate() {
         this.isAddGoalUpdateAnimation = true;
-        setTimeout(this.onClearAddGoalAnimation, 2000);
+        setTimeout(this.onClearAddGoalAnimation, 1850);
     }
 
     @action.bound onClearAddGoalAnimation() {
