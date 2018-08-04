@@ -8,7 +8,7 @@ export class ProgressiveDisclosureStore {
         { id: 1, isCompleted: false, message: 'Create a single arc reticle' },
         { id: 2, isCompleted: false, message: 'Create a 3+ graphics reticle' },
         { id: 3, isCompleted: false, message: 'Clone an existing reticle' },
-        { id: 4, isCompleted: false, message: 'Take a snapshot' }
+        { id: 4, isCompleted: false, message: 'Take a snapshot' },
     ];
     @observable hasInteracted = {
         cloneButtonClick: false,
@@ -44,7 +44,7 @@ export class ProgressiveDisclosureStore {
             const reticleInFocus = this.stores.reticlesStore.reticleInFocus;
             if(!reticleInFocus) { return; }
             const hasSingleArc = reticleInFocus.divisions.settings.val === 1;
-            const hasSingleArcAngleThreshold = reticleInFocus.spacing.settings.val >= 45;
+            const hasSingleArcAngleThreshold = reticleInFocus.spacing.settings.val >= 10;
             const isConditionMet = this.hasCompletedGoal1() && hasSingleArc && hasSingleArcAngleThreshold;
             return this.hasCompletedCurrentGoalAtIndex(1) || isConditionMet;
         }).get();

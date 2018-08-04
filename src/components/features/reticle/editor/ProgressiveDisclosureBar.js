@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {action} from 'mobx';
+import {action, observable, reaction} from 'mobx';
 import {inject, observer} from 'mobx-react';
 
 import classnames from 'classnames';
@@ -12,14 +12,21 @@ import { MuiThemeProvider } from '../../../../../node_modules/material-ui';
 export default class ProgressiveDisclosureBar extends Component {
     
     goalWidth = 0;
+    disposeGoalChangeWatcher;
+    @observable isAddGoalUpdateAnimation = false;
 
     constructor(props) {
         super(props);
         this.refElBarGoals = React.createRef();
+        this.initGoalChangeWatcher();
     }
 
     componentDidMount() {
         this.updateGoalWidth();
+    }
+
+    initGoalChangeWatcher() {
+        this.disposeGoalChangeWatcher = reaction(() => this.onGoalChangeTracker(), () => this.onGoalChangeUpdate());
     }
 
     @action.bound updateGoalWidth() {
@@ -28,6 +35,19 @@ export default class ProgressiveDisclosureBar extends Component {
     
     @action.bound onClickToggleVisibility() {
         this.props.stores.editReticleStore.isMinimized = !this.props.stores.editReticleStore.isMinimized;
+    }
+    
+    onGoalChangeTracker() {
+        return this.props.stores.progressiveDisclosureStore.progressId;
+    }
+
+    @action.bound onGoalChangeUpdate() {
+        this.isAddGoalUpdateAnimation = true;
+        setTimeout(this.onClearAddGoalAnimation, 2000);
+    }
+
+    @action.bound onClearAddGoalAnimation() {
+        this.isAddGoalUpdateAnimation = false;
     }
     
     render() {
@@ -40,7 +60,8 @@ export default class ProgressiveDisclosureBar extends Component {
         return (
             <div className='progressive-disclosure-bar'>
                 <div className={classnames('progressive-disclosure-bar-goals', {
-                                           'is-hidden': this.props.stores.editReticleStore.isMinimized
+                                           'is-hidden': this.props.stores.editReticleStore.isMinimized,
+                                           'is-add-goal-update-animation': this.isAddGoalUpdateAnimation
                                 })}
                      ref={this.refElBarGoals}>
                     <div className="progressive-disclosure-bar-goals-list"
