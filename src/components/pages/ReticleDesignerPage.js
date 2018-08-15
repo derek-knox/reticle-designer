@@ -6,6 +6,8 @@ import GraphicsLibrary from "../features/reticle/editor/GraphicsLibrary";
 import PrecisionSelect from "../features/reticle/precision-panel/PrecisionSelect";
 import ReticleEditor from '../features/reticle/editor/ReticleEditor';
 
+import Button from "@material-ui/core/Button";
+
 @inject('stores')
 @observer
 export default class ReticleDesignerPage extends Component {
@@ -20,6 +22,7 @@ export default class ReticleDesignerPage extends Component {
         
         <div className="header-container">
           <h1>Reticle Designer</h1>
+          <Button className="learn-more-btn" color="primary"><a href="https://derekknox.com/lab/reticledesigner/">Learn More - designed for widescreens & Chrome 67+</a></Button>
         </div>
 
         <div className='reticle-stage'>
