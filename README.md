@@ -1,3 +1,15 @@
+# Reticle Designer
+
+Reticle Designer is a creative authoring tool for designing FUI reticles made using React + MobX. Below are a few designs made with it. You can learn more about the app in my three part article series:
+
+- [Part 1: Deconstructing the Design](https://derekknox.com/articles/reticle-designer-part-1-deconstructing-the-design/)
+- [Part 2: Subtle Gamification](https://derekknox.com/articles/reticle-designer-part-2-subtle-gamification/)
+- [Part 3: SVG, Flexbox, React, and MobX](https://derekknox.com/articles/reticle-designer-part-3-svg-flexbox-react-mobx/)
+
+[Launch App](https://derekknox.com/lab/reticledesigner/app)
+
+---
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
